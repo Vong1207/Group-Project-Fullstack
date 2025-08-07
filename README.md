@@ -3,14 +3,14 @@
 - OneDrive Video Demo Link:
 - Login Credentials for Testing:
     + Vendor: 
-        Username: 
-        Password: 
+        - Username: 
+        - Password: 
     + Customer: 
-        Username: 
-        Password: 
+        - Username: 
+        - Password: 
     + Shipper: 
-        Username: 
-        Password: 
+        - Username: 
+        - Password: 
 - Steps to Start and Run the Website:
 - Contribution Table:
 
