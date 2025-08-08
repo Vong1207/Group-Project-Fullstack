@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client'
 import React from 'react'
 import ReactDOM from 'react-dom/client';
 import './index.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
-//pages
+
+// Pages
 import Home from './pages/home/Home.jsx'
 import NotFound from './pages/partials/NotFound.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
