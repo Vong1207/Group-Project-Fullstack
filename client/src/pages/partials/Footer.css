@@ -1,0 +1,128 @@
+
+footer.footer {
+  background: #232629;
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+  border-radius: 30px;
+  margin-top: 40px;
+  margin-inline: 30px;
+}
+
+footer .container {
+  max-width: 1200px;
+  padding: 30px 100px;
+}
+
+footer h5 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+footer ul {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+footer a {
+  color: #fff;
+  opacity: 0.85;
+  transition: color 0.2s, opacity 0.2s;
+  font-size: 1rem;
+}
+footer a:hover {
+  color: #0d6efd;
+  opacity: 1;
+  text-decoration: underline;
+}
+
+footer .d-flex.gap-3 a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #232629;
+  border: 1px solid #444;
+  margin-right: 8px;
+  font-size: 1.3rem;
+  transition: background 0.2s, color 0.2s;
+}
+footer .d-flex.gap-3 a:last-child {
+  margin-right: 0;
+}
+footer .d-flex.gap-3 a:hover {
+  background: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
+}
+
+footer hr {
+  border-color: #444;
+}
+
+
+@media (max-width: 991.98px) {
+  footer .container {
+    padding: 24px 10px;
+  }
+  footer .row > div {
+    margin-bottom: 1.5rem;
+  }
+  footer h5 {
+    font-size: 1.1rem;
+  }
+  footer .d-flex.gap-3 a {
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  footer .container {
+    padding: 18px 2vw;
+  }
+  footer .row {
+    flex-direction: column;
+    gap: 0;
+  }
+  footer .row > div {
+    margin-bottom: 1.2rem;
+    text-align: left;
+  }
+  footer h5 {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+  }
+  footer .d-flex.gap-3 a {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  footer .d-flex.flex-md-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.7rem;
+  }
+  footer .mb-2.mb-md-0 {
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  footer.footer {
+    margin-inline: 0;
+    border-radius: 0;
+    font-size: 0.95rem;
+  }
+  footer .container {
+    padding: 10px 0.5vw;
+  }
+  footer h5 {
+    font-size: 0.98rem;
+  }
+}
