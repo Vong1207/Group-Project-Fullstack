@@ -2,7 +2,7 @@ import './PromotionCarousel.css'
 
 export default function PromotionCarousel() {
     return (
-        <div className='container px-0'>
+        <div className='container px-0 d-md-block d-none'>
             <div id="promotionCarousel" className="carousel slide" data-bs-ride="carousel">
                 {/* Carousel Indicators */}
                 <div className="carousel-indicators">
