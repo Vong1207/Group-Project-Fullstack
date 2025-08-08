@@ -1,23 +1,62 @@
+/* Heading phụ cho mobile */
+.footer-title-sub {
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+
+@media (max-width: 767.98px) {
+  .footer-title-main {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  .footer-title-sub {
+    font-size: 1.01rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .footer-col-sub {
+    border-top: 1px solid #444;
+    padding-top: 0.7rem;
+  }
+  .footer-col-sub:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+}
 
 footer.footer {
   background: #232629;
   color: #fff;
   font-size: 1rem;
   box-shadow: 0 2px 16px rgba(0,0,0,0.15);
-  border-radius: 30px;
+  border-radius: 0;
   margin-top: 40px;
-  margin-inline: 30px;
+  margin-inline: 0;
+  width: 100vw;
+  position: relative;
+  left: 0;
+  right: 0;
+  transform: none;
 }
 
 footer .container {
   max-width: 1200px;
-  padding: 30px 100px;
+  /* padding: 48px 60px 24px 60px; */
 }
 
 footer h5 {
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
+}
+
+footer .footer-title-main {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.2rem;
 }
 
 footer ul {
@@ -67,7 +106,7 @@ footer hr {
 
 @media (max-width: 991.98px) {
   footer .container {
-    padding: 24px 10px;
+    padding: 32px 24px 16px 24px;
   }
   footer .row > div {
     margin-bottom: 1.5rem;
@@ -84,7 +123,7 @@ footer hr {
 
 @media (max-width: 767.98px) {
   footer .container {
-    padding: 18px 2vw;
+    padding: 18px 4vw 10px 4vw;
   }
   footer .row {
     flex-direction: column;
@@ -97,6 +136,12 @@ footer hr {
   footer h5 {
     font-size: 1rem;
     margin-bottom: 0.7rem;
+    font-weight: 600;
+  }
+  footer .footer-title-main {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
   }
   footer .d-flex.gap-3 a {
     width: 32px;
@@ -111,18 +156,72 @@ footer hr {
   footer .mb-2.mb-md-0 {
     margin-bottom: 0.5rem !important;
   }
+  footer .row > div:not(:first-child) {
+    border-top: 1px solid #444;
+    padding-top: 0.7rem;
+  }
 }
 
 @media (max-width: 575.98px) {
   footer.footer {
-    margin-inline: 0;
-    border-radius: 0;
     font-size: 0.95rem;
+    border-radius: 0;
+    margin-inline: 0;
+    border: 1px solid #e0e0e0;
+    background: #232629;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
   footer .container {
-    padding: 10px 0.5vw;
+    padding: 18px 4vw 12px 4vw;
   }
   footer h5 {
+    font-size: 1.08rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.6rem;
+    color: #fff;
+    text-align: left;
+  }
+  footer .row > div, footer .row {
+    text-align: left;
+  }
+  footer p, footer div, footer ul, footer li, footer a {
+    font-weight: 400;
+    color: #e0e0e0;
     font-size: 0.98rem;
+    letter-spacing: 0.1px;
+  }
+  footer .d-flex.gap-3 a {
+    width: 30px;
+    height: 30px;
+    font-size: 0.98rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background: #232629;
+    color: #e0e0e0;
+  }
+  footer .d-flex.gap-3 a:hover {
+    background: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+  }
+  footer hr {
+    border-color: #e0e0e0;
+    margin: 10px 0;
+  }
+  footer .d-flex.flex-md-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.7rem;
+  }
+  footer .mb-2.mb-md-0 {
+    margin-bottom: 0.5rem !important;
+  }
+  footer .container, footer .row {
+    width: 100%;
+    margin: 0;
+  }
+  footer .container {
+    max-width: 100vw;
   }
 }
