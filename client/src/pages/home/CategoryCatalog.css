@@ -1,0 +1,20 @@
+.categoryCard {
+    width: 9rem;
+    border: 1px solid var(--eerieBlack);
+    padding-top: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    & .categoryIcon {
+        font-size: 4rem;
+    }
+
+    & .categoryNameContainer {
+        height: 4rem;
+    }
+}
+
+.categoryCard:hover {
+    background-color: var(--eerieBlack);
+    color: white;
+}
