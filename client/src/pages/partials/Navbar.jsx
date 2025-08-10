@@ -14,7 +14,7 @@ export default function Navbar() {
           </div>
 
           {/* Search Bar */}
-          <div className='col-lg-8 col-md-9 col-sm-8 col-7 ps-sm-0 pe-0'>
+          <div className='col-lg-8 col-sm-10 col-9 ps-sm-0 pe-0'>
             <form action="/search" method='GET'>
               <div className='d-flex justify-content-start searchBarContainer'>
                 <input className='ps-3 py-2' id='searchedName' name='searchedName' type="text" placeholder='Vendor/Product' />
@@ -26,10 +26,12 @@ export default function Navbar() {
           </div>
 
           {/* Login/SignUp/Profile */}
-          <div className='col-lg-2 col-md-3 col-sm-4 col-5 px-3 d-flex justify-content-around profileContainer'>
-            <Link to='/login'>Login</Link>
-            <p className='mb-0'>|</p>
-            <Link to='/signUp'>Sign Up</Link>
+          <div className='col-sm-2 col-3 px-3 d-flex justify-content-end profileContainer'>
+            <Link to='/signIn'>
+              <button type='button' className='profileBtn d-flex justify-content-center align-items-center p-0'>
+                <i className='bi bi-person-fill'></i>
+              </button>
+            </Link>
           </div>
         </div>
       </nav>

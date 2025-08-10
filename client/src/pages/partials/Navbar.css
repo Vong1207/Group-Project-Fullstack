@@ -28,13 +28,16 @@ header {
         }
 
         & .profileContainer {
-            & p {
-                color: white;
-            }
+            & .profileBtn {
+                width: 2.5rem;
+                height: 2.5rem;
+                border: none;
+                border-radius: 50%;
 
-            & a {
-                text-decoration: none;
-                color: white;
+                & i {
+                    font-size: 1.5rem;
+                    color: var(--eerieBlack);
+                }
             }
         }
     }
