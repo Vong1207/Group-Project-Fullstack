@@ -1,6 +1,5 @@
 header {
-    /* Temporary for display, will switch to another color when palette is selected */
-    background-color: #232629;
+    background-color: var(--eerieBlack);
 
     /* Navbar decoration */
     & .navbar {
@@ -21,7 +20,7 @@ header {
                 }
 
                 & button {
-                    background-color: goldenrod;
+                    background-color: var(--goldenrod);
                     color: white;
                     border: none;
                 }

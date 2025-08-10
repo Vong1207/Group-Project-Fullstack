@@ -1,18 +1,30 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import React from 'react'
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 
 // Pages
 import Home from './pages/home/Home.jsx'
 import NotFound from './pages/partials/NotFound.jsx'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import SignIn from './pages/signIn/SignIn.jsx'
+import SignUp from './pages/signUp/SignUp.jsx'
 
 const router = createBrowserRouter([
   {
     path : "/",
     element: <Home />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/signin",
+    element: <SignIn />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
     errorElement: <NotFound />
   }
 ])

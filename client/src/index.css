@@ -1,1 +1,6 @@
 /* Define Fonts styling, Animations... here */
+:root {
+    /* Color Palette */
+    --eerieBlack: rgb(35, 38, 41);
+    --goldenrod: rgb(218, 165, 32);
+}
