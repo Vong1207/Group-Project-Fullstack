@@ -1,58 +1,54 @@
 import './Footer.css'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (
-        <footer className="footer bg-dark text-light pt-5 pb-3" style={{boxShadow: '0 2px 16px rgba(0,0,0,0.15)', marginTop: '40px'}}>
-            <div className="container">
-                <div className="row gy-4">
-                    <div className="col-md-3">
-                        <h5 className="mb-3 footer-title-main">Ecommerce Shop</h5>
-                        <p className="mb-1">RMIT University School, Nguyen Van Linh Street, District 7, Ho Chi Minh.</p>
-                        <br />
-                        <div className="mb-1">123456780</div>
-                        <div>1234567890</div>
+        <footer>
+            <div className='container px-sm-0'>
+                <div className='row mx-0 py-5'>
+                    <div className='col-md-7 col-12'>
+                        <h1 className='fs-3 mb-4'>Brand Name</h1>
+                        <p><small><span className='bi bi-geo-alt-fill me-1'></span> 702 Nguyen Van Linh boulevard, Tan Hung ward, Ho Chi Minh city, Vietnam</small></p>
+                        <p><small><span className='bi bi-telephone-fill me-1'></span> (+84) 28 3776 1369</small></p>
+                        <p><small><span className='bi bi-envelope-fill me-1'></span> example@gmail.com</small></p>
                     </div>
-                    <div className="col-md-2 footer-col-sub">
-                        <h5 className="mb-3 footer-title-sub">Menu</h5>
-                        <ul className="list-unstyled">
-                        <li><a href="#" className="text-decoration-none">Home</a></li>
-                        <li><a href="#" className="text-decoration-none">About</a></li>
-                        <li><a href="#" className="text-decoration-none">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div className="col-md-2 footer-col-sub">
-                        <h5 className="mb-3 footer-title-sub">More</h5>
-                        <ul className="list-unstyled">
-                        <li><a href="#" className="text-decoration-none">Landing Pages</a></li>
-                        <li><a href="#" className="text-decoration-none">FAQs</a></li>
-                        </ul>
-                    </div>
-                    <div className="col-md-2 footer-col-sub">
-                        <h5 className="mb-3 footer-title-sub">Categories</h5>
-                        <ul className="list-unstyled">
-                        <li><a href="#" className="text-decoration-none">SmartPhone</a></li>
-                        <li><a href="#" className="text-decoration-none">Shoes</a></li>
-                        <li><a href="#" className="text-decoration-none">Clothes</a></li>
-                        <li><a href="#" className="text-decoration-none">Carousels</a></li>
-                        </ul>
-                    </div>
-                    <div className="col-md-3 footer-col-sub">
-                        <h5 className="mb-3 footer-title-sub">Social Media Links</h5>
-                        <div className="d-flex gap-3">
-                            <a href="#"><i className="fab fa-facebook"></i></a>
-                            <a href="#"><i className="fab fa-pinterest"></i></a>
-                            <a href="#"><i className="fab fa-instagram"></i></a>
-                            <a href="#"><i className="fab fa-linkedin"></i></a>
+
+                    <div className='col-md-5 col-12 mt-md-0 mt-5'>
+                        <h2 className='fs-4 mb-4'>Follow us</h2>
+                        <div className='d-flex gap-3 socialsContainer'>
+                            <Link to='https://www.facebook.com/' target='blank'>
+                                <button type='button'>
+                                    <i className='bi bi-facebook'></i>
+                                </button>
+                            </Link>
+                            <Link to='https://www.instagram.com' target='blank'>
+                                <button type='button'>
+                                    <i className='bi bi-instagram'></i>
+                                </button>
+                            </Link>
+                            <Link to='https://www.tiktok.com' target='blank'>
+                                <button type='button'>
+                                    <i className='bi bi-tiktok'></i>
+                                </button>
+                            </Link>
+                            <Link to='https://www.youtube.com' target='blank'>
+                                <button type='button'>
+                                    <i className='bi bi-youtube'></i>
+                                </button>
+                            </Link>
+                            <Link to='https://www.linkedin.com' target='blank'>
+                                <button type='button'>
+                                    <i className='bi bi-linkedin'></i>
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
-                <hr className="border-secondary my-4" />
-                <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                    <div className="mb-2 mb-md-0">2025 © Group 7</div>
-                    {/* <div>
-                        <a href="#" className="text-light text-decoration-none me-3">Terms of use</a>
-                        <a href="#" className="text-light text-decoration-none">Privacy policy</a>
-                    </div> */}
+
+                <hr />
+
+                <div className='row text-center'>
+                    <p>© 2025 by Brand Name</p>
                 </div>
             </div>
         </footer>
