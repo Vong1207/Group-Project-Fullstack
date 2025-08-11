@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     padding: 20px
 }
 
@@ -13,8 +13,9 @@
     padding: 40px;
     width: 100%;
     max-width: 420px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 40px rgba(35, 38, 41, 0.15);
     position: relative;
+    border: 1px solid rgba(218, 165, 32, 0.1);
 }
 
 .signin-header {
@@ -25,12 +26,13 @@
 .logo {
     font-size: 32px;
     margin-bottom: 16px;
+    color: var(--goldenrod);
 }
 
 .signin-header h1 {
     font-size: 28px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: var(--eerieBlack);
     margin: 0 0 12px 0;
     line-height: 1.2;
 }
@@ -48,7 +50,7 @@
 
 .form-group label {
     font-weight: 600;
-    color: #1a1a1a;
+    color: var(--eerieBlack);
     margin-bottom: 8px;
     font-size: 14px;
 }
@@ -58,14 +60,14 @@
     border: 2px solid #e1e1e1;
     border-radius: 8px;
     font-size: 16px;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     background: white;
 }
 
 .form-group input:focus {
     outline: none;
-    border-color: #1a1a1a;
-    box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
+    border-color: var(--goldenrod);
+    box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.15);
 }
 
 .form-group input::placeholder {
@@ -98,17 +100,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: color 0.2s ease;
 }
 
 .password-toggle:hover {
-    color: #1a1a1a;
+    color: var(--goldenrod);
 }
 
 .form-options {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 4px, 0;
+    margin: 4px 0;
 }
 
 .remember-me {
@@ -134,8 +137,8 @@
 }
 
 .remember-me input[type="checkbox"]:checked + .checkmark {
-    background: #1a1a1a;
-    border-color: #1a1a1a;
+    background: var(--goldenrod);
+    border-color: var(--goldenrod);
 }
 
 .remember-me input[type="checkbox"]:checked + .checkmark::after {
@@ -148,18 +151,20 @@
 }
 
 .forgot-password {
-    color: #1a1a1a;
+    color: var(--goldenrod);
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
+    transition: color 0.2s ease;
 }
 
 .forgot-password:hover {
+    color: var(--eerieBlack);
     text-decoration: underline;
 }
 
 .signin-btn {
-    background: #1a1a1a;
+    background: var(--eerieBlack);
     color: white;
     border: none;
     padding: 16px;
@@ -167,13 +172,16 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     margin-top: 8px;
+    position: relative;
+    overflow: hidden;
 }
 
 .signin-btn:hover {
-    background: #333;
-    transform: translateY(-1px);
+    background: var(--goldenrod);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(218, 165, 32, 0.3);
 }
 
 .signin-btn:active {
@@ -193,12 +201,13 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: #e1e1e1;
+    background: linear-gradient(to right, transparent, #e1e1e1, transparent);
 }
 
 .divider span {
     padding: 0 16px;
     background: white;
+    color: var(--eerieBlack);
 }
 
 .signup-link {
@@ -207,7 +216,15 @@
     font-size: 14px;
 }
 
+.signup-link a {
+    color: var(--goldenrod);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
 .signup-link a:hover {
+    color: var(--eerieBlack);
     text-decoration: underline;
 }
 

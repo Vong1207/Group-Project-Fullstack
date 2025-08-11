@@ -101,7 +101,7 @@ export default function SignUp() {
                 <div className="divider">
                     <span>OR</span>
                 </div>
-                <div className="signup-link">
+                <div className="login-link">
                     Already have an account? <a href="/signin">Sign In</a>
                 </div>
             </div>
