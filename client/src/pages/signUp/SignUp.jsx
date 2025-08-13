@@ -26,13 +26,13 @@ export default function SignUp() {
     };
 
     return (
-        <div className="signin-container">
-            <div className="signin-card">
-                <div className="signin-header">
+        <div className="signup-container">
+            <div className="signup-card">
+                <div className="signup-header">
                     <div className="logo"><i className="bi bi-person-plus"></i></div>
                     <h1>Create an Account</h1>
                 </div>
-                <form className="signin-form" onSubmit={handleSubmit}>
+                <form className="signup-form" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="name">Full Name</label>
                         <input
@@ -94,7 +94,7 @@ export default function SignUp() {
                             <option value="shipper">Shipper</option>
                         </select>
                     </div>
-                    <button type="submit" className="signin-btn">
+                    <button type="submit" className="signup-btn">
                         Sign Up
                     </button>
                 </form>
