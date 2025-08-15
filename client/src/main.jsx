@@ -10,6 +10,7 @@ import Home from './pages/home/Home.jsx'
 import NotFound from './pages/partials/NotFound.jsx'
 import SignIn from './pages/signIn/SignIn.jsx'
 import SignUp from './pages/signUp/SignUp.jsx'
+import ShipperDashboard from './pages/shipper/ShipperDashboard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/shipperDashboard",
+    element: <ShipperDashboard />,
     errorElement: <NotFound />
   }
 ])
