@@ -11,6 +11,7 @@ import NotFound from './pages/partials/NotFound.jsx'
 import SignIn from './pages/signIn/SignIn.jsx'
 import SignUp from './pages/signUp/SignUp.jsx'
 import ShipperDashboard from './pages/shipper/ShipperDashboard.jsx';
+import VendorDashboard from './pages/vendor/vendorDashboard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
   {
     path: "/shipperDashboard",
     element: <ShipperDashboard />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/VendorDashboard",
+    element: <VendorDashboard />,
     errorElement: <NotFound />
   }
 ])

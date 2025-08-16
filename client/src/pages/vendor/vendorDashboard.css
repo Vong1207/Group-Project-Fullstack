@@ -1,0 +1,116 @@
+:root {
+  --eerieBlack: #1a2236; /* màu nền sidebar */
+  --goldenrod: #daa520;  /* màu brand chính */
+  --pageBg: #f7f8fa;     /* nền trang */
+}
+
+/* Nền trang */
+.vendor-dashboard-uiux {
+  background: var(--pageBg);
+}
+
+.vendor-header {
+    background-color: #f7f8fa;
+}
+
+/* Sidebar: giữ kích thước + màu custom */
+.vendor-sidebar {
+  width: 220px;
+  background: var(--eerieBlack);
+  color: #fff;
+  padding: 32px 0 0 0;
+}
+
+.sidebar-logo {
+  font-size: 2.5rem;
+  margin-bottom: 32px;
+}
+
+/* Item sidebar: màu active/hover theo brand */
+.vendor-sidebar nav ul li.active,
+.vendor-sidebar nav ul li:hover {
+  background: #232629;
+  color: var(--goldenrod);
+}
+
+/* Header: màu brand cho subtitle */
+.text-brand {
+  color: var(--goldenrod);
+}
+
+/* Avatar kích thước theo design */
+.user-avatar {
+  width: 38px;
+  height: 38px;
+  background: var(--goldenrod);
+  color: #fff;
+}
+
+.user-avatar-large {
+  width: 80px;
+  height: 80px;
+  background: var(--goldenrod);
+  color: #fff;
+  font-size: 2.5rem;
+}
+
+/* Thumbnail sản phẩm */
+.product-thumb {
+  height: 140px;
+}
+
+/* Tabbar mobile (Bootstrap không có sẵn component này) */
+.vendor-tabbar-mobile {
+  height: 56px;
+  background: var(--eerieBlack);
+  box-shadow: 0 -2px 8px rgba(35, 38, 41, 0.07);
+}
+
+.vendor-tabbar-mobile .btn-tab {
+  background: transparent;
+  border: none;
+  color: #fff;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.vendor-tabbar-mobile .btn-tab i {
+  font-size: 1.25rem;
+  margin-bottom: 2px;
+}
+
+.vendor-tabbar-mobile .btn-tab span {
+  font-size: 0.85rem;
+}
+
+.vendor-tabbar-mobile .btn-tab.active {
+  color: var(--goldenrod);
+}
+
+/* Ẩn sidebar trên mobile để dùng tabbar */
+@media (max-width: 767px) {
+  .vendor-sidebar {
+    display: none !important;
+  }
+
+  .vendor-dashboard-uiux {
+    padding-bottom: 60px;
+  }
+}
+
+
+/* Nút thương hiệu */
+.btn-brand {
+  background: var(--goldenrod);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.btn-brand:hover {
+  background: #232629;
+  color: var(--goldenrod);
+}
