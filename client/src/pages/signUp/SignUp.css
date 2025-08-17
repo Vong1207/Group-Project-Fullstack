@@ -87,10 +87,6 @@
     position: relative;
 }
 
-.password-input input {
-    padding-right: 48px !important;
-}
-
 .password-toggle {
     position: absolute;
     right: 12px;
@@ -112,6 +108,17 @@
 
 .password-toggle:hover {
     color: var(--goldenrod);
+}
+
+.password-input {
+    position: relative;
+    width: 100%;
+}
+
+.password-input input {
+    width: 100%; 
+    box-sizing: border-box;
+    padding-right: 48px !important;
 }
 
 .signup-btn {

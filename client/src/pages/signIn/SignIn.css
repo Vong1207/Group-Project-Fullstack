@@ -1,31 +1,21 @@
 .signin-container {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 20px
 }
 
 .signin-card {
     background: white;
     border-radius: 16px;
-    padding: 40px;
-    width: 100%;
-    max-width: 420px;
     box-shadow: 0 10px 40px rgba(35, 38, 41, 0.15);
-    position: relative;
     border: 1px solid rgba(218, 165, 32, 0.1);
 }
 
 .signin-header {
     text-align: center;
-    margin-bottom: 32px;
 }
 
 .logo {
     font-size: 32px;
-    margin-bottom: 16px;
     color: var(--goldenrod);
 }
 
@@ -33,7 +23,6 @@
     font-size: 28px;
     font-weight: 700;
     color: var(--eerieBlack);
-    margin: 0 0 12px 0;
     line-height: 1.2;
 }
 
@@ -43,11 +32,6 @@
     gap: 20px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
 .form-group label {
     font-weight: 600;
     color: var(--eerieBlack);
@@ -55,22 +39,19 @@
     font-size: 14px;
 }
 
-.form-group input {
-    padding: 16px;
+.form-control {
     border: 2px solid #e1e1e1;
     border-radius: 8px;
-    font-size: 16px;
     transition: all 0.3s ease;
     background: white;
 }
 
-.form-group input:focus {
-    outline: none;
+.form-control:focus {
     border-color: var(--goldenrod);
     box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.15);
 }
 
-.form-group input::placeholder {
+.form-control::placeholder {
     color: #999;
 }
 
@@ -78,11 +59,6 @@
     position: relative;
     display: flex;
     align-items: center;
-    width: 100%;
-}
-
-.password-input input {
-    padding-right: 40px !important;
     width: 100%;
 }
 
@@ -107,13 +83,6 @@
     color: var(--goldenrod);
 }
 
-.form-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 4px 0;
-}
-
 .remember-me {
     display: flex;
     align-items: center;
@@ -124,16 +93,6 @@
 
 .remember-me input[type="checkbox"] {
     display: none;
-}
-
-.checkmark {
-    width: 16px;
-    height: 16px;
-    border: 2px solid #e1e1e1;
-    border-radius: 3px;
-    margin-right: 8px;
-    position: relative;
-    transition: all 0.2s ease;
 }
 
 .remember-me input[type="checkbox"]:checked + .checkmark {
@@ -211,7 +170,6 @@
 }
 
 .signup-link {
-    text-align: center;
     color: #666;
     font-size: 14px;
 }
@@ -226,122 +184,4 @@
 .signup-link a:hover {
     color: var(--eerieBlack);
     text-decoration: underline;
-}
-
-@media (min-width: 1024px) {
-    .signin-container {
-        padding: 40px;
-    }
-    
-    .signin-card {
-        padding: 48px;
-        max-width: 440px;
-    }
-    
-    .signin-header h1 {
-        font-size: 32px;
-    }
-    
-    .signin-header p {
-        font-size: 18px;
-    }
-    
-    .form-group input,
-    .signin-btn {
-        padding: 18px;
-        font-size: 16px;
-    }
-    
-    .password-input input {
-        padding-right: 54px !important;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-    .signin-container {
-        padding: 20px;
-    }
-    
-    .signin-card {
-        padding: 36px;
-        max-width: 400px;
-    }
-    
-    .signin-header h1 {
-        font-size: 26px;
-    }
-    
-    .signin-header p {
-        font-size: 16px;
-    }
-    
-    .form-group input,
-    .signin-btn {
-        padding: 16px;
-        font-size: 16px;
-    }
-    
-    .password-input input {
-        padding-right: 50px !important;
-    }
-}
-
-@media (max-width: 767px) {
-    .signin-container {
-        padding: 10px;
-    }
-    
-    .signin-card {
-        padding: 24px;
-        border-radius: 12px;
-        max-width: 100%;
-    }
-    
-    .signin-header h1 {
-        font-size: 24px;
-    }
-    
-    .signin-header p {
-        font-size: 14px;
-    }
-    
-    .form-group input,
-    .signin-btn {
-        padding: 14px;
-        font-size: 16px;
-    }
-    
-    .password-input input {
-        padding-right: 46px !important;
-    }
-    
-    .form-options {
-        flex-direction: column;
-        gap: 12px;
-        align-items: flex-start;
-    }
-}
-
-@media (max-width: 480px) {
-    .signin-card {
-        padding: 20px;
-        margin: 0 5px;
-    }
-    
-    .signin-header h1 {
-        font-size: 22px;
-    }
-    
-    .signin-header p {
-        font-size: 13px;
-    }
-    
-    .form-group input,
-    .signin-btn {
-        padding: 12px;
-    }
-    
-    .password-input input {
-        padding-right: 44px !important;
-    }
 }
