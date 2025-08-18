@@ -1,0 +1,36 @@
+#sidebar {
+    background-color: var(--eerieBlack);
+    color: white;
+    min-height: 100vh;
+
+    & .tabNameContainer {
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+
+        & .tabName {
+            text-decoration: none;
+            color: white;
+        }
+    }
+
+    & .tabNameContainer:hover {
+        background-color: var(--goldenrod);
+    }
+}
+
+#homeBtnContainer {
+    height: 5rem;
+
+    & #homeBtn {
+        border-radius: 2.5rem;
+        background-color: var(--eerieBlack);
+        color: white;
+        border: 1px solid white;
+        transition: all 0.3s ease-in-out;
+    }
+
+    & #homeBtn:hover {
+        border: 1px solid var(--goldenrod);
+        color: var(--goldenrod);
+    }
+}
