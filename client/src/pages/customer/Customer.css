@@ -3,34 +3,76 @@
     color: white;
     min-height: 100vh;
 
-    & .tabNameContainer {
-        transition: all 0.3s ease-in-out;
-        cursor: pointer;
+    & a {
+        text-decoration: none;
+        color: white;
+    }
 
+    & a.active {
         & .tabName {
-            text-decoration: none;
-            color: white;
+            background-color: var(--goldenrodHover);
+            color: var(--goldenrod);
         }
     }
 
-    & .tabNameContainer:hover {
-        background-color: var(--goldenrod);
+    & a:hover {
+        & .tabName {
+            color: var(--goldenrod);
+        }
+    }
+
+    & #homeBtnContainer {
+        height: 5rem;
+
+        & #homeBtn {
+            border-radius: 2.5rem;
+            background-color: var(--eerieBlack);
+            color: white;
+            border: 1px solid white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        & #homeBtn:hover {
+            border: 1px solid var(--goldenrod);
+            color: var(--goldenrod);
+        }
     }
 }
 
-#homeBtnContainer {
-    height: 5rem;
+#userDisplay {
+    & #avatarDisplay {
+        height: 10rem;
 
-    & #homeBtn {
-        border-radius: 2.5rem;
-        background-color: var(--eerieBlack);
-        color: white;
-        border: 1px solid white;
-        transition: all 0.3s ease-in-out;
-    }
+        & #customerAvatar {
+            width: 10rem;
+            height: 10rem;
+            border-radius: 50%;
+            border: 1px solid var(--eerieBlack);
+            object-fit: cover;
+        }
 
-    & #homeBtn:hover {
-        border: 1px solid var(--goldenrod);
-        color: var(--goldenrod);
+        & #changeAvatarBtn {
+            border-radius: 50%;
+            background-color: var(--eerieBlack);
+            color: white;
+            border: 1px solid white;
+            height: 3rem;
+            width: 3rem;
+            bottom: -1.2rem;
+            left: 3.5rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        & #changeAvatarBtn:hover {
+            border: 1px solid var(--goldenrod);
+            color: var(--goldenrod);
+        }
+
+        & #usernameDisplay {
+            font-size: 3rem;
+            top: 3.5rem;
+            left: 12rem;
+            color: var(--eerieBlack);
+        }
     }
 }

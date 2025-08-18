@@ -15,6 +15,7 @@ import Customer from './pages/customer/Customer.jsx';
 import Wallet from './pages/customer/Wallet.jsx';
 import Cart from './pages/customer/Cart.jsx';
 import Purchased from './pages/customer/Purchased.jsx';
+import CustomerSettings from './pages/customer/CustomerSettings.jsx';
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,11 @@ const router = createBrowserRouter([
       {
         path: "purchased",
         element: <Purchased />,
+        errorElement: <NotFound />
+      },
+      {
+        path: "settings",
+        element: <CustomerSettings />,
         errorElement: <NotFound />
       }
     ]
