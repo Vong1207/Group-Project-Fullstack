@@ -30,7 +30,7 @@ export default function Customer() {
 
     return (
         <div className="container-fluid px-0">
-            <div className="row mx-0">
+            <div className="row mx-0" id='content'>
                 {/* Sidebar on -md breakpoint */}
                 <div className="col-lg-2 col-md-3 col d-md-flex d-none flex-column justify-content-between px-0" id="sidebar">
                     <div>
@@ -67,9 +67,9 @@ export default function Customer() {
                     </div>
                 </div>
 
-                <div className="col-lg-10 col d-flex flex-column px-0" id='userDisplay'>
-                    {/* User Info */}
-                    <div className='px-5 py-5'>
+                <div className="col-lg-10 col d-flex flex-column px-0">
+                    {/* User Info -md breakpoint */}
+                    <div className='px-5 py-5 d-md-block d-none' id='userDisplay'>
                         {/* Avatar Display */}
                         <div className='position-relative' id='avatarDisplay'>
                             <img src={avatarUrl} alt="Customer Avatar" id='customerAvatar' className='me-4 position-absolute' />
@@ -89,8 +89,37 @@ export default function Customer() {
                         </div>
                     </div>
 
+                    {/* User Info on -sm breakpoint */}
+                    <div className='py-5 d-md-none d-block' id='userDisplaySm'>
+                        {/* Avatar Display */}
+                        <div className='position-relative d-flex justify-content-center' id='avatarDisplaySm'>
+                            <img src={avatarUrl} alt="Customer Avatar" id='customerAvatarSm' className='position-absolute' />
+                            <button type='button' className='position-absolute' onClick={handleAvatarChange} id='changeAvatarBtnSm'>
+                                <i className='bi bi-camera'></i>
+                            </button>
+                        </div>
+                        {/* Username Display */}
+                        <h1 className='text-center mt-4' id='usernameDisplaySm'>{user.userName}</h1>
+                    </div>
+
                     <Outlet context={{ user }} />
                 </div>
+            </div>
+
+            {/* Sticky Footer Navigation on -sm breakpoint */}
+            <div className='row mx-0 d-md-none d-flex fixed-bottom' id='sidebarSm'>
+                <NavLink to='wallet' className={({ isActive }) => `d-flex justify-content-center align-items-center col-3 py-3 ${isActive ? 'active' : ''}`}>
+                    <i className='fi fi-ts-wallet'></i>
+                </NavLink>
+                <NavLink to='cart' className={({ isActive }) => `d-flex justify-content-center align-items-center col-3 py-3 ${isActive ? 'active' : ''}`}>
+                    <i className='fi fi-ts-shopping-cart'></i>
+                </NavLink>
+                <NavLink to='purchased' className={({ isActive }) => `d-flex justify-content-center align-items-center col-3 py-3 ${isActive ? 'active' : ''}`}>
+                    <i className='fi fi-ts-checklist-task-budget'></i>
+                </NavLink>
+                <NavLink to='settings' className={({ isActive }) => `d-flex justify-content-center align-items-center col-3 py-3 ${isActive ? 'active' : ''}`}>
+                    <i className='bi bi-gear'></i>
+                </NavLink>
             </div>
         </div>
     )

@@ -76,3 +76,49 @@
         }
     }
 }
+
+& #userDisplaySm {
+    background-color: var(--eerieBlack);
+
+    & #avatarDisplaySm {
+        height: 10rem;
+
+        & #customerAvatarSm {
+            width: 10rem;
+            height: 10rem;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+        }
+
+        & #changeAvatarBtnSm {
+            background-color: var(--eerieBlack);
+            color: white;
+            border: 3px solid white;
+            border-radius: 50%;
+            height: 3rem;
+            width: 3rem;
+            transition: all 0.3s ease-in-out;
+            bottom: -1.2rem;
+        }
+
+        & #changeAvatarBtnSm:hover {
+            border: 3px solid var(--goldenrod);
+            color: var(--goldenrod);
+        }
+    }
+
+    & #usernameDisplaySm {
+        font-size: 2rem;
+        color: white;
+    }
+}
+
+#sidebarSm {
+    background-color: var(--eerieBlack);
+    
+    & a {
+        color: white;
+        text-decoration: none;
+    }
+}
