@@ -18,16 +18,8 @@ export default function Wallet() {
     }
 
     return (
-        <div className="mx-md-5 mx-sm-3 mt-md-0 mt-3 py-5 walletContainer">
-            <h2 className='ps-sm-5 ps-2 mb-0'>My wallet: {balance} <i className={eyeState} onClick={handleToggleBalance}></i></h2>
+        <div>
             
-            <div className='breakContainer d-flex justify-content-center my-3'>
-                <hr />
-            </div>
-
-            <div>
-                Add money to wallet (add later)
-            </div>
         </div>
     )
 }

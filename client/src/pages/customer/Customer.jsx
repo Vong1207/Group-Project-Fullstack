@@ -31,8 +31,8 @@ export default function Customer() {
     return (
         <div className="container-fluid px-0">
             <div className="row mx-0" id='content'>
-                {/* Sidebar on -md breakpoint */}
-                <div className="col-lg-2 col-md-3 col d-md-flex d-none flex-column justify-content-between px-0" id="sidebar">
+                {/* Sidebar on -lg breakpoint */}
+                <div className="col-lg-2 d-lg-flex d-none flex-column justify-content-between px-0" id="sidebar">
                     <div>
                         <div className='my-5 text-center'>
                             <i className='fi fi-ts-circle-user fs-1'></i>
@@ -68,8 +68,8 @@ export default function Customer() {
                 </div>
 
                 <div className="col-lg-10 col d-flex flex-column px-0">
-                    {/* User Info -md breakpoint */}
-                    <div className='px-5 py-5 d-md-block d-none' id='userDisplay'>
+                    {/* User Info -lg breakpoint */}
+                    <div className='px-5 py-5 d-lg-block d-none' id='userDisplay'>
                         {/* Avatar Display */}
                         <div className='position-relative' id='avatarDisplay'>
                             <img src={avatarUrl} alt="Customer Avatar" id='customerAvatar' className='me-4 position-absolute' />
@@ -89,8 +89,8 @@ export default function Customer() {
                         </div>
                     </div>
 
-                    {/* User Info on -sm breakpoint */}
-                    <div className='py-5 d-md-none d-block' id='userDisplaySm'>
+                    {/* User Info on -md breakpoint */}
+                    <div className='py-5 d-lg-none d-block' id='userDisplaySm'>
                         {/* Avatar Display */}
                         <div className='position-relative d-flex justify-content-center' id='avatarDisplaySm'>
                             <img src={avatarUrl} alt="Customer Avatar" id='customerAvatarSm' className='position-absolute' />
@@ -106,8 +106,8 @@ export default function Customer() {
                 </div>
             </div>
 
-            {/* Sticky Footer Navigation on -sm breakpoint */}
-            <div className='row mx-0 d-md-none d-flex fixed-bottom' id='sidebarSm'>
+            {/* Sticky Footer Navigation on -md breakpoint */}
+            <div className='row mx-0 d-lg-none d-flex fixed-bottom' id='sidebarSm'>
                 <NavLink to='wallet' className={({ isActive }) => `d-flex justify-content-center align-items-center col-3 py-3 ${isActive ? 'active' : ''}`}>
                     <i className='fi fi-ts-wallet'></i>
                 </NavLink>
