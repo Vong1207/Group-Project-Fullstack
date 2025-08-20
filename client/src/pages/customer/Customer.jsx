@@ -30,9 +30,9 @@ export default function Customer() {
 
     return (
         <div className="container-fluid px-0">
-            <div className="row mx-0" id='content'>
+            <div className="row mx-0">
                 {/* Sidebar on -lg breakpoint */}
-                <div className="col-lg-2 d-lg-flex d-none flex-column justify-content-between px-0" id="sidebar">
+                <div className="col-lg-2 d-lg-flex d-none flex-column px-0" id="sidebar">
                     <div>
                         <div className='my-5 text-center'>
                             <i className='fi fi-ts-circle-user fs-1'></i>
@@ -60,14 +60,14 @@ export default function Customer() {
                         </NavLink>
                     </div>
 
-                    <div className='d-flex justify-content-center align-items-center' id='homeBtnContainer'>
+                    <div className='d-flex justify-content-center align-items-center mt-3' id='homeBtnContainer'>
                         <Link to='/'>
                             <button type='button' id='homeBtn' className='px-3 py-2'>Back to Home</button>
                         </Link>
                     </div>
                 </div>
 
-                <div className="col-lg-10 col d-flex flex-column px-0">
+                <div className="col-lg-10 col-md-12 d-md-flex flex-column d-none px-0">
                     {/* User Info -lg breakpoint */}
                     <div className='px-5 py-5 d-lg-block d-none' id='userDisplay'>
                         {/* Avatar Display */}
@@ -90,13 +90,16 @@ export default function Customer() {
                     </div>
 
                     {/* User Info on -md breakpoint */}
-                    <div className='py-5 d-lg-none d-block' id='userDisplaySm'>
+                    <div className='py-5 d-lg-none d-md-block d-none' id='userDisplaySm'>
                         {/* Avatar Display */}
                         <div className='position-relative d-flex justify-content-center' id='avatarDisplaySm'>
                             <img src={avatarUrl} alt="Customer Avatar" id='customerAvatarSm' className='position-absolute' />
                             <button type='button' className='position-absolute' onClick={handleAvatarChange} id='changeAvatarBtnSm'>
                                 <i className='bi bi-camera'></i>
                             </button>
+                            <Link to='/' className='position-absolute' id='backToHome'>
+                                {`<-- Back to Homepage`}
+                            </Link>
                         </div>
                         {/* Username Display */}
                         <h1 className='text-center mt-4' id='usernameDisplaySm'>{user.userName}</h1>
@@ -106,7 +109,19 @@ export default function Customer() {
                 </div>
             </div>
 
-            {/* Sticky Footer Navigation on -md breakpoint */}
+            {/* Back To Home on -sm breakpoint */}
+            <div id='backToHomeSm' className='d-md-none d-flex align-items-center'>
+                <Link to='/' className='ps-3'>
+                    {`<-- Back to Homepage`}
+                </Link>
+            </div>
+
+            {/* Outlet for -sm breakpoint */}
+            <div className='d-md-none d-block'>
+                <Outlet context={{ user }} />
+            </div>
+
+            {/* Fixed Footer Navigation on -md breakpoint */}
             <div className='row mx-0 d-lg-none d-flex fixed-bottom' id='sidebarSm'>
                 <NavLink to='wallet' className={({ isActive }) => `d-flex justify-content-center align-items-center col-3 py-3 ${isActive ? 'active' : ''}`}>
                     <i className='fi fi-ts-wallet'></i>

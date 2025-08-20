@@ -82,6 +82,18 @@
     & #avatarDisplaySm {
         height: 10rem;
 
+        & #backToHome {
+            left: 1rem;
+            top: -1rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        & #backToHome:hover {
+            color: var(--goldenrod);
+        }
+
         & #customerAvatarSm {
             width: 10rem;
             height: 10rem;
@@ -123,6 +135,21 @@
 
     & a.active {
         background-color: var(--goldenrodHover);
+        color: var(--goldenrod);
+    }
+}
+
+#backToHomeSm {
+    height: 2.5rem;
+    background-color: var(--eerieBlack);
+
+    & a {
+        text-decoration: none;
+        color: white;
+        transition: all 0.3s ease-in-out;
+    }
+
+    & a:hover {
         color: var(--goldenrod);
     }
 }
