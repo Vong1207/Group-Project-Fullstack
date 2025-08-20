@@ -26,44 +26,48 @@ export default function SignUp() {
     };
 
     return (
-        <div className="signup-container">
-            <div className="signup-card">
-                <div className="signup-header">
-                    <div className="logo"><i className="bi bi-person-plus"></i></div>
-                    <h1>Create an Account</h1>
+        <div className="container-fluid signup-container d-flex align-items-center justify-content-center p-2 p-sm-3 p-md-4 p-lg-5">
+            <div className="signup-card p-3 p-sm-4 p-md-5 w-100" style={{maxWidth: '420px'}}>
+                <div className="signup-header text-center mb-4">
+                    <div className="logo mb-3"><i className="bi bi-person-plus"></i></div>
+                    <h1 className="h3 h2-md h1-lg mb-3">Create an Account</h1>
                 </div>
-                <form className="signup-form" onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="name">Full Name</label>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                        <label htmlFor="name" className="fw-semibold">Full Name</label>
                         <input
                             type="text"
                             id="name"
                             name="name"
+                            className="form-control py-2 py-sm-3"
                             placeholder="Enter your full name"
                             value={formData.name}
                             onChange={handleChange}
                             required
                         />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
+                    <div className="mb-3">
+                        <label htmlFor="email" className='fw-semibold'>Email</label>
                         <input
                             type="email"
                             id="email"
                             name="email"
+                            className="form-control py-2 py-sm-3"
                             placeholder="Enter your email"
                             value={formData.email}
                             onChange={handleChange}
                             required
                         />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                    <div className="mb-3">
+                        <label htmlFor="password" className='fw-semibold'>Password</label>
                         <div className="password-input">
                             <input
                                 type={showPassword ? "text" : "password"}
                                 id="password"
                                 name="password"
+                                className="form-control py-2 py-sm-3"
+                                style={{paddingRight:'50px'}}
                                 placeholder="Enter your password"
                                 value={formData.password}
                                 onChange={handleChange}
@@ -79,12 +83,12 @@ export default function SignUp() {
                             </button>
                         </div>
                     </div>
-                    <div className="form-group">
+                    <div className="mb-3">
                         <label htmlFor="userType">User Type</label>
                         <select
                             id="userType"
                             name="userType"
-                            className="user-type-select"
+                            className='form-select py-2 py-sm-3'
                             value={formData.userType}
                             onChange={handleChange}
                             required
@@ -94,14 +98,17 @@ export default function SignUp() {
                             <option value="shipper">Shipper</option>
                         </select>
                     </div>
-                    <button type="submit" className="signup-btn">
-                        Sign Up
-                    </button>
+
+                    <div className='d-grid mb-4 mt-3'>
+                        <button type="submit" className="btn signup-btn py-2 py-sm-3">
+                            Sign Up
+                        </button>
+                    </div>
                 </form>
-                <div className="divider">
+                <div className="divider my-4">
                     <span>OR</span>
                 </div>
-                <div className="login-link">
+                <div className="login-link text-center">
                     Already have an account? <a href="/signin">Sign In</a>
                 </div>
             </div>

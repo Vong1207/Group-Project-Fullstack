@@ -33,12 +33,12 @@ export default function SignIn() {
 
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <label htmlFor="username">Username</label>
+                        <label htmlFor="username" className='fw-semibold'>Username</label>
                         <input type="text" id="username" name="username" className="form-control py-2 py-sm-3" placeholder="Enter your username" value={formData.username} onChange={handleChange} required/>
                     </div>
 
                     <div className="mb-3">
-                        <label htmlFor="password" className="form-label">Password</label>
+                        <label htmlFor="password" className="fw-semibold">Password</label>
                         <div className="password-input">
                             <input 
                                 type={showPassword ? "text" : "password"}
@@ -64,7 +64,7 @@ export default function SignIn() {
                     </div>
 
                     <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3 gap-2">
-                        <div className="form-check">
+                        <div className="form-check d-flex align-items-center gap-2">
                             <input 
                                 className="form-check-input" 
                                 type="checkbox" 
