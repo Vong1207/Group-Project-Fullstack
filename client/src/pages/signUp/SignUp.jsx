@@ -84,7 +84,7 @@ export default function SignUp() {
                         </div>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="userType">User Type</label>
+                        <label htmlFor="userType" className='fw-semibold'>User Type</label>
                         <select
                             id="userType"
                             name="userType"
