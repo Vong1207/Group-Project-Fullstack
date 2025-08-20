@@ -1,6 +1,21 @@
 #cartHeader {
     border: 1px solid var(--eerieBlack);
 
+    & .select-all {
+        width: 1rem;
+
+        & button {
+            background-color: white;
+            height: 1rem;
+            width: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        & button.checked {
+            background-color: var(--eerieBlack);
+        }
+    }
+
     & .image {
         width: 7.5rem;
     }
@@ -24,6 +39,22 @@
 
 #cartContainer {
     margin-bottom: 4rem;
+
+    & .selectProductBtnContainer {
+        width: 1rem;
+
+        & .selectProductBtn {
+            height: 1rem;
+            width: 1rem;
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+            color: white;
+        }
+
+        & .selectProductBtn.checked {
+            background-color: var(--eerieBlack);
+        }
+    }
 
     & .productContainer {
         border-bottom: 1px solid var(--eerieBlack);

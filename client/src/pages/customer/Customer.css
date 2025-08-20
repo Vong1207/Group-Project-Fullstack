@@ -25,7 +25,6 @@
         height: 5rem;
 
         & #homeBtn {
-            border-radius: 2.5rem;
             background-color: var(--eerieBlack);
             color: white;
             border: 1px solid white;
