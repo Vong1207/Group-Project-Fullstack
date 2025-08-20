@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import React from 'react'
-import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 
@@ -12,6 +11,11 @@ import SignIn from './pages/signIn/SignIn.jsx'
 import SignUp from './pages/signUp/SignUp.jsx'
 import ShipperDashboard from './pages/shipper/ShipperDashboard.jsx';
 import VendorDashboard from './pages/vendor/vendorDashboard.jsx';
+import Customer from './pages/customer/Customer.jsx';
+import Wallet from './pages/customer/Wallet.jsx';
+import Cart from './pages/customer/Cart.jsx';
+import Purchased from './pages/customer/Purchased.jsx';
+import CustomerSettings from './pages/customer/CustomerSettings.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,19 +34,46 @@ const router = createBrowserRouter([
     errorElement: <NotFound />
   },
   {
-    path: "/shipperDashboard",
+    path: "/shipper",
     element: <ShipperDashboard />,
     errorElement: <NotFound />
   },
   {
-    path: "/VendorDashboard",
+    path: "/vendor",
     element: <VendorDashboard />,
     errorElement: <NotFound />
+  },
+  {
+    path: "/customer",
+    element: <Customer />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: "wallet",
+        element: <Wallet />,
+        errorElement: <NotFound />
+      },
+      {
+        path: "cart",
+        element: <Cart />,
+        errorElement: <NotFound />
+      },
+      {
+        path: "purchased",
+        element: <Purchased />,
+        errorElement: <NotFound />
+      },
+      {
+        path: "settings",
+        element: <CustomerSettings />,
+        errorElement: <NotFound />
+      }
+    ]
   }
 ])
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </StrictMode>
 );
