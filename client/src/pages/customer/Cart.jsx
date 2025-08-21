@@ -1,102 +1,47 @@
 import './Cart.css';
-import { useState, useEffect } from 'react';
-
-const productsInCartInitially = [
-    {
-        imageUrl: '/product/rainbowHolo.png',
-        productName: 'Rainbow HOLO Playing Cards By TCC Fashion',
-        quantity: 2,
-        price: 300000
-    },
-    {
-        imageUrl: '/product/orbitBlackHole.png',
-        productName: 'Orbit Black Hole Playing Cards',
-        quantity: 2,
-        price: 380000
-    },
-    {
-        imageUrl: '/product/airlessGen1.jpg',
-        productName: 'Wilson Airless Gen1 Basketball',
-        quantity: 2,
-        price: 65000000
-    },
-    {
-        imageUrl: '/product/airlessGen1.jpg',
-        productName: 'Wilson Airless Gen1 Basketball',
-        quantity: 2,
-        price: 65000000
-    },
-    {
-        imageUrl: '/product/airlessGen1.jpg',
-        productName: 'Wilson Airless Gen1 Basketball',
-        quantity: 2,
-        price: 65000000
-    },
-    {
-        imageUrl: '/product/airlessGen1.jpg',
-        productName: 'Wilson Airless Gen1 Basketball',
-        quantity: 2,
-        price: 65000000
-    },
-    {
-        imageUrl: '/product/airlessGen1.jpg',
-        productName: 'Wilson Airless Gen1 Basketball',
-        quantity: 2,
-        price: 65000000
-    }
-];
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    addQuantity,
+    subtractQuantity,
+    inputQuantity,
+    deleteProduct,
+    selectProduct,
+    selectAllProducts
+} from '../../redux/cartSlice.js';
 
 export default function Cart() {
-    const [quantities, setQuantities] = useState(productsInCartInitially.map(product => product.quantity));
-    const [productsInCart, setProducts] = useState(productsInCartInitially);
-    const [totalPriceSelected, setTotalPriceSelected] = useState(0);
-    const [checked, setChecked] = useState(productsInCartInitially.map(() => false));
+    const productsInCart = useSelector(state => state.cart.products);
+    const checked = useSelector(state => state.cart.checked);
+    const dispatch = useDispatch();
 
-    useEffect(() => {
-        const total = productsInCart.reduce((sum, product, i) => {
-            return checked[i] ? sum + product.price * quantities[i] : sum;
-        }, 0);
-        setTotalPriceSelected(total);
-    }, [checked, quantities, productsInCart]);
+    const totalPriceSelected = productsInCart.reduce((sum, product, i) => {
+        return checked[i] ? sum + product.price * product.quantity : sum;
+    }, 0)
 
     function handleSubtractQuantity(index) {
-        if (quantities[index] > 1) {
-            setQuantities(quantities => quantities.map((quantity, i) => i === index ? quantity - 1 : quantity));
-        } else {
-            setProducts(products => products.filter((p, i) => i !== index));
-            setQuantities(quantities => quantities.filter((q, i) => i !== index));
-        }
+        dispatch(subtractQuantity(index));
     }
 
     function handleAddQuantity(index) {
-        setQuantities(quantities => quantities.map((quantity, i) => i === index ? quantity + 1 : quantity));
+        dispatch(addQuantity(index));
     }
 
     function handleSelectProduct(index) {
-        setChecked(checked =>
-            checked.map((c, i) => i === index ? !c : c)
-        );
+        dispatch(selectProduct(index));
     }
 
     function handleInputQuantity(event, index) {
         const newQuantityString = event.target.value;
         const newQuantity = parseInt(newQuantityString);
-
-        if (newQuantityString === '') {
-            setQuantities(quantities => quantities.map((quantity, i) => i === index ? 1 : quantity))
-        } else if (newQuantity > 0) {
-            setQuantities(quantities => quantities.map((quantity, i) => i === index ? newQuantity : quantity));
-        }
+        dispatch(inputQuantity({ index, quantity: newQuantity || 1 }));
     }
 
     function handleDeleteProduct(index) {
-        setProducts(products => products.filter((p, i) => i !== index));
-        setQuantities(quantities => quantities.filter((q, i) => i !== index));
+        dispatch(deleteProduct(index));
     }
 
     function handleSelectAllProducts() {
-        const isChecked = !checked.every(Boolean);
-        setChecked(checked.map(() => isChecked));
+        dispatch(selectAllProducts());
     }
 
     return (
@@ -105,7 +50,7 @@ export default function Cart() {
             <div className='mt-3 d-md-block d-none' id='cartContainer'>
                 <div className='mx-lg-5 mx-md-2 p-3 d-flex justify-content-between' id='cartHeader'>
                     <div className='select-all d-flex align-items-center'>
-                        <button className={checked.every(Boolean) ? 'checked' : ''} type='button' onClick={() => handleSelectAllProducts()}></button>
+                        <button className={checked.every(Boolean) ? 'checked' : ''} type='button' onClick={handleSelectAllProducts}></button>
                     </div>
                     <div className='image'></div>
                     <div className='name'></div>
@@ -136,12 +81,12 @@ export default function Cart() {
 
                         <div className='d-flex align-items-center justify-content-center quantityContainer'>
                             <button type='button' onClick={() => handleSubtractQuantity(index)}>-</button>
-                            <input type="number" className='text-center' value={quantities[index]} onChange={(event) => handleInputQuantity(event, index)} />
+                            <input type="number" className='text-center' value={product.quantity} onChange={(event) => handleInputQuantity(event, index)} />
                             <button type='button' onClick={() => handleAddQuantity(index)}>+</button>
                         </div>
 
                         <div className='d-flex align-items-center justify-content-center totalPriceContainer'>
-                            <p className='mb-0'>{(product.price * quantities[index]).toLocaleString()}₫</p>
+                            <p className='mb-0'>{(product.price * product.quantity).toLocaleString()}₫</p>
                         </div>
 
                         <div className='deleteBtnContainer d-flex justify-content-center align-items-center'>
@@ -166,7 +111,7 @@ export default function Cart() {
             {/* Cart Display on -sm breakpoint */}
             <div className='mt-3 d-md-none d-block' id='cartContainerSm'>
                 <div className='p-3' id='selectAllSm'>
-                    <button className={checked.every(Boolean) ? 'checked' : ''} type='button' onClick={() => handleSelectAllProducts()}></button>
+                    <button className={checked.every(Boolean) ? 'checked' : ''} type='button' onClick={handleSelectAllProducts}></button>
                 </div>
 
                 {productsInCart.map((product, index) => (
@@ -184,7 +129,7 @@ export default function Cart() {
                                 <p className='mb-0 mt-2'>{product.price.toLocaleString()}₫</p>
                                 <div className='d-flex align-items-center productQuantityContainerSm'>
                                     <button type='button' onClick={() => handleSubtractQuantity(index)}>-</button>
-                                    <input type="number" className='text-center' value={quantities[index]} onChange={(event) => handleInputQuantity(event, index)} />
+                                    <input type="number" className='text-center' value={product.quantity} onChange={(event) => handleInputQuantity(event, index)} />
                                     <button type='button' onClick={() => handleAddQuantity(index)}>+</button>
                                 </div>
                             </div>

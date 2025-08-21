@@ -19,6 +19,14 @@ const userSchema = new mongoose.Schema({
         required: function() { return this.role !== 'Vendor' }
     },
     customerAddress: { type: String },
+    cart: {
+        type: Array,
+        default: [],
+        items: {
+            productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+            quantity: { type: Number, min: 1 }
+        }
+    },
 
     // Vendor fields
     businessName: {
@@ -75,6 +83,11 @@ const productSchema = new mongoose.Schema({
             'Electronics', 
             'Phones & Accessories'
         ],
+        required: true
+    },
+    postedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     }
 });
