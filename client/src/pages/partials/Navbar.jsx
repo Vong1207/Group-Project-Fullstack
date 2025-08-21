@@ -1,7 +1,25 @@
-import { Link, Form } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { useEffect, useState } from 'react';
+import axios from 'axios'
 
 export default function Navbar() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    axios.get('/api/session', { withCredentials: true })
+    .then(res => {
+      if (res.data.loggedIn) {
+        setUser(res.data.user);
+      } else {
+        setUser(null);
+      }
+    })
+    .catch(() => setUser(null))
+  }, []);
+
+  const profilePath = user ? '/customer' : '/signIn';
+
   return (
     <header className='position-sticky sticky-top mb-3'>
       <nav className='navbar container px-0' id='mainNavbar'>
@@ -27,7 +45,7 @@ export default function Navbar() {
 
           {/* Login/SignUp/Profile */}
           <div className='col-sm-2 col-3 px-3 d-flex justify-content-end profileContainer'>
-            <Link to='/signIn'>
+            <Link to={profilePath}>
               <button type='button' className='profileBtn d-flex justify-content-center align-items-center p-0'>
                 <i className='bi bi-person-fill'></i>
               </button>
