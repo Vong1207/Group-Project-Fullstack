@@ -90,18 +90,6 @@
   color: var(--goldenrod);
 }
 
-/* Ẩn sidebar trên mobile để dùng tabbar */
-@media (max-width: 767px) {
-  .vendor-sidebar {
-    display: none !important;
-  }
-
-  .vendor-dashboard-uiux {
-    padding-bottom: 60px;
-  }
-}
-
-
 /* Nút thương hiệu */
 .btn-brand {
   background: var(--goldenrod);
