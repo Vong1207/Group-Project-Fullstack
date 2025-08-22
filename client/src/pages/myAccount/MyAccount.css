@@ -1,0 +1,75 @@
+#sidebar {
+    background-color: var(--eerieBlack);
+    color: white;
+    min-height: 100vh;
+
+    & a {
+        text-decoration: none;
+        color: white;
+    }
+
+    & a.active {
+        & .tabName {
+            background-color: var(--goldenrodHover);
+            color: var(--goldenrod);
+        }
+    }
+
+    & a:hover {
+        & .tabName {
+            color: var(--goldenrod);
+        }
+    }
+
+    & #homeBtnContainer {
+        height: 5rem;
+
+        & #homeBtn {
+            background-color: var(--eerieBlack);
+            color: white;
+            border: 1px solid white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        & #homeBtn:hover {
+            border: 1px solid var(--goldenrod);
+            color: var(--goldenrod);
+        }
+    }
+}
+
+#sidebarSm {
+    background-color: var(--eerieBlack);
+    
+    & a {
+        color: white;
+        text-decoration: none;
+
+        & p {
+            font-size: 0.8rem;
+        }
+    }
+
+    & a.active {
+        background-color: var(--goldenrodHover);
+        color: var(--goldenrod);
+    }
+}
+
+main {
+    & #backToHomeContainer {
+        background-color: var(--eerieBlack);
+        height: 3rem;
+
+        & a {
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease-in-out;
+            left: 2rem;
+        }
+
+        & a:hover {
+            color: var(--goldenrod);
+        }
+    }
+}

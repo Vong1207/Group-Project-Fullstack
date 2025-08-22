@@ -15,10 +15,31 @@ const userSlice = createSlice({
         },
         clearUser: (state) => {
             state.user = null;
+        },
+        addToCart: (state, action) => {
+            if (state.user) {
+                state.user.cart.push(action.payload);
+            }
+        },
+        removeFromCart: (state, action) => {
+            if (state.user) {
+                state.user.cart = state.user.cart.filter((item, idx) => idx !== action.payload);
+            }
+        },
+        updateCartQuantity: (state, action) => {
+            const { index, quantity } = action.payload;
+            if (state.user && state.user.cart[index]) {
+                state.user.cart[index].quantity = quantity;
+            }
+        },
+        clearCart: (state) => {
+            if (state.user) {
+                state.user.cart = [];
+            }
         }
     }
 });
 
-export const { setUser, clearUser } = userSlice.actions;
+export const { setUser, clearUser, addToCart, removeFromCart, updateCartQuantity, clearCart } = userSlice.actions;
 
 export default userSlice.reducer;

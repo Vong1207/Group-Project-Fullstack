@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import store from './redux/store.js'
 import './index.css'
@@ -16,11 +15,10 @@ import VendorSignUp from './pages/signUp/VendorSignUp.jsx'
 import ShipperSignUp from './pages/signUp/ShipperSignUp.jsx'
 import ShipperDashboard from './pages/shipper/ShipperDashboard.jsx';
 import VendorDashboard from './pages/vendor/vendorDashboard.jsx';
-import Customer from './pages/customer/Customer.jsx';
-import Wallet from './pages/customer/Wallet.jsx';
-import Cart from './pages/customer/Cart.jsx';
-import Purchased from './pages/customer/Purchased.jsx';
-import CustomerSettings from './pages/customer/CustomerSettings.jsx';
+import MyAccount from './pages/myAccount/MyAccount.jsx';
+import CustomerCart from './pages/myAccount/CustomerCart.jsx';
+import CustomerPurchased from './pages/myAccount/CustomerPurchased.jsx';
+import Wallet from './pages/myAccount/Wallet.jsx';
 
 const router = createBrowserRouter([
   {
@@ -64,28 +62,33 @@ const router = createBrowserRouter([
     errorElement: <NotFound />
   },
   {
-    path: "/customer",
-    element: <Customer />,
+    path: '/myAccount',
+    element: <MyAccount />,
     errorElement: <NotFound />,
     children: [
+      // This is to redirect to the account page
       {
-        path: "wallet",
+        path: '',
+        element: <Navigate to="account" replace />
+      },
+      {
+        path: 'account',
+        element: <MyAccount />,
+        errorElement: <NotFound />
+      },
+      {
+        path: 'wallet',
         element: <Wallet />,
         errorElement: <NotFound />
       },
       {
-        path: "cart",
-        element: <Cart />,
+        path: 'cart',
+        element: <CustomerCart />,
         errorElement: <NotFound />
       },
       {
-        path: "purchased",
-        element: <Purchased />,
-        errorElement: <NotFound />
-      },
-      {
-        path: "settings",
-        element: <CustomerSettings />,
+        path: 'purchased',
+        element: <CustomerPurchased />,
         errorElement: <NotFound />
       }
     ]

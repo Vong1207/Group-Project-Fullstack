@@ -1,0 +1,66 @@
+h1 {
+    color: var(--eerieBlack);
+}
+
+#purchasedSection {
+    margin-bottom: 5rem;
+
+    .purchasedContainer {
+        border: 1px solid var(--eerieBlack);
+
+        & .purchasedImageContainer {
+            width: 9rem;
+            height: 6rem;
+            border: 1px solid var(--eerieBlack);
+
+            & .purchasedImage {
+                width: 9rem;
+                height: 6rem;
+                object-fit: cover;
+            }
+        }
+
+        & .purchasedDetailsContainer {
+            & .purchasedNameContainer .purchasedName {
+                color: var(--eerieBlack);
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+                word-break: break-word;
+            }
+        }
+
+        & .purchasedTotalPriceContainer {
+            width: 6rem;
+        }
+    }
+}
+
+#purchasedSectionSm {
+    margin-bottom: 5rem;
+
+    & .purchasedContainerSm {
+        border: 1px solid var(--eerieBlack);
+
+        & .purchasedImageSm {
+            height: 5rem;
+            width: 5rem;
+            object-fit: cover;
+            border: 1px solid var(--eerieBlack);
+        }
+
+        & .purchasedNameContainerSm .purchasedNameSm {
+            color: var(--eerieBlack);
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            word-break: break-word;
+        }
+    }
+}

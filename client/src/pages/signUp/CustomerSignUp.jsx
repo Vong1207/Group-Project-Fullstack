@@ -12,7 +12,7 @@ export default function CustomerSignUp() {
 
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState({});
-    const [avatarPreview, setAvatarPreview] = useState('/customerProfile/defaultMale.jpg');
+    const [avatarPreview, setAvatarPreview] = useState('/customerProfile/defaultProfile.png');
 
     // Cleanup preview URL on unmount
     useEffect(() => {
@@ -121,7 +121,7 @@ export default function CustomerSignUp() {
                     ...formData,
                     [name]: null
                 });
-                setAvatarPreview('/customerProfile/defaultMale.jpg');
+                setAvatarPreview('/customerProfile/defaultProfile.png');
             }
         } else {
             setFormData({
@@ -171,7 +171,7 @@ export default function CustomerSignUp() {
             ...formData,
             profilePicture: null
         });
-        setAvatarPreview('/customerProfile/defaultMale.jpg');
+        setAvatarPreview('/customerProfile/defaultProfile.png');
         
         // Clear file input
         const fileInput = document.getElementById('profilePicture');
@@ -198,7 +198,7 @@ export default function CustomerSignUp() {
                                 alt="Profile Preview" 
                                 className="avatar-preview"
                                 onError={(e) => {
-                                    e.target.src = '/customerProfile/defaultMale.jpg';
+                                    e.target.src = '/customerProfile/defaultProfile.png';
                                 }}
                             />
                             {formData.profilePicture && (

@@ -12,7 +12,7 @@ export default function VendorSignUp() {
 
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState({});
-    const [avatarPreview, setAvatarPreview] = useState('/customerProfile/defaultMale.jpg');
+    const [avatarPreview, setAvatarPreview] = useState('/customerProfile/defaultProfile.png');
 
     // Cleanup preview URL on unmount
     useEffect(() => {
@@ -116,7 +116,7 @@ export default function VendorSignUp() {
                     ...formData,
                     [name]: null
                 });
-                setAvatarPreview('/customerProfile/defaultMale.jpg');
+                setAvatarPreview('/customerProfile/defaultProfile.png');
             }
         } else {
             setFormData({
@@ -161,7 +161,7 @@ export default function VendorSignUp() {
             ...formData,
             profilePicture: null
         });
-        setAvatarPreview('/customerProfile/defaultMale.jpg');
+        setAvatarPreview('/customerProfile/defaultProfile.png');
         
         const fileInput = document.getElementById('profilePicture');
         if (fileInput) fileInput.value = '';
@@ -187,7 +187,7 @@ export default function VendorSignUp() {
                                 alt="Profile Preview" 
                                 className="avatar-preview"
                                 onError={(e) => {
-                                    e.target.src = '/customerProfile/defaultMale.jpg';
+                                    e.target.src = '/customerProfile/defaultProfile.png';
                                 }}
                             />
                             {formData.profilePicture && (

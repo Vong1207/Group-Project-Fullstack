@@ -1,3 +1,7 @@
+h1 {
+    color: var(--eerieBlack);
+}
+
 #cartHeader {
     border: 1px solid var(--eerieBlack);
 
@@ -42,7 +46,7 @@
 }
 
 #cartContainer {
-    margin-bottom: 4.5rem;
+    margin-bottom: 5rem;
 
     & .selectProductBtnContainer {
         width: 1rem;
@@ -66,10 +70,14 @@
         border-right: 1px solid var(--eerieBlack);
     }
 
-    & .productImageContainer .productImage {
-        height: 5rem;
-        width: 7.5rem;
-        object-fit: cover;
+    & .productImageContainer {
+        border: 1px solid var(--eerieBlack);
+
+        & .productImage {
+            height: 5rem;
+            width: 7.5rem;
+            object-fit: cover;
+        }
     }
 
     & .productNameContainer {
@@ -187,11 +195,13 @@
             & .productImageSm {
                 width: 12rem;
                 height: 8rem;
+                border: 1px solid var(--eerieBlack);
             }
 
             & .productImageXSm {
                 width: 5rem;
                 height: 5rem;
+                border: 1px solid var(--eerieBlack);
                 object-fit: cover;
             }
 
@@ -242,18 +252,19 @@
 
     & #totalAndPurchaseSm {
         border-bottom: 1px solid var(--eerieBlack);
-        margin-bottom: 4.5rem;
+        margin-bottom: 5rem;
 
         & button {
-            background-color: var(--eerieBlack);
-            color: white;
-            border: 1px solid var(--eerieBlack);
+            background-color: white;
+            color: var(--success);
+            border: 1px solid var(--success);
             transition: all 0.3s ease-in-out;
         }
 
         & button:hover {
-            color: var(--goldenrod);
-            border: 1px solid var(--goldenrod);
+            color: white;
+            background-color: var(--success);
+            border: 1px solid var(--success);
         }
     }
 }

@@ -1,4 +1,4 @@
-import './Cart.css';
+import './CustomerCart.css';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     addQuantity,
@@ -9,7 +9,7 @@ import {
     selectAllProducts
 } from '../../redux/cartSlice.js';
 
-export default function Cart() {
+export default function CustomerCart() {
     const productsInCart = useSelector(state => state.cart.products);
     const checked = useSelector(state => state.cart.checked);
     const dispatch = useDispatch();
@@ -43,11 +43,13 @@ export default function Cart() {
     function handleSelectAllProducts() {
         dispatch(selectAllProducts());
     }
-
+    
     return (
         <>
+            <h1 className='mb-0 text-center mt-4'>My Cart</h1>
+
             {/* Cart Display on -md breakpoint */}
-            <div className='mt-3 d-md-block d-none' id='cartContainer'>
+            <div className='mt-4 d-md-block d-none' id='cartContainer'>
                 <div className='mx-lg-5 mx-md-2 p-3 d-flex justify-content-between' id='cartHeader'>
                     <div className='select-all d-flex align-items-center'>
                         <button className={checked.every(Boolean) ? 'checked' : ''} type='button' onClick={handleSelectAllProducts}></button>
@@ -103,13 +105,13 @@ export default function Cart() {
                     </div>
 
                     <div>
-                        <button className='px-3 py-2 fw-bold' type='button' id='buyNowBtn'>Buy Now</button>
+                        <button className='px-3 py-2 fw-bold' type='button' id='buyNowBtn'>Order</button>
                     </div>
                 </div>
             </div>
 
             {/* Cart Display on -sm breakpoint */}
-            <div className='mt-3 d-md-none d-block' id='cartContainerSm'>
+            <div className='mt-4 d-md-none d-block' id='cartContainerSm'>
                 <div className='p-3' id='selectAllSm'>
                     <button className={checked.every(Boolean) ? 'checked' : ''} type='button' onClick={handleSelectAllProducts}></button>
                 </div>
@@ -122,8 +124,10 @@ export default function Cart() {
                         </div>
 
                         <div className='ms-3 flex-fill d-flex productInfoContainerSm'>
-                            <img src={product.imageUrl} alt={`${product.productName} Image`} className='d-sm-none productImageXSm' />
-                            <img src={product.imageUrl} alt={`${product.productName} Image`} className='d-sm-block d-none productImageSm' />
+                            <div className='productImageContainerSm'>
+                                <img src={product.imageUrl} alt={`${product.productName} Image`} className='d-sm-none productImageXSm' />
+                                <img src={product.imageUrl} alt={`${product.productName} Image`} className='d-sm-block d-none productImageSm' />
+                            </div>
                             <div className='ms-sm-4 ms-3'>
                                 <p className='mb-0 productNameSm'>{product.productName}</p>
                                 <p className='mb-0 mt-2'>{product.price.toLocaleString()}₫</p>
@@ -143,7 +147,7 @@ export default function Cart() {
 
                 <div className='p-3 d-flex justify-content-between align-items-center' id='totalAndPurchaseSm'>
                     <p className='mb-0'>{`Total: ${totalPriceSelected.toLocaleString()}₫`}</p>
-                    <button type='button' className='px-3 py-2 fw-bold' id='buyNowBtn'>Buy Now</button>
+                    <button type='button' className='px-3 py-2 fw-bold' id='buyNowBtn'>Order</button>
                 </div>
             </div>
         </>

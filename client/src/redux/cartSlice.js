@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { act } from 'react';
+
+// Will delete this one when BE function for log in and sign up is finished by Nhan
 
 const initialCartState = {
     products: [

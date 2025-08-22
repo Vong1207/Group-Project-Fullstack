@@ -27,14 +27,18 @@ const userSchema = new mongoose.Schema({
     customerAddress: { 
         type: String 
     },
-    cart: {
-        type: Array,
-        default: [],
-        items: {
-            productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+    cart: [
+        {
+            product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
             quantity: { type: Number, min: 1 }
         }
-    },
+    ],
+    purchased: [
+        {
+            product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+            quantity: { type: Number, min: 1 }
+        }
+    ],
     walletBalance: {
         type: Number,
         default: 0,
