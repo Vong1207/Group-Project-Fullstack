@@ -1,6 +1,7 @@
 .signin-container {
     min-height: 100vh;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 1rem;
 }
 
 .signin-card {
@@ -8,35 +9,33 @@
     border-radius: 16px;
     box-shadow: 0 10px 40px rgba(35, 38, 41, 0.15);
     border: 1px solid rgba(218, 165, 32, 0.1);
-}
-
-.signin-header {
-    text-align: center;
-}
-
-.logo {
-    font-size: 32px;
-    color: var(--goldenrod);
+    padding: 2rem;
+    max-width: 400px;
 }
 
 .signin-header h1 {
-    font-size: 28px;
     font-weight: 700;
     color: var(--eerieBlack);
     line-height: 1.2;
+    font-size: 1.75rem;
 }
 
-.signin-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.signin-subtitle {
+    color: #666;
+    margin: 0;
+    font-size: 0.9rem;
 }
 
-.form-group label {
+.logo {
+    font-size: 2rem;
+    color: var(--goldenrod);
+}
+
+.form-label {
     font-weight: 600;
     color: var(--eerieBlack);
-    margin-bottom: 8px;
-    font-size: 14px;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
 }
 
 .form-control {
@@ -44,6 +43,7 @@
     border-radius: 8px;
     transition: all 0.3s ease;
     background: white;
+    padding: 0.75rem;
 }
 
 .form-control:focus {
@@ -57,9 +57,6 @@
 
 .password-input {
     position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
 }
 
 .password-toggle {
@@ -70,7 +67,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #666;
     padding: 4px;
     display: flex;
@@ -83,36 +80,18 @@
     color: var(--goldenrod);
 }
 
-.remember-me {
+.signin-options {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    cursor: pointer;
-    font-size: 14px;
-    color: #666;
-}
-
-.remember-me input[type="checkbox"] {
-    display: none;
-}
-
-.remember-me input[type="checkbox"]:checked + .checkmark {
-    background: var(--goldenrod);
-    border-color: var(--goldenrod);
-}
-
-.remember-me input[type="checkbox"]:checked + .checkmark::after {
-    content: '✓';
-    position: absolute;
-    color: white;
-    font-size: 10px;
-    top: -2px;
-    left: 2px;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .forgot-password {
     color: var(--goldenrod);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 600;
     transition: color 0.2s ease;
 }
@@ -124,35 +103,28 @@
 
 .signin-btn {
     background: var(--eerieBlack);
+    border-color: var(--eerieBlack);
     color: white;
-    border: none;
-    padding: 16px;
+    padding: 0.75rem;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 600;
-    cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 8px;
-    position: relative;
-    overflow: hidden;
 }
 
 .signin-btn:hover {
     background: var(--goldenrod);
+    border-color: var(--goldenrod);
+    color: white;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(218, 165, 32, 0.3);
-}
-
-.signin-btn:active {
-    transform: translateY(0);
 }
 
 .divider {
     display: flex;
     align-items: center;
-    margin: 24px 0;
     color: #999;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .divider::before,
@@ -164,24 +136,216 @@
 }
 
 .divider span {
-    padding: 0 16px;
+    padding: 0 1rem;
     background: white;
     color: var(--eerieBlack);
+    font-weight: 500;
 }
 
-.signup-link {
+.signup-text {
     color: #666;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
-.signup-link a {
-    color: var(--goldenrod);
-    text-decoration: none;
+.signup-buttons .btn {
+    border-radius: 8px;
+    padding: 0.75rem;
     font-weight: 600;
-    transition: color 0.2s ease;
+    transition: all 0.3s ease;
 }
 
-.signup-link a:hover {
-    color: var(--eerieBlack);
-    text-decoration: underline;
+.btn-outline-primary {
+    border-color: var(--goldenrod);
+    color: var(--goldenrod);
+}
+
+.btn-outline-primary:hover {
+    background: var(--goldenrod);
+    border-color: var(--goldenrod);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.invalid-feedback {
+    display: block;
+    font-size: 0.875rem;
+    color: #dc3545;
+    margin-top: 0.25rem;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - Assignment Requirements
+   Mobile: ≤767px (Smartphone)
+   Tablet: 768px - 1023px
+   Desktop: ≥1024px
+   ======================================== */
+
+/* Mobile: ≤767px */
+@media (max-width: 767px) {
+    .signin-container {
+        padding: 0.5rem;
+    }
+    
+    .signin-card {
+        padding: 1.5rem;
+        max-width: none;
+        margin: 0;
+        border-radius: 12px;
+    }
+    
+    .signin-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .signin-subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .logo {
+        font-size: 1.75rem;
+    }
+    
+    .form-control {
+        padding: 0.625rem;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    .password-toggle {
+        font-size: 1rem;
+        right: 10px;
+    }
+    
+    .form-label {
+        font-size: 0.8rem;
+    }
+    
+    .signin-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .forgot-password {
+        font-size: 0.8rem;
+    }
+    
+    .signin-btn {
+        padding: 0.625rem;
+        font-size: 0.9rem;
+    }
+    
+    .divider {
+        margin: 1.25rem 0;
+        font-size: 0.8rem;
+    }
+    
+    .signup-text {
+        font-size: 0.8rem;
+    }
+    
+    .signup-buttons .btn {
+        padding: 0.625rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablet: 768px - 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .signin-container {
+        padding: 1.5rem;
+    }
+    
+    .signin-card {
+        padding: 2.5rem;
+        max-width: 450px;
+        border-radius: 14px;
+    }
+    
+    .signin-header h1 {
+        font-size: 1.875rem;
+    }
+    
+    .logo {
+        font-size: 2.25rem;
+    }
+    
+    .form-control {
+        padding: 0.875rem;
+        font-size: 0.95rem;
+    }
+    
+    .signin-btn {
+        padding: 0.875rem;
+        font-size: 1rem;
+    }
+    
+    .signup-buttons .btn {
+        padding: 0.875rem;
+    }
+}
+
+/* Desktop: ≥1024px */
+@media (min-width: 1024px) {
+    .signin-container {
+        padding: 2rem;
+    }
+    
+    .signin-card {
+        padding: 3rem;
+        max-width: 480px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .signin-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 50px rgba(35, 38, 41, 0.2);
+    }
+    
+    .signin-header h1 {
+        font-size: 2rem;
+    }
+    
+    .signin-subtitle {
+        font-size: 1rem;
+    }
+    
+    .logo {
+        font-size: 2.5rem;
+        transition: transform 0.3s ease;
+    }
+    
+    .logo:hover {
+        transform: scale(1.05);
+    }
+    
+    .form-control {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
+    .form-control:hover {
+        border-color: rgba(218, 165, 32, 0.5);
+    }
+    
+    .signin-btn {
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+    
+    .signin-btn:hover {
+        transform: translateY(-3px);
+    }
+    
+    .signup-buttons .btn {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
+    .forgot-password:hover {
+        transform: translateY(-1px);
+    }
 }
