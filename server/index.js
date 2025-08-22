@@ -32,6 +32,9 @@ app.use(session({
     }
 }));
 
+// Middleware
+
+
 // APIs
 app.get('/api/session', (req, res) => {
     if (req.session && req.session.user) {

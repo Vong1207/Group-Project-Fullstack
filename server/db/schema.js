@@ -11,6 +11,12 @@ const userSchema = new mongoose.Schema({
     number: {
         type: String
     },
+    avatar: {
+        // type: Buffer
+        type: String,
+        required: true,
+        default: '/customerProfile/defaultProfile.png'
+    },
 
     // Customer fields ( displayName used for Shipper as well )
     displayName: {
@@ -18,7 +24,9 @@ const userSchema = new mongoose.Schema({
         minlength: 5,
         required: function() { return this.role !== 'Vendor' }
     },
-    customerAddress: { type: String },
+    customerAddress: { 
+        type: String 
+    },
     cart: {
         type: Array,
         default: [],
@@ -26,6 +34,12 @@ const userSchema = new mongoose.Schema({
             productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
             quantity: { type: Number, min: 1 }
         }
+    },
+    walletBalance: {
+        type: Number,
+        default: 0,
+        min: 0,
+        required: function() { return this.role === 'Customer' }
     },
 
     // Vendor fields
@@ -44,6 +58,11 @@ const userSchema = new mongoose.Schema({
     // Shipper fields 
     distributionHub: {
         type: String,
+        enum: [
+            'Ho Chi Minh',
+            'Da Nang',
+            'Ha Noi'
+        ],
         required: function() { return this.role === 'Shipper' }
     }
 });

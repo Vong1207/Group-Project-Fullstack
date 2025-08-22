@@ -21,7 +21,7 @@
     }
 
     & .name {
-        width: 10rem;
+        width: 8rem;
     }
 
     & .price {
@@ -125,7 +125,7 @@
             width: 2rem;
             background-color: white;
             border: none;
-            color: red;
+            color: var(--danger);
         }
     }
 
@@ -133,15 +133,15 @@
         border: 1px solid var(--eerieBlack);
 
         & #buyNowBtn {
-            background-color: var(--eerieBlack);
-            color: white;
-            border: 1px solid var(--eerieBlack);
+            background-color: white;
+            color: var(--success);
+            border: 1px solid var(--success);
             transition: all 0.3s ease-in-out;
         }
 
         & #buyNowBtn:hover {
-            color: var(--goldenrod);
-            border: 1px solid var(--goldenrod);
+            color: white;
+            background-color: var(--success);
         }
     }
 }
@@ -227,6 +227,16 @@
                     color: white;
                 }
             }
+        }
+
+        & .deleteBtn {
+            height: 2rem;
+            width: 2rem;
+            background-color: white;
+            color: var(--danger);
+            border: none;
+            right: 0;
+            top: 4rem;
         }
     }
 

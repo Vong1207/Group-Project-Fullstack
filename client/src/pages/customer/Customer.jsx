@@ -3,7 +3,7 @@ import './Customer.css'
 import { useRef, useState } from 'react'
 
 const user = {
-    imageUrl: '/customerProfile/defaultMale.jpg',
+    imageUrl: '/customerProfile/defaultProfile.png',
     userName: 'Tran Vong',
     walletBalance: 150000
 }

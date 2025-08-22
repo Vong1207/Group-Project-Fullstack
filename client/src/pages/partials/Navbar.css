@@ -28,15 +28,25 @@ header {
         }
 
         & .profileContainer {
-            & .profileBtn {
-                width: 2.5rem;
+            & a {
+                display: block;
                 height: 2.5rem;
-                border: none;
+                width: 2.5rem;
+                background-color: white;
                 border-radius: 50%;
 
-                & i {
-                    font-size: 1.5rem;
-                    color: var(--eerieBlack);
+                & img {
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                & button {
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    border-radius: 50%;
+                    border: none;
                 }
             }
         }

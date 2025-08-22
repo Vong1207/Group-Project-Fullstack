@@ -115,7 +115,7 @@ export default function Cart() {
                 </div>
 
                 {productsInCart.map((product, index) => (
-                    <div key={index} className='p-3 d-flex productContainerSm'>
+                    <div key={index} className='p-3 d-flex productContainerSm position-relative'>
 
                         <div className='d-flex justify-content-center align-items-center selectProductBtnContainerSm'>
                             <button type='button' className={`selectProductBtn ${checked[index] ? 'checked' : ''}`} onClick={() => handleSelectProduct(index)}></button>
@@ -134,6 +134,10 @@ export default function Cart() {
                                 </div>
                             </div>
                         </div>
+
+                        <button type='button' className='deleteBtn position-absolute' onClick={() => handleDeleteProduct(index)}>
+                            <i className='fi fi-ts-x'></i>
+                        </button>
                     </div>
                 ))}
 

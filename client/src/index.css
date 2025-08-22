@@ -5,4 +5,6 @@
     --eerieBlackHover: rgba(35, 38, 41, 0.3);
     --goldenrod: rgb(218, 165, 32);
     --goldenrodHover: rgba(218, 165, 32, 0.3);
+    --success: #09814a;
+    --danger: #ef233c;
 }

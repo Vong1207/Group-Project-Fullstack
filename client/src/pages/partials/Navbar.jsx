@@ -1,24 +1,20 @@
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import { useEffect, useState } from 'react';
-import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchSession } from '../../redux/userSlice';
+import { useEffect } from 'react';
 
 export default function Navbar() {
-  const [user, setUser] = useState(null);
-
+  const user = useSelector(state => state.user.user);
+  const dispatch = useDispatch();
+  
   useEffect(() => {
-    axios.get('/api/session', { withCredentials: true })
-    .then(res => {
-      if (res.data.loggedIn) {
-        setUser(res.data.user);
-      } else {
-        setUser(null);
-      }
-    })
-    .catch(() => setUser(null))
-  }, []);
+    dispatch(fetchSession());
+  }, [dispatch]);
 
   const profilePath = user ? '/customer' : '/signIn';
+  const defaultAvatar = '/customerProfile/defaultProfile.png';
+  const avatarSrc = user && user.avatar ? user.avatar : defaultAvatar;
 
   return (
     <header className='position-sticky sticky-top mb-3'>
@@ -46,9 +42,17 @@ export default function Navbar() {
           {/* Login/SignUp/Profile */}
           <div className='col-sm-2 col-3 px-3 d-flex justify-content-end profileContainer'>
             <Link to={profilePath}>
-              <button type='button' className='profileBtn d-flex justify-content-center align-items-center p-0'>
-                <i className='bi bi-person-fill'></i>
-              </button>
+              {/* If user not exist then display button */}
+              {!user && (
+                <button type='button' className='d-flex justify-content-center align-items-center'>
+                  <i className='bi bi-person-fill'></i>
+                </button>
+              )}
+
+              {/* If user logged in then display avatar */}
+              {user && (
+                <img src={avatarSrc} alt="Profile" />
+              )}
             </Link>
           </div>
         </div>
