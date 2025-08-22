@@ -11,6 +11,9 @@ import Home from './pages/home/Home.jsx'
 import NotFound from './pages/partials/NotFound.jsx'
 import SignIn from './pages/signIn/SignIn.jsx'
 import SignUp from './pages/signUp/SignUp.jsx'
+import CustomerSignUp from './pages/signUp/CustomerSignUp.jsx'
+import VendorSignUp from './pages/signUp/VendorSignUp.jsx'
+import ShipperSignUp from './pages/signUp/ShipperSignUp.jsx'
 import ShipperDashboard from './pages/shipper/ShipperDashboard.jsx';
 import VendorDashboard from './pages/vendor/vendorDashboard.jsx';
 import Customer from './pages/customer/Customer.jsx';
@@ -33,6 +36,21 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/signup/customer",
+    element: <CustomerSignUp />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/signup/vendor",
+    element: <VendorSignUp />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/signup/shipper",
+    element: <ShipperSignUp />,
     errorElement: <NotFound />
   },
   {

@@ -1,115 +1,78 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './SignUp.css';
 
 export default function SignUp() {
-    const [formData, setFormData] = useState({
-        name: '', email: '', password: '', userType: 'customer' // customer, vendor, shipper
-    });
-
-    const [showPassword, setShowPassword] = useState(false);
-
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Sign up attempt', formData);
-        // Handle sign-up logic after week 8
-    };
-
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
+    const roles = [
+        {
+            type: 'customer',
+            title: 'Customer',
+            description: 'Browse and purchase products from vendors',
+            icon: 'bi-person-circle',
+            color: '#007bff',
+            link: '/signup/customer'
+        },
+        {
+            type: 'vendor',
+            title: 'Vendor',
+            description: 'Sell your products to customers',
+            icon: 'bi-shop',
+            color: '#28a745',
+            link: '/signup/vendor'
+        },
+        {
+            type: 'shipper',
+            title: 'Shipper',
+            description: 'Deliver products from distribution hubs',
+            icon: 'bi-truck',
+            color: '#ffc107',
+            link: '/signup/shipper'
+        }
+    ];
 
     return (
-        <div className="container-fluid signup-container d-flex align-items-center justify-content-center p-2 p-sm-3 p-md-4 p-lg-5">
-            <div className="signup-card p-3 p-sm-4 p-md-5 w-100" style={{maxWidth: '420px'}}>
+        <div className="container-fluid signup-container d-flex align-items-center justify-content-center">
+            <div className="signup-card w-100">
                 <div className="signup-header text-center mb-4">
-                    <div className="logo mb-3"><i className="bi bi-person-plus"></i></div>
-                    <h1 className="h3 h2-md h1-lg mb-3">Create an Account</h1>
+                    <div className="logo mb-3">
+                        <i className="bi bi-person-plus"></i>
+                    </div>
+                    <h1>Join Our Platform</h1>
+                    <p className="signup-subtitle">Choose your role to sign up</p>
                 </div>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="name" className="fw-semibold">Full Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            className="form-control py-2 py-sm-3"
-                            placeholder="Enter your full name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="email" className='fw-semibold'>Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            className="form-control py-2 py-sm-3"
-                            placeholder="Enter your email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="password" className='fw-semibold'>Password</label>
-                        <div className="password-input">
-                            <input
-                                type={showPassword ? "text" : "password"}
-                                id="password"
-                                name="password"
-                                className="form-control py-2 py-sm-3"
-                                style={{paddingRight:'50px'}}
-                                placeholder="Enter your password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                required
-                            />
-                            <button
-                                type="button"
-                                className="password-toggle"
-                                onClick={togglePasswordVisibility}
-                                aria-label="Toggle password visibility"
-                            >
-                                {showPassword ? <i className="bi bi-eye"></i> : <i className="bi bi-eye-slash"></i>}
-                            </button>
-                        </div>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="userType" className='fw-semibold'>User Type</label>
-                        <select
-                            id="userType"
-                            name="userType"
-                            className='form-select py-2 py-sm-3'
-                            value={formData.userType}
-                            onChange={handleChange}
-                            required
-                        >
-                            <option value="customer">Customer</option>
-                            <option value="vendor">Vendor</option>
-                            <option value="shipper">Shipper</option>
-                        </select>
-                    </div>
 
-                    <div className='d-grid mb-4 mt-3'>
-                        <button type="submit" className="btn signup-btn py-2 py-sm-3">
-                            Sign Up
-                        </button>
-                    </div>
-                </form>
+                <div className="role-selection">
+                    {roles.map((role) => (
+                        <a 
+                            key={role.type}
+                            href={role.link}
+                            className="role-card"
+                            style={{'--role-color': role.color}}
+                        >
+                            <div className="role-icon">
+                                <i className={role.icon}></i>
+                            </div>
+                            <div className="role-content">
+                                <h3 className="role-title">{role.title}</h3>
+                                <p className="role-description">{role.description}</p>
+                            </div>
+                            <div className="role-arrow">
+                                <i className="bi bi-arrow-right"></i>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+
                 <div className="divider my-4">
                     <span>OR</span>
                 </div>
-                <div className="login-link text-center">
-                    Already have an account? <a href="/signin">Sign In</a>
+
+                <div className="text-center">
+                    <div className="login-text mb-3">
+                        Already have an account?
+                    </div>
+                    <a href="/signin" className="btn btn-outline-secondary w-100">
+                        <i className="bi bi-box-arrow-in-right me-2"></i>Sign In
+                    </a>
                 </div>
             </div>
         </div>
