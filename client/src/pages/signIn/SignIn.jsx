@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/userSlice';
+import { useNavigate } from 'react-router-dom';
 import './SignIn.css'
 
 export default function SignIn() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username:'', password: ''
     });
 
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState({});
+    const [serverError, setServerError] = useState('');
 
     // Client-side validation
     const validateUsername = (username) => {
@@ -62,16 +69,31 @@ export default function SignIn() {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
+        setServerError('');
         // Validate all fields before submission
         const isValidUsername = validateField('username', formData.username);
         const isValidPassword = validateField('password', formData.password);
-        
         if (isValidUsername && isValidPassword) {
-            console.log('Sign in attempt', formData);
-            // TODO: Handle authentication after backend is ready
+            try {
+                const res = await axios.post('http://localhost:3000/api/auth/signin', formData, { withCredentials: true });
+                if (res.data && res.data.user) {
+                    dispatch(setUser(res.data.user));
+                    // Redirect based on role
+                    if (res.data.user.role === 'Shipper') {
+                        navigate('/myAccount');
+                    } else {
+                        navigate('/');
+                    }
+                }
+            } catch (err) {
+                if (err.response && err.response.data && err.response.data.message) {
+                    setServerError(err.response.data.message);
+                } else {
+                    setServerError('Login failed. Please try again.');
+                }
+            }
         }
     };
 
@@ -130,6 +152,13 @@ export default function SignIn() {
                         </div>
                         {errors.password && <div className="invalid-feedback d-block">{errors.password}</div>}
                     </div>
+
+                    {/* Server error message */}
+                    {serverError && (
+                        <div className="alert alert-danger text-center" role="alert">
+                            {serverError}
+                        </div>
+                    )}
 
                     {/* Remember Me & Forgot Password */}
                     <div className="signin-options mb-3">

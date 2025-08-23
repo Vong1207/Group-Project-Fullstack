@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import dotenv from 'dotenv';
@@ -10,15 +11,18 @@ dotenv.config();
 // Create Express app
 const app = express();
 
+// Enable CORS for frontend
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}));
+
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 app.use(express.json({ limit: '20mb' }));
 
-// Session
-const sessionSecret = crypto.randomBytes(64).toString('hex');
-
 app.use(session({
-    secret: sessionSecret,
+    secret: process.env.SESSION_SECRET || 'default_secret',
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
@@ -27,13 +31,18 @@ app.use(session({
         ttl: 3 * 60 * 60 // 3 hours
     }),
     cookie: {
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 3 * 60 * 60 * 1000 // 3 hours
+        secure: false,
+        maxAge: 3 * 60 * 60 * 1000, // 3 hours
+        sameSite: 'lax'
     }
 }));
 
 
 // Middleware
+app.use((req, res, next) => {
+    console.log('Request:', req.method, req.url);
+    next();
+});
 
 // Auth routes
 import authRoutes from "./routes/auth.js";
@@ -41,6 +50,7 @@ app.use("/api/auth", authRoutes);
 
 // APIs
 app.get('/api/session', (req, res) => {
+    console.log('Session:', req.session);
     if (req.session && req.session.user) {
         res.json({ loggedIn: true, user: req.session.user });
     } else {
@@ -48,7 +58,7 @@ app.get('/api/session', (req, res) => {
     }
 })
 
-const port = process.env.PORT || 5173;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

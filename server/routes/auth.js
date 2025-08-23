@@ -17,12 +17,7 @@ router.post("/signin", async (req, res) => {
             return res.status(400).json({ message: "Incorrect username or password" });
         }
         // Save user info in session
-        req.session.user = {
-            _id: user._id,
-            username: user.username,
-            role: user.role,
-            displayName: user.displayName || user.businessName
-        };
+        req.session.user = user;
         res.json({ message: "Successfully Log in", user: req.session.user });
     } catch (err) {
         res.status(500).json({ message: "Server Internal" });

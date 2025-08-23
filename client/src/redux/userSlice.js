@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchSession = createAsyncThunk("user/fetchSession", async () => {
-    const response = await axios.get("/api/session", { withCredentials: true });
+    const response = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
     return response.data.loggedIn ? response.data.user : null;
 });
 

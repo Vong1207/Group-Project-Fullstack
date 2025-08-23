@@ -5,16 +5,18 @@ import { fetchSession } from '../../redux/userSlice';
 import { useEffect } from 'react';
 
 export default function Navbar() {
-  const user = useSelector(state => state.user.user);
   const dispatch = useDispatch();
   
   useEffect(() => {
     dispatch(fetchSession());
   }, [dispatch]);
 
-  const profilePath = user ? '/customer' : '/signIn';
+  const user = useSelector(state => state.user.user);
+
+  const profilePath = user ? '/myAccount' : '/signIn';
   const defaultAvatar = '/customerProfile/defaultProfile.png';
-  const avatarSrc = user && user.avatar ? user.avatar : defaultAvatar;
+  // Always show avatar if user exists, fallback to default if missing
+  const avatarSrc = user ? (user.avatar || defaultAvatar) : defaultAvatar;
 
   return (
     <header className='position-sticky sticky-top mb-3'>
@@ -49,7 +51,7 @@ export default function Navbar() {
                 </button>
               )}
 
-              {/* If user logged in then display avatar */}
+              {/* If user logged in then display avatar (fallback to default if missing) */}
               {user && (
                 <img src={avatarSrc} alt="Profile" />
               )}
