@@ -40,7 +40,6 @@ app.use(session({
 
 // Middleware
 app.use((req, res, next) => {
-    console.log('Request:', req.method, req.url);
     next();
 });
 
@@ -50,7 +49,6 @@ app.use("/api/auth", authRoutes);
 
 // APIs
 app.get('/api/session', (req, res) => {
-    console.log('Session:', req.session);
     if (req.session && req.session.user) {
         res.json({ loggedIn: true, user: req.session.user });
     } else {

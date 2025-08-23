@@ -1,18 +1,28 @@
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchSession } from '../../redux/userSlice';
+import axios from 'axios';
 import { useEffect } from 'react';
+import { setUser } from '../../redux/userSlice.js';
 
 export default function Navbar() {
   const dispatch = useDispatch();
-  
+  const fetchSession = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
+      if (response.data && response.data.loggedIn && response.data.user) {
+        dispatch(setUser(response.data.user));
+      }
+    } catch (error) {
+      console.log("Error fetching session:", error);
+    }
+  }
+
   useEffect(() => {
-    dispatch(fetchSession());
-  }, [dispatch]);
+    fetchSession();
+  }, []);
 
   const user = useSelector(state => state.user.user);
-
   const profilePath = user ? '/myAccount' : '/signIn';
   const defaultAvatar = '/customerProfile/defaultProfile.png';
   // Always show avatar if user exists, fallback to default if missing

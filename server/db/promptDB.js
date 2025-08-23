@@ -44,20 +44,25 @@ await Product.deleteMany()
         console.log('Deleted All Products');
     })
     .then(async () => {
+        const vendor = await User.findOne({ role: 'Vendor' });
+
         const products = [
             {
+                postedBy: vendor._id,
                 productName: 'Rainbow HOLO Playing Cards By TCC Fashion',
                 productImage: '/product/rainbowHolo.png',
                 productPrice: 300000,
                 category: 'Playing Cards & Toys'
             },
             {
+                postedBy: vendor._id,
                 productName: 'Wilson Airless Gen1 Basketball',
                 productImage: '/product/airlessGen1.jpg',
                 productPrice: 65000000,
                 category: 'Sports'
             },
             {
+                postedBy: vendor._id,
                 productName: 'Orbit Black Hole Playing Cards',
                 productImage: '/product/orbitBlackHole.png',
                 productPrice: 380000,
