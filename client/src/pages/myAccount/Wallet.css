@@ -1,3 +1,62 @@
 h1 {
     color: var(--eerieBlack);
 }
+
+#walletContainer {
+    border: 1px solid var(--eerieBlack);
+
+    & .cartelloContainer {
+        border-right: 1px solid var(--eerieBlack);
+        background-color: var(--eerieBlack);
+
+        & #walletImage {
+            height: 10rem;
+            width: 10rem;
+        }
+
+        & h2 {
+            color: white;
+        }
+    }
+
+    & #walletInfo {
+        & h2 {
+            color: var(--eerieBlack);
+        }
+
+        & #walletBalance {
+            color: var(--success);
+
+            & span {
+                cursor: pointer;
+                color: var(--eerieBlack);
+            }
+        }
+
+        & #addMoneySection {
+            & div {
+                border: 1px solid var(--eerieBlack);
+                width: 13rem;
+
+                & input {
+                    height: 2rem;
+                    width: 11.5rem;
+                    border: none;
+                }
+            }
+
+            & button {
+                width: 13rem;
+                color: var(--success);
+                border: 1px solid var(--success);
+                background-color: white;
+                transition: all 0.3s ease-in-out;
+            }
+
+            & button:hover {
+                background-color: var(--success);
+                color: white;
+            }
+        }
+    }
+}

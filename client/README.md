@@ -12,5 +12,7 @@ Currently, two official plugins are available:
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
 Attributions:
-Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
-Bahu Icons <a href="https://www.flaticon.com/free-icons/profile-picture" title="profile picture icons">Profile picture icons created by Bahu Icons - Flaticon</a>
+- Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
+- Bahu Icons <a href="https://www.flaticon.com/free-icons/profile-picture" title="profile picture icons">Profile picture icons created by Bahu Icons - Flaticon</a>
+
+- Freepik <a href="https://www.flaticon.com/free-icons/money" title="money icons">Money icons created by Freepik - Flaticon</a>

@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import store from './redux/store.js'
 import './index.css'
+import ProtectedRoute from './ProtectedRoute.jsx';
 
 // Pages
 import Home from './pages/home/Home.jsx'
@@ -63,7 +64,13 @@ const router = createBrowserRouter([
   },
   {
     path: '/myAccount',
-    element: <MyAccount />,
+    element: (
+      // Uncomment this when login BE finished
+      // <ProtectedRoute>
+      //   <MyAccount />
+      // </ProtectedRoute>
+      <MyAccount />
+    ),
     errorElement: <NotFound />,
     children: [
       // This is to redirect to the account page
