@@ -32,7 +32,12 @@ app.use(session({
     }
 }));
 
+
 // Middleware
+
+// Auth routes
+import authRoutes from "./routes/auth.js";
+app.use("/api/auth", authRoutes);
 
 // APIs
 app.get('/api/session', (req, res) => {
