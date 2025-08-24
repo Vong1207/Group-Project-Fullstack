@@ -43,7 +43,13 @@ const userSlice = createSlice({
             if (state.user && state.user.cart && state.user.cart[index]) {
                 state.user.cart.splice(index, 1);
             }
-        }
+        },
+        // Wallet reducers
+        updateWalletBalance: (state, action) => {
+            if (state.user) {
+                state.user.walletBalance = action.payload;
+            }
+        },
     }
 });
 
@@ -53,7 +59,8 @@ export const {
     subtractCartQuantity,
     addCartQuantity,
     inputCartQuantity,
-    deleteCartProduct
+    deleteCartProduct,
+    updateWalletBalance
 } = userSlice.actions;
 
 export default userSlice.reducer;

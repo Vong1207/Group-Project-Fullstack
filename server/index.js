@@ -8,6 +8,7 @@ import crypto from 'crypto';
 // Import routes
 import authRoutes from "./routes/auth.js";
 import cartRoutes from "./routes/cart.js";
+import walletRoutes from './routes/wallet.js';
 
 // Enable dotenv to load environment variables from .env file
 dotenv.config();
@@ -50,6 +51,7 @@ app.use((req, res, next) => {
 // Routes
 app.use("/api/auth", authRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/wallet', walletRoutes);
 
 // APIs
 app.get('/api/session', (req, res) => {
@@ -59,6 +61,16 @@ app.get('/api/session', (req, res) => {
         res.json({ loggedIn: false });
     }
 })
+
+app.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).json({ message: 'Error logging out' });
+        }
+        res.clearCookie('connect.sid');
+        res.json({ message: 'Logged out successfully' });
+    });
+}); 
 
 const port = process.env.PORT || 3000;
 

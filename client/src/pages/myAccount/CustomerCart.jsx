@@ -30,8 +30,12 @@ export default function CustomerCart() {
         fetchSession();
     }, []);
 
+    // Redux state
     const productsInCart = useSelector(state => state.user.user?.cart) || [];
+
+    // Local state
     const [checked, setChecked] = useState(productsInCart.map(() => false));
+
     const totalPriceSelected = productsInCart.reduce((total, product, index) => {
         return checked[index] ? total + product.product.productPrice * product.quantity : total;
     }, 0);
@@ -66,7 +70,6 @@ export default function CustomerCart() {
 
     function handleSubtractQuantity(index) {
         dispatch(subtractCartQuantity(index));
-        const updatedCart = [...productsInCart];
     }
 
     function handleAddQuantity(index) {
@@ -87,7 +90,7 @@ export default function CustomerCart() {
         if (productsInCart.length > 0) {
             saveCartToDB(productsInCart);
         }
-    }, [productsInCart]);
+    }, [handleAddQuantity, handleDeleteProduct, handleInputQuantity, handleSubtractQuantity]);
 
     return (
         <>

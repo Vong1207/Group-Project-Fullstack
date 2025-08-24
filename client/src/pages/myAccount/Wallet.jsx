@@ -1,14 +1,49 @@
 import './Wallet.css';
 import { useEffect, useState } from 'react';
-
-const wallet = 15500000;
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+import { setUser, updateWalletBalance } from '../../redux/userSlice.js';
 
 export default function Wallet() {
+    const dispatch = useDispatch();
+
+    // Fetch User Session
+    const fetchSession = async () => {
+        try {
+            const response = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
+            if (response.data && response.data.loggedIn && response.data.user) {
+                dispatch(setUser(response.data.user));
+            }
+        } catch (error) {
+            console.error("Error fetching session:", error);
+        }
+    }
+
+    useEffect(() => {
+        fetchSession();
+    }, []);
+
+    // Redux state
+    const walletBalance = useSelector(state => state.user.user?.walletBalance) || 0;
+
+    // Local states
     const [walletBalanceVisibility, setVisibility] = useState(false);
     const [toggleIcon, setIcon] = useState('bi bi-eye-slash');
-    const [walletBalance, setWalletBalance] = useState(wallet);
     const [amount, setAmount] = useState('');
 
+    // Save changes to DB
+    const userId = useSelector(state => state.user.user?._id);
+
+    async function saveWalletToDB(newBalance) {
+        if (!userId) return;
+        try {
+            await axios.post("http://localhost:3000/api/wallet/update", { userId, walletBalance: newBalance }, { withCredentials: true });
+        } catch (error) {
+            console.error("Error saving wallet to DB:", error);
+        }
+    }
+
+    // Wallet functions
     function toggleVisibility() {
         setVisibility(!walletBalanceVisibility);
     }
@@ -23,10 +58,10 @@ export default function Wallet() {
     function addMoneyToWallet(amount) {
         const amountNumber = parseInt(amount);
 
-        if (amount === '' || amountNumber <= 50000) {
+        if (amount === '' || amountNumber < 50000) {
             return;
         } else {
-            setWalletBalance(walletBalance + amountNumber);
+            dispatch(updateWalletBalance(walletBalance + amountNumber));
             setAmount('');
         }
     }
@@ -34,6 +69,12 @@ export default function Wallet() {
     useEffect(() => {
         setIcon(walletBalanceVisibility ? 'bi bi-eye' : 'bi bi-eye-slash');
     }, [walletBalanceVisibility]);
+
+    useEffect(() => {
+        if (!isNaN(walletBalance)) {
+            saveWalletToDB(walletBalance);
+        }
+    }, [addMoneyToWallet]);
 
     return (
         <>
@@ -53,7 +94,7 @@ export default function Wallet() {
 
                     <div id='addMoneySection'>
                         <div className='mb-3 d-flex align-items-center'>
-                            <input className='ps-2' type='text' value={amount} onChange={handleAmountChange} placeholder='0' />
+                            <input className='ps-2' type='text' value={amount} onChange={handleAmountChange} placeholder='At least 50,000₫' />
                             <p className='mb-0 flex-fill text-end pe-2'>₫</p>
                         </div>
                         <button className='d-flex justify-content-center align-items-center py-2' type='button' onClick={() => addMoneyToWallet(amount)}>Add Money To Wallet</button>

@@ -4,11 +4,11 @@ import { User } from '../db/schema.js';
 const router = express.Router();
 
 router.post('/update', async (req, res) => {
-    const { userId, cart } = req.body;
+    const { userId, walletBalance } = req.body;
     try {
-        await User.findByIdAndUpdate(userId, { cart });
-        const updatedUser = await User.findById(userId).populate('cart.product');
-        req.session.user.cart = updatedUser.cart;
+        await User.findByIdAndUpdate(userId, { walletBalance });
+        const updatedUser = await User.findById(userId);
+        req.session.user.walletBalance = updatedUser.walletBalance;
         res.json({ success: true });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });
