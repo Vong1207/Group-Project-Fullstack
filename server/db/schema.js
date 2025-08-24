@@ -108,6 +108,11 @@ const productSchema = new mongoose.Schema({
         ],
         required: true
     },
+    description: {
+        type: String,
+        required: true,
+        maxlength: 500
+    },
     postedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
