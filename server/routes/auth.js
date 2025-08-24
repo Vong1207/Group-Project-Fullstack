@@ -8,8 +8,7 @@ const router = express.Router();
 router.post("/signin", async (req, res) => {
     const { username, password } = req.body;
     try {
-        const user = await User.findOne({ username });
-        console.log(user);
+        const user = await User.findOne({ username }).populate("cart.product");
         if (!user) {
             return res.status(400).json({ message: "Incorrect username or password" });
         }

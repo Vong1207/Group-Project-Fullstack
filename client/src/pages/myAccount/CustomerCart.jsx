@@ -1,49 +1,65 @@
 import './CustomerCart.css';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import {
-    addQuantity,
-    subtractQuantity,
-    inputQuantity,
-    deleteProduct,
-    selectProduct,
-    selectAllProducts
-} from '../../redux/cartSlice.js';
+    setUser
+} from '../../redux/userSlice.js';
 
 export default function CustomerCart() {
-    const productsInCart = useSelector(state => state.cart.products);
-    const checked = useSelector(state => state.cart.checked);
     const dispatch = useDispatch();
-
-    const totalPriceSelected = productsInCart.reduce((sum, product, i) => {
-        return checked[i] ? sum + product.price * product.quantity : sum;
-    }, 0)
-
-    function handleSubtractQuantity(index) {
-        dispatch(subtractQuantity(index));
+    const fetchSession = async () => {
+        try {
+            const response = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
+            if (response.data && response.data.loggedIn && response.data.user) {
+                dispatch(setUser(response.data.user));
+            }
+        } catch (error) {
+            console.error("Error fetching session:", error);
+        }
     }
 
-    function handleAddQuantity(index) {
-        dispatch(addQuantity(index));
+    useEffect(() => {
+        fetchSession();
+    }, []);
+
+    const productsInCart = useSelector(state => state.user.user?.cart || []);
+    const [checked, setChecked] = useState(productsInCart.map(() => false));
+    const totalPriceSelected = productsInCart.reduce((total, product, index) => {
+        return checked[index] ? total + product.product.productPrice * product.quantity : total;
+    }, 0);
+
+    useEffect(() => {
+        if (checked.length === 0 && productsInCart.length > 0) {
+            setChecked(productsInCart.map(() => false));
+        }
+    }, [productsInCart]);
+
+    function handleSelectAllProducts() {
+        const allSelected = checked.every(Boolean);
+        setChecked(productsInCart.map(() => !allSelected));
     }
 
     function handleSelectProduct(index) {
-        dispatch(selectProduct(index));
+        setChecked(checked.map((item, i) => i === index ? !item : item));
     }
 
-    function handleInputQuantity(event, index) {
-        const newQuantityString = event.target.value;
-        const newQuantity = parseInt(newQuantityString);
-        dispatch(inputQuantity({ index, quantity: newQuantity || 1 }));
+    function handleSubtractQuantity() {
+
     }
 
-    function handleDeleteProduct(index) {
-        dispatch(deleteProduct(index));
+    function handleAddQuantity() {
+
     }
 
-    function handleSelectAllProducts() {
-        dispatch(selectAllProducts());
+    function handleInputQuantity() {
+
     }
-    
+
+    function handleDeleteProduct() {
+        
+    }
+
     return (
         <>
             <h1 className='mb-0 text-center mt-4'>My Cart</h1>
@@ -52,7 +68,7 @@ export default function CustomerCart() {
             <div className='mt-4 d-md-block d-none' id='cartContainer'>
                 <div className='mx-lg-5 mx-md-2 p-3 d-flex justify-content-between' id='cartHeader'>
                     <div className='select-all d-flex align-items-center'>
-                        <button className={checked.every(Boolean) ? 'checked' : ''} type='button' onClick={handleSelectAllProducts}></button>
+                        <button className={checked.length > 0 && checked.every(Boolean) ? 'checked' : ''} type='button' onClick={handleSelectAllProducts}></button>
                     </div>
                     <div className='image'></div>
                     <div className='name'></div>
@@ -70,15 +86,15 @@ export default function CustomerCart() {
                         </div>
 
                         <div className='productImageContainer'>
-                            <img src={product.imageUrl} alt={`${product.productName} Image`} className='productImage' />
+                            <img src={product.product.productImage} alt={`${product.product.productName} Image`} className='productImage' />
                         </div>
 
                         <div className='d-flex align-items-center productNameContainer'>
-                            <p className='mb-0 fw-bold'>{product.productName}</p>
+                            <p className='mb-0 fw-bold'>{product.product.productName}</p>
                         </div>
 
                         <div className='d-flex align-items-center justify-content-center priceContainer'>
-                            <p className='mb-0'>{product.price.toLocaleString()}₫</p>
+                            <p className='mb-0'>{product.product.productPrice.toLocaleString()}₫</p>
                         </div>
 
                         <div className='d-flex align-items-center justify-content-center quantityContainer'>
@@ -88,7 +104,7 @@ export default function CustomerCart() {
                         </div>
 
                         <div className='d-flex align-items-center justify-content-center totalPriceContainer'>
-                            <p className='mb-0'>{(product.price * product.quantity).toLocaleString()}₫</p>
+                            <p className='mb-0'>{(product.product.productPrice * product.quantity).toLocaleString()}₫</p>
                         </div>
 
                         <div className='deleteBtnContainer d-flex justify-content-center align-items-center'>
@@ -111,7 +127,7 @@ export default function CustomerCart() {
             </div>
 
             {/* Cart Display on -sm breakpoint */}
-            <div className='mt-4 d-md-none d-block' id='cartContainerSm'>
+            {/* <div className='mt-4 d-md-none d-block' id='cartContainerSm'>
                 <div className='p-3' id='selectAllSm'>
                     <button className={checked.every(Boolean) ? 'checked' : ''} type='button' onClick={handleSelectAllProducts}></button>
                 </div>
@@ -149,7 +165,7 @@ export default function CustomerCart() {
                     <p className='mb-0'>{`Total: ${totalPriceSelected.toLocaleString()}₫`}</p>
                     <button type='button' className='px-3 py-2 fw-bold' id='buyNowBtn'>Order</button>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }
