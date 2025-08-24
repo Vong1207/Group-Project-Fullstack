@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+ import React, { useState, useEffect } from 'react';
 import './SignUp.css';
 
 export default function VendorSignUp() {
@@ -135,16 +135,55 @@ export default function VendorSignUp() {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         const isValidUsername = validateField('username', formData.username);
         const isValidPassword = validateField('password', formData.password);
         const isValidBusinessName = validateField('businessName', formData.businessName);
         const isValidBusinessAddress = validateField('businessAddress', formData.businessAddress);
-        
-        if (isValidUsername && isValidPassword && isValidBusinessName && isValidBusinessAddress) {
-            console.log('Vendor registration:', formData);
+
+        if (!(isValidUsername && isValidPassword && isValidBusinessName && isValidBusinessAddress)) return;
+
+        let avatarBase64 = '';
+        if (formData.profilePicture) {
+            avatarBase64 = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(formData.profilePicture);
+            });
+        } else {
+            avatarBase64 = '/customerProfile/defaultProfile.png';
+        }
+
+        const payload = {
+            username: formData.username,
+            password: formData.password,
+            role: 'Vendor',
+            businessName: formData.businessName,
+            businessAddress: formData.businessAddress,
+            avatar: avatarBase64,
+        };
+
+        try {
+            const res = await fetch('/api/auth/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+            const data = await res.json();
+            if (res.ok) {
+                alert('Sign up successful! You can now sign in.');
+                window.location.href = '/signin';
+            } else {
+                console.error('Sign up error:', data);
+                alert(data.message || 'Sign up failed!');
+            }
+        } catch (err) {
+            console.error('Sign up failed!', err);
         }
     };
 
