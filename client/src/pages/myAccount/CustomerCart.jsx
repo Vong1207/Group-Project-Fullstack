@@ -2,19 +2,12 @@ import './CustomerCart.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-// Import reducers
 import {
-    setUser,
-    subtractCartQuantity,
-    addCartQuantity,
-    inputCartQuantity,
-    deleteCartProduct
+    setUser
 } from '../../redux/userSlice.js';
 
 export default function CustomerCart() {
     const dispatch = useDispatch();
-    
-    // Fetch User Session
     const fetchSession = async () => {
         try {
             const response = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
@@ -30,7 +23,7 @@ export default function CustomerCart() {
         fetchSession();
     }, []);
 
-    const productsInCart = useSelector(state => state.user.user?.cart) || [];
+    const productsInCart = useSelector(state => state.user.user?.cart || []);
     const [checked, setChecked] = useState(productsInCart.map(() => false));
     const totalPriceSelected = productsInCart.reduce((total, product, index) => {
         return checked[index] ? total + product.product.productPrice * product.quantity : total;
@@ -42,19 +35,6 @@ export default function CustomerCart() {
         }
     }, [productsInCart]);
 
-    // Save cart changes to DB function 
-    const userId = useSelector(state => state.user.user?._id);
-
-    async function saveCartToDB(cart) {
-        if (!userId) return;
-        try {
-            await axios.post("http://localhost:3000/api/cart/update", { userId, cart }, { withCredentials: true });
-        } catch (error) {
-            console.error("Error saving cart to DB:", error);
-        }
-    }
-
-    // Cart functions
     function handleSelectAllProducts() {
         const allSelected = checked.every(Boolean);
         setChecked(productsInCart.map(() => !allSelected));
@@ -64,30 +44,21 @@ export default function CustomerCart() {
         setChecked(checked.map((item, i) => i === index ? !item : item));
     }
 
-    function handleSubtractQuantity(index) {
-        dispatch(subtractCartQuantity(index));
-        const updatedCart = [...productsInCart];
+    function handleSubtractQuantity() {
+
     }
 
-    function handleAddQuantity(index) {
-        dispatch(addCartQuantity(index));
+    function handleAddQuantity() {
+
     }
 
-    function handleInputQuantity(event, index) {
-        const value = event.target.value;
-        dispatch(inputCartQuantity({ index, value }));
+    function handleInputQuantity() {
+
     }
 
-    function handleDeleteProduct(index) {
-        dispatch(deleteCartProduct(index));
+    function handleDeleteProduct() {
+        
     }
-
-    // Save cart changes to DB
-    useEffect(() => {
-        if (productsInCart.length > 0) {
-            saveCartToDB(productsInCart);
-        }
-    }, [productsInCart]);
 
     return (
         <>
@@ -156,9 +127,9 @@ export default function CustomerCart() {
             </div>
 
             {/* Cart Display on -sm breakpoint */}
-            <div className='mt-4 d-md-none d-block' id='cartContainerSm'>
+            {/* <div className='mt-4 d-md-none d-block' id='cartContainerSm'>
                 <div className='p-3' id='selectAllSm'>
-                    <button className={checked.length > 0 && checked.every(Boolean) ? 'checked' : ''} type='button' onClick={handleSelectAllProducts}></button>
+                    <button className={checked.every(Boolean) ? 'checked' : ''} type='button' onClick={handleSelectAllProducts}></button>
                 </div>
 
                 {productsInCart.map((product, index) => (
@@ -170,12 +141,12 @@ export default function CustomerCart() {
 
                         <div className='ms-3 flex-fill d-flex productInfoContainerSm'>
                             <div className='productImageContainerSm'>
-                                <img src={product.product.productImage} alt={`${product.product.productName} Image`} className='d-sm-none productImageXSm' />
-                                <img src={product.product.productImage} alt={`${product.product.productName} Image`} className='d-sm-block d-none productImageSm' />
+                                <img src={product.imageUrl} alt={`${product.productName} Image`} className='d-sm-none productImageXSm' />
+                                <img src={product.imageUrl} alt={`${product.productName} Image`} className='d-sm-block d-none productImageSm' />
                             </div>
                             <div className='ms-sm-4 ms-3'>
-                                <p className='mb-0 productNameSm fw-bold'>{product.product.productName}</p>
-                                <p className='mb-0 mt-2'>{product.product.productPrice.toLocaleString()}₫</p>
+                                <p className='mb-0 productNameSm'>{product.productName}</p>
+                                <p className='mb-0 mt-2'>{product.price.toLocaleString()}₫</p>
                                 <div className='d-flex align-items-center productQuantityContainerSm'>
                                     <button type='button' onClick={() => handleSubtractQuantity(index)}>-</button>
                                     <input type="number" className='text-center' value={product.quantity} onChange={(event) => handleInputQuantity(event, index)} />
@@ -194,7 +165,7 @@ export default function CustomerCart() {
                     <p className='mb-0'>{`Total: ${totalPriceSelected.toLocaleString()}₫`}</p>
                     <button type='button' className='px-3 py-2 fw-bold' id='buyNowBtn'>Order</button>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }
