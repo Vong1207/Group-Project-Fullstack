@@ -1,18 +1,46 @@
-import './MyAccount.css'
-import { NavLink, Link, Outlet } from 'react-router-dom'
-
-const user = {
-    role: 'Customer'
-}
+import './MyAccount.css';
+import { NavLink, Link, Outlet } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import axios from 'axios';
+import {
+    setUser
+} from '../../redux/userSlice.js';
 
 export default function MyAccount() {
+    const dispatch = useDispatch();
+    const fetchSession = async () => {
+        try {
+            const response = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
+            if (response.data && response.data.loggedIn && response.data.user) {
+                dispatch(setUser(response.data.user));
+            }
+        } catch (error) {
+            console.error("Error fetching session:", error);
+        }
+    }
+
+    useEffect(() => {
+        fetchSession();
+    }, []);
+
+    const user = useSelector((state) => state.user.user) || {};
+
     return (
         <div className='container-fluid px-0'>
             <div className='row mx-0'>
                 {/* Sidebar on -lg breakpoint */}
                 <div className="col-lg-2 d-lg-flex d-none flex-column px-0" id="sidebar">
                     <div className='my-5 text-center'>
-                        <i className='fi fi-ts-circle-user fs-1'></i>
+                        {user.role === 'Customer' && (
+                            <i className='fi fi-ts-circle-user fs-1'></i>
+                        )}
+                        {user.role === 'Vendor' && (
+                            <i className='fi fi-ts-marketplace-store fs-1'></i>
+                        )}
+                        {user.role === 'Shipper' && (
+                            <i className='fi fi-ts-shipping-fast fs-1'></i>
+                        )}
                     </div>
 
                     {user.role === 'Customer' && (
@@ -37,6 +65,18 @@ export default function MyAccount() {
                                     <i className='fi fi-ts-checklist-task-budget me-2'></i> Purchased
                                 </div>
                             </NavLink>
+                        </>
+                    )}
+
+                    {user.role === 'Vendor' && (
+                        <>
+                            Vendor
+                        </>
+                    )}
+
+                    {user.role === 'Shipper' && (
+                        <>
+                            Shipper
                         </>
                     )}
 
