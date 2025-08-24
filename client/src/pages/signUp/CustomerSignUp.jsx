@@ -141,18 +141,59 @@ export default function CustomerSignUp() {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         // Validate all fields
         const isValidUsername = validateField('username', formData.username);
         const isValidPassword = validateField('password', formData.password);
         const isValidName = validateField('name', formData.name);
         const isValidAddress = validateField('address', formData.address);
-        
-        if (isValidUsername && isValidPassword && isValidName && isValidAddress) {
-            console.log('Customer registration:', formData);
-            // Handle registration logic
+
+        if (!(isValidUsername && isValidPassword && isValidName && isValidAddress)) return;
+
+
+        let avatarBase64 = '';
+        if (formData.profilePicture) {
+            // Convert image file to base64
+            avatarBase64 = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(formData.profilePicture);
+            });
+        } else {
+            // Gửi avatar mặc định nếu không upload
+            avatarBase64 = '/customerProfile/defaultProfile.png';
+        }
+
+        const payload = {
+            username: formData.username,
+            password: formData.password,
+            role: 'Customer',
+            displayName: formData.name,
+            customerAddress: formData.address,
+            avatar: avatarBase64,
+        };
+
+        try {
+            const res = await fetch('/api/auth/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+            const data = await res.json();
+            if (res.ok) {
+                alert('Sign up successful! You can now sign in.');
+                window.location.href = '/signin';
+            } else {
+                console.error('Sign up error:', data);
+                alert(data.message || 'Sign up failed!');
+            }
+        } catch (err) {
+            console.error('Sign up failed!', err);
         }
     };
 
