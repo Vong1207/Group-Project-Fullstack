@@ -5,6 +5,10 @@ import MongoStore from 'connect-mongo';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
 
+// Import routes
+import authRoutes from "./routes/auth.js";
+import cartRoutes from "./routes/cart.js";
+
 // Enable dotenv to load environment variables from .env file
 dotenv.config();
 
@@ -43,9 +47,9 @@ app.use((req, res, next) => {
     next();
 });
 
-// Auth routes
-import authRoutes from "./routes/auth.js";
+// Routes
 app.use("/api/auth", authRoutes);
+app.use('/api/cart', cartRoutes);
 
 // APIs
 app.get('/api/session', (req, res) => {
