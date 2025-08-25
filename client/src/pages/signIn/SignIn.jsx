@@ -80,15 +80,8 @@ export default function SignIn() {
                 const res = await axios.post('http://localhost:3000/api/auth/signin', formData, { withCredentials: true });
                 if (res.data && res.data.user) {
                     dispatch(setUser(res.data.user));
-                    // Redirect based on role
-                    const role = res.data.user.role?.toLowerCase();
-                    if (role === 'shipper') {
-                        navigate('/shipper');
-                    } else if (role === 'customer' || role === 'vendor') {
-                        navigate('/');
-                    } else {
-                        navigate('/'); // fallback
-                    }
+                    // Redirect all roles to home after sign in
+                    navigate('/');
                 }
             } catch (err) {
                 if (err.response && err.response.data && err.response.data.message) {

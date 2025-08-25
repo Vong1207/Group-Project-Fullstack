@@ -109,6 +109,12 @@ const router = createBrowserRouter([
         path: 'addNewProduct',
         element: <AddNewProduct />,
         errorElement: <NotFound />
+      },
+      // Shipper myAccount page
+      {
+        path: 'shipper',
+        element: <ShipperDashboard />, // hoặc tạo component riêng nếu muốn
+        errorElement: <NotFound />
       }
     ]
   }

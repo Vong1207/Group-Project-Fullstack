@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { setUser, clearUser } from '../../redux/userSlice.js';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 
 export default function MyAccount() {
     const user = useSelector((state) => state.user.user) || {};
@@ -22,15 +22,9 @@ export default function MyAccount() {
         navigate('/');
     };
 
-    // Nếu là shipper thì không render gì cả (hoặc có thể chuyển hướng nếu muốn)
+    // Nếu là shipper thì tự động chuyển hướng sang /shipper
     if (user.role === 'Shipper') {
-        return (
-            <div className="container-fluid px-0 d-flex justify-content-center align-items-center" style={{ minHeight: '60vh' }}>
-                <div className="alert alert-info text-center">
-                    Shipper có trang riêng. Vui lòng quay lại trang chủ hoặc vào trang shipper.
-                </div>
-            </div>
-        );
+        return <Navigate to="/shipper" replace />;
     }
 
     return (
