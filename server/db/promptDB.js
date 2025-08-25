@@ -1138,6 +1138,225 @@ await Product.deleteMany()
         description:
           "Lightweight and stylish 5G smartphone with pastel gradient finish, ideal for everyday use and content creation.",
       },
+      // Books
+
+      {
+        postedBy: vendor._id,
+        productName: "The Body Keeps the Score",
+        productImage: "/product/Book_1.JPG",
+        productPrice: 133000,
+        category: "Books",
+        description:
+          "Bessel van der Kolk's groundbreaking work explores how trauma reshapes the body and brain, and how innovative treatments can offer hope and healing.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Everything I Know About Love",
+        productImage: "/product/Book_2.JPG",
+        productPrice: 115000,
+        category: "Books",
+        description:
+          "Dolly Alderton shares hilarious and heartfelt stories of friendship, heartbreak, and growing up in this celebrated memoir of modern womanhood.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "The Let Them Theory",
+        productImage: "/product/Book_3.PNG",
+        productPrice: 98000,
+        category: "Books",
+        description:
+          "Mel Robbins and Sawyer Robbins introduce a powerful mindset shift in this motivating guide that teaches readers how to stop controlling others and focus on inner peace.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Call Me By Your Name",
+        productImage: "/product/Book_4.JPG",
+        productPrice: 125000,
+        category: "Books",
+        description:
+          "André Aciman's poignant novel of first love, desire, and self-discovery set against the sun-drenched Italian Riviera, now a major motion picture.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Being In Love",
+        productImage: "/product/Book_5.JPG",
+        productPrice: 102000,
+        category: "Books",
+        description:
+          "Osho explores how to love with awareness and relate without fear in this spiritual guide to transforming relationships and deepening human connection.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "You Are What You Love",
+        productImage: "/product/Book_5.JPG",
+        productPrice: 99000,
+        category: "Books",
+        description:
+          "James K. A. Smith argues that spiritual transformation comes through reordering our loves and habits in this profound exploration of faith and desire.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Love, Life & Work",
+        productImage: "/product/Book_7.JPG",
+        productPrice: 87000,
+        category: "Books",
+        description:
+          "Elbert Hubbard's timeless collection of essays offering good-natured insights on achieving happiness through love, meaningful work, and thoughtful living.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "The Art of War",
+        productImage: "/product/Book_8.JPG",
+        productPrice: 76000,
+        category: "Books",
+        description:
+          "Sun Tzu's ancient Chinese military treatise remains a powerful manual on strategy, leadership, and decision-making applicable far beyond the battlefield.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Pride and Prejudice",
+        productImage: "/product/Book_9.JPG",
+        productPrice: 88000,
+        category: "Books",
+        description:
+          "Jane Austen's beloved classic romance follows the spirited Elizabeth Bennet as she navigates social expectations, love, and family in Regency-era England.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Build the Life You Want",
+        productImage: "/product/Book_10.JPG",
+        productPrice: 112000,
+        category: "Books",
+        description:
+          "A transformative guide by Arthur C. Brooks and Oprah Winfrey that blends scientific research with practical wisdom to help readers build lasting happiness and fulfillment in their lives.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Build the Life You Want",
+        productImage: "/product/Book_11.WEBP",
+        productPrice: 112000,
+        category: "Books",
+        description:
+          "An alternate cover edition of the #1 New York Times bestseller by Arthur C. Brooks and Oprah Winfrey exploring the art and science of getting happier.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "My Morning Routine",
+        productImage: "/product/Book_12.WEBP",
+        productPrice: 97000,
+        category: "Books",
+        description:
+          "Benjamin Spall and Michael Xander profile the daily habits of successful people, showing how simple routines can lead to a more productive and inspired life.",
+      },
+      // Electronic
+      {
+        postedBy: vendor._id,
+        productName: "LumiGlow Pro Skin Enhancer",
+        productImage: "/product/Electronic_1.WEBP",
+        productPrice: 300000,
+        category: "Electronics",
+        description:
+          "Revitalize your skincare routine with the LumiGlow Pro Skin Enhancer, a state-of-the-art facial device designed to deliver salon-quality treatments from the comfort of your home",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Ionic Face Lifting Massager",
+        productImage: "/product/Electronic_2.JPG",
+        productPrice: 489000,
+        category: "Electronics",
+        description:
+          "A high-frequency ionic facial massager that helps lift, tighten, and rejuvenate the skin for a youthful glow.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Dyson V11 Cordless Vacuum Cleaner",
+        productImage: "/product/Electronic_3.JPG",
+        productPrice: 10900000,
+        category: "Electronics",
+        description:
+          "Powerful cordless vacuum cleaner with intelligent sensors, dynamic LCD display, and advanced whole-machine filtration.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Dyson Airwrap Multi-Styler Complete",
+        productImage: "/product/Electronic_4.WEBP",
+        productPrice: 14300000,
+        category: "Electronics",
+        description:
+          "Versatile hair styling tool with multiple attachments for curling, smoothing, and volumizing, powered by the Coanda effect technology.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Ceramic Hair Straightener with Digital Display",
+        productImage: "/product/Electronic_5.JPG",
+        productPrice: 789000,
+        category: "Electronics",
+        description:
+          "Advanced ceramic hair straightener with adjustable heat settings and an LED display for smooth, frizz-free styling.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "High-Speed Ionic Hair Dryer",
+        productImage: "/product/Electronic_6.JPG",
+        productPrice: 1150000,
+        category: "Electronics",
+        description:
+          "This high-speed hair dryer features ionic technology and a sleek futuristic design to reduce frizz and dry hair efficiently.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "LG PuriCare Air Purifier",
+        productImage: "/product/Electronic_7.JPG",
+        productPrice: 4890000,
+        category: "Electronics",
+        description:
+          "The LG PuriCare delivers powerful filtration with a 360° design, eliminating dust and allergens to keep your air fresh and clean.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "PlayStation VR2 Headset",
+        productImage: "/product/Electronic_8.JPG",
+        productPrice: 15990000,
+        category: "Electronics",
+        description:
+          "Immerse yourself in next-gen gaming with the PlayStation VR2 headset, featuring stunning 4K HDR visuals, advanced tracking, and haptic feedback.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "PlayStation VR2 Full Set",
+        productImage: "/product/Electronic_9.WEBP",
+        productPrice: 17990000,
+        category: "Electronics",
+        description:
+          "Complete PlayStation VR2 package including headset, controllers, earbuds, and accessories for the ultimate immersive gaming experience.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "PlayStation VR2 Headset and Controllers",
+        productImage: "/product/Electronic_10.WEBP",
+        productPrice: 16990000,
+        category: "Electronics",
+        description:
+          "Experience next-gen virtual reality with the PlayStation VR2 headset and Sense controllers. Ergonomic design and immersive gameplay tailored for PlayStation 5.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Kindle Paperwhite 6.8'' (2023)",
+        productImage: "/product/Electronic_11.WEBP",
+        productPrice: 3290000,
+        category: "Electronics",
+        description:
+          "Enjoy glare-free reading with the Kindle Paperwhite's 6.8-inch display, adjustable warm light, and waterproof design—perfect for book lovers on the go.",
+      },
+      {
+        postedBy: vendor._id,
+        productName: "Fujifilm X100V Compact Camera",
+        productImage: "/product/Electronic_12.JPG",
+        productPrice: 31490000,
+        category: "Electronics",
+        description:
+          "Capture stunning street and travel photos with the Fujifilm X100V, featuring a 23mm f/2 lens, hybrid viewfinder, and retro design packed with modern power.",
+      },
     ];
 
     // Save documents to collection

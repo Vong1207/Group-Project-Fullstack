@@ -115,7 +115,6 @@ const productSchema = new mongoose.Schema({
     },
     stockQuantity: {
         type: Number,
-        required: true,
         min: 0
     }
 });
