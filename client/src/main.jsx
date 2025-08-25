@@ -24,6 +24,7 @@ import Wallet from './pages/myAccount/Wallet.jsx';
 import Account from './pages/myAccount/Account.jsx';
 import MyProducts from './pages/myAccount/MyProducts.jsx';
 import AddNewProduct from './pages/myAccount/AddNewProduct.jsx';
+import CategoryPage  from './pages/home/CategoryPages.jsx';
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,11 @@ const router = createBrowserRouter([
   {
     path: "/vendor",
     element: <VendorDashboard />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/home/:categoryName",
+    element: <CategoryPage />,
     errorElement: <NotFound />
   },
   {
@@ -115,7 +121,7 @@ const router = createBrowserRouter([
         path: 'shipper',
         element: <ShipperDashboard />, // hoặc tạo component riêng nếu muốn
         errorElement: <NotFound />
-      }
+      },
     ]
   }
 ])
