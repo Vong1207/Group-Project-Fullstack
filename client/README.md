@@ -14,5 +14,5 @@ If you are developing a production application, we recommend using TypeScript wi
 Attributions:
 - Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
 - Bahu Icons <a href="https://www.flaticon.com/free-icons/profile-picture" title="profile picture icons">Profile picture icons created by Bahu Icons - Flaticon</a>
-
 - Freepik <a href="https://www.flaticon.com/free-icons/money" title="money icons">Money icons created by Freepik - Flaticon</a>
+- Freepik <a href="https://www.flaticon.com/free-animated-icons/loading" title="loading animated icons">Loading animated icons created by Freepik - Flaticon</a>
