@@ -9,6 +9,7 @@ import crypto from 'crypto';
 import authRoutes from "./routes/auth.js";
 import cartRoutes from "./routes/cart.js";
 import walletRoutes from './routes/wallet.js';
+import productRoutes from './routes/product.js';
 
 // Enable dotenv to load environment variables from .env file
 dotenv.config();
@@ -52,6 +53,7 @@ app.use((req, res, next) => {
 app.use("/api/auth", authRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/wallet', walletRoutes);
+app.use('/api/product', productRoutes);
 
 // APIs
 app.get('/api/session', (req, res) => {

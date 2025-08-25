@@ -12,7 +12,6 @@ const userSchema = new mongoose.Schema({
         type: String
     },
     avatar: {
-        // type: Buffer
         type: String,
         required: true,
         default: '/customerProfile/defaultProfile.png'
@@ -78,11 +77,7 @@ const productSchema = new mongoose.Schema({
         minlength: 5
     },
     productImage: {
-        // String type to test DB
         type: String,
-
-        // Comment this out to test out DB first
-        // type: Buffer
         required: true 
     },
     productPrice: {
@@ -117,6 +112,11 @@ const productSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
+    },
+    stockQuantity: {
+        type: Number,
+        required: true,
+        min: 0
     }
 });
 

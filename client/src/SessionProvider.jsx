@@ -27,7 +27,7 @@ export default function SessionProvider({ children }) {
 
     if (loading) return (
         <div className="vh-100 vw-100 d-flex justify-content-center align-items-center">
-            <h1 className="mb-0">Loading, please wait...</h1>
+            <img src="/loading.gif" alt="Loading" style={{ width: '10rem', height: '10rem' }} />
         </div>
     );
     return children;

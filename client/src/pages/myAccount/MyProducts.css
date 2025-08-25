@@ -1,0 +1,120 @@
+h1 {
+    color: var(--eerieBlack);
+}
+
+#myProductsRow {
+    margin-bottom: 5rem;
+
+    & .myProductContainer {
+        border: 1px solid var(--eerieBlack);
+        max-width: 16.875rem;
+
+        & .myProductImageContainer {
+            border-bottom: 1px solid var(--eerieBlack);
+
+            & .myProductImage {
+                width: 16.875rem;
+                height: 11.25rem;
+                border-left: 1px solid var(--eerieBlack);
+                border-right: 1px solid var(--eerieBlack);
+            }
+        }
+
+        & .myProductName {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        & .deleteBtn {
+            color: var(--danger);
+            border: 1px solid var(--danger);
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        & .deleteBtn:hover {
+            color: white;
+            background-color: var(--danger);
+        }
+
+        & .editBtn {
+            color: var(--success);
+            border: 1px solid var(--success);
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        & .editBtn:hover {
+            background-color: var(--success);
+            color: white;
+        }
+    }
+
+    & .loadMoreBtn {
+        background-color: white;
+        color: var(--eerieBlack);
+        border: 1px solid var(--eerieBlack);
+        transition: all 0.3s ease-in-out;
+    }
+
+    & .loadMoreBtn:hover {
+        background-color: var(--eerieBlack);
+        color: white;
+    }
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.6);
+
+    & .modal-content {
+        border: 1px solid var(--eerieBlack);
+        border-radius: 0;
+        min-width: 22rem;
+
+        & .modal-header {
+            & h5 {
+                color: var(--eerieBlack);
+            }
+
+            & .closeModalBtn {
+                height: 2rem;
+                width: 2rem;
+                border: none;
+                background-color: white;
+                color: var(--danger);
+            }
+        }
+
+        & .modal-body {
+            & input {
+                width: 14rem;
+                border: 1px solid var(--eerieBlack);
+            }
+
+            & input::-webkit-inner-spin-button,
+            & input::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+
+        & .modal-footer {
+            & .saveChanges {
+                background-color: white;
+                border: 1px solid var(--success);
+                color: var(--success);
+                transition: all 0.3s ease-in-out;
+            }
+
+            & .saveChanges:hover {
+                background-color: var(--success);
+                color: white;
+            }
+        }
+    }
+}
