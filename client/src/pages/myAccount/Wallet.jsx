@@ -2,26 +2,10 @@ import './Wallet.css';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { setUser, updateWalletBalance } from '../../redux/userSlice.js';
+import { updateWalletBalance } from '../../redux/userSlice.js';
 
 export default function Wallet() {
     const dispatch = useDispatch();
-
-    // Fetch User Session
-    const fetchSession = async () => {
-        try {
-            const response = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
-            if (response.data && response.data.loggedIn && response.data.user) {
-                dispatch(setUser(response.data.user));
-            }
-        } catch (error) {
-            console.error("Error fetching session:", error);
-        }
-    }
-
-    useEffect(() => {
-        fetchSession();
-    }, []);
 
     // Redux state
     const walletBalance = useSelector(state => state.user.user?.walletBalance) || 0;

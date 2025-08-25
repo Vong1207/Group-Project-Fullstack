@@ -1,27 +1,7 @@
 import './CustomerPurchased.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { setUser } from '../../redux/userSlice.js';
-import { useEffect } from 'react';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export default function CustomerPurchased() {
-    const dispatch = useDispatch();
-
-    const fetchSession = async () => {
-        try {
-            const response = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
-            if (response.data && response.data.loggedIn && response.data.user) {
-                dispatch(setUser(response.data.user));
-            }
-        } catch (error) {
-            console.error("Error fetching session:", error);
-        }
-    }
-
-    useEffect(() => {
-        fetchSession();
-    }, []);
-
     const purchased = useSelector((state) => state.user.user?.purchased) || [];
 
     return (
