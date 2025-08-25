@@ -9,22 +9,26 @@ export default function SessionProvider({ children }) {
 
     useEffect(() => {
         const fetchSession = async () => {
-        try {
-            const res = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
-            if (res.data && res.data.loggedIn && res.data.user) {
-            dispatch(setUser(res.data.user));
-            } else {
-            dispatch(clearUser());
+            try {
+                const res = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
+                if (res.data && res.data.loggedIn && res.data.user) {
+                dispatch(setUser(res.data.user));
+                } else {
+                dispatch(clearUser());
+                }
+            } catch {
+                dispatch(clearUser());
+            } finally {
+                setLoading(false);
             }
-        } catch {
-            dispatch(clearUser());
-        } finally {
-            setLoading(false);
-        }
         };
         fetchSession();
     }, [dispatch]);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return (
+        <div className="vh-100 vw-100 d-flex justify-content-center align-items-center">
+            <h1 className="mb-0">Loading, please wait...</h1>
+        </div>
+    );
     return children;
 }

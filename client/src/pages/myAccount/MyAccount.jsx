@@ -1,11 +1,12 @@
 import './MyAccount.css';
 import { NavLink, Link, Outlet } from 'react-router-dom';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { setUser, clearUser } from '../../redux/userSlice.js';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { 
+    clearUser 
+} from '../../redux/userSlice.js';
 
 export default function MyAccount() {
     const user = useSelector((state) => state.user.user) || {};
@@ -21,11 +22,6 @@ export default function MyAccount() {
         dispatch(clearUser());
         navigate('/');
     };
-
-    // Nếu là shipper thì tự động chuyển hướng sang /shipper
-    if (user.role === 'Shipper') {
-        return <Navigate to="/shipper" replace />;
-    }
 
     return (
         <div className='container-fluid px-0'>
@@ -86,14 +82,17 @@ export default function MyAccount() {
                         </>
                     )}
 
+                    {user.role === 'Shipper' && (
+                        <>
+                            shipper
+                        </>
+                    )}
+
                     <div className='d-flex flex-column justify-content-center align-items-center mt-3' id='homeBtnContainer'>
                         <Link to='/'>
-                            <button type='button' id='homeBtn' className='px-3 py-2 mb-2'>Back to Home</button>
+                            <button type='button' id='homeBtn' className='px-3 py-2'>Back to Home</button>
                         </Link>
-                        <button type='button' className='btn btn-outline-danger w-75' onClick={handleSignOut}>
-                            Sign Out
-                        </button>
-                    </div>
+                    </div>            
                 </div>
 
                 <main className='col-lg-10 col-12 px-0'>
@@ -142,6 +141,10 @@ export default function MyAccount() {
                                 <i className='bi bi-plus-circle'></i>
                                 <p className='mb-0'>Create</p>
                             </NavLink>
+                        </>
+                    )}
+                    {user.role === 'Shipper' && (
+                        <>
                         </>
                     )}
                 </div>
