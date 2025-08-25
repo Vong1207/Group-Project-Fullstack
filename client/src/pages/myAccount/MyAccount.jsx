@@ -8,22 +8,6 @@ import {
 } from '../../redux/userSlice.js';
 
 export default function MyAccount() {
-    const dispatch = useDispatch();
-    const fetchSession = async () => {
-        try {
-            const response = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
-            if (response.data && response.data.loggedIn && response.data.user) {
-                dispatch(setUser(response.data.user));
-            }
-        } catch (error) {
-            console.error("Error fetching session:", error);
-        }
-    }
-
-    useEffect(() => {
-        fetchSession();
-    }, []);
-
     const user = useSelector((state) => state.user.user) || {};
 
     return (
@@ -70,7 +54,21 @@ export default function MyAccount() {
 
                     {user.role === 'Vendor' && (
                         <>
-                            Vendor
+                            <NavLink to='account' className={({ isActive }) => isActive ? 'active' : ''}>
+                                <div className='ps-4 py-3 fs-5 tabName'>
+                                    <i className='bi bi-person me-2'></i> Account
+                                </div>
+                            </NavLink>
+                            <NavLink to='myProducts' className={({ isActive }) => isActive ? 'active' : ''}>
+                                <div className='ps-4 py-3 fs-5 tabName'>
+                                    <i className='bi bi-box-seam me-2'></i> Products
+                                </div>
+                            </NavLink>
+                            <NavLink to='addNewProduct' className={({ isActive }) => isActive ? 'active' : ''}>
+                                <div className='ps-4 py-3 fs-5 tabName'>
+                                    <i className='bi bi-plus-circle me-2'></i> Create
+                                </div>
+                            </NavLink>
                         </>
                     )}
 

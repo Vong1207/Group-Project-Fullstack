@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import store from './redux/store.js'
 import './index.css'
+import SessionProvider from './SessionProvider.jsx';
 import ProtectedRoute from './ProtectedRoute.jsx';
 
 // Pages
@@ -20,6 +21,9 @@ import MyAccount from './pages/myAccount/MyAccount.jsx';
 import CustomerCart from './pages/myAccount/CustomerCart.jsx';
 import CustomerPurchased from './pages/myAccount/CustomerPurchased.jsx';
 import Wallet from './pages/myAccount/Wallet.jsx';
+import Account from './pages/myAccount/Account.jsx';
+import MyProducts from './pages/myAccount/MyProducts.jsx';
+import AddNewProduct from './pages/myAccount/AddNewProduct.jsx';
 
 const router = createBrowserRouter([
   {
@@ -65,11 +69,9 @@ const router = createBrowserRouter([
   {
     path: '/myAccount',
     element: (
-      // Uncomment this when login BE finished
-      // <ProtectedRoute>
-      //   <MyAccount />
-      // </ProtectedRoute>
-      <MyAccount />
+      <ProtectedRoute>
+        <MyAccount />
+      </ProtectedRoute>
     ),
     errorElement: <NotFound />,
     children: [
@@ -80,7 +82,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'account',
-        element: <MyAccount />,
+        element: <Account />,
         errorElement: <NotFound />
       },
       {
@@ -97,6 +99,16 @@ const router = createBrowserRouter([
         path: 'purchased',
         element: <CustomerPurchased />,
         errorElement: <NotFound />
+      },
+      {
+        path: 'myProducts',
+        element: <MyProducts />,
+        errorElement: <NotFound />
+      },
+      {
+        path: 'addNewProduct',
+        element: <AddNewProduct />,
+        errorElement: <NotFound />
       }
     ]
   }
@@ -105,7 +117,9 @@ const root = createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <SessionProvider>
+        <RouterProvider router={router} />
+      </SessionProvider>
     </Provider>
   </StrictMode>
 );

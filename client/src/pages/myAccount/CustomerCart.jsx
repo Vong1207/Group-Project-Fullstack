@@ -13,22 +13,6 @@ import {
 
 export default function CustomerCart() {
     const dispatch = useDispatch();
-    
-    // Fetch User Session
-    const fetchSession = async () => {
-        try {
-            const response = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
-            if (response.data && response.data.loggedIn && response.data.user) {
-                dispatch(setUser(response.data.user));
-            }
-        } catch (error) {
-            console.error("Error fetching session:", error);
-        }
-    }
-
-    useEffect(() => {
-        fetchSession();
-    }, []);
 
     // Redux state
     const productsInCart = useSelector(state => state.user.user?.cart) || [];
