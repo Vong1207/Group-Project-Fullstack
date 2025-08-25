@@ -1,14 +1,37 @@
 import './MyAccount.css';
 import { NavLink, Link, Outlet } from 'react-router-dom';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import axios from 'axios';
-import {
-    setUser
-} from '../../redux/userSlice.js';
+import { setUser, clearUser } from '../../redux/userSlice.js';
+import { useNavigate } from 'react-router-dom';
 
 export default function MyAccount() {
     const user = useSelector((state) => state.user.user) || {};
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleSignOut = async () => {
+        try {
+            await axios.get('http://localhost:3000/logout', { withCredentials: true });
+        } catch (err) {
+            // ignore error
+        }
+        dispatch(clearUser());
+        navigate('/');
+    };
+
+    // Nếu là shipper thì không render gì cả (hoặc có thể chuyển hướng nếu muốn)
+    if (user.role === 'Shipper') {
+        return (
+            <div className="container-fluid px-0 d-flex justify-content-center align-items-center" style={{ minHeight: '60vh' }}>
+                <div className="alert alert-info text-center">
+                    Shipper có trang riêng. Vui lòng quay lại trang chủ hoặc vào trang shipper.
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className='container-fluid px-0'>
@@ -21,9 +44,6 @@ export default function MyAccount() {
                         )}
                         {user.role === 'Vendor' && (
                             <i className='fi fi-ts-marketplace-store fs-1'></i>
-                        )}
-                        {user.role === 'Shipper' && (
-                            <i className='fi fi-ts-shipping-fast fs-1'></i>
                         )}
                     </div>
 
@@ -72,16 +92,13 @@ export default function MyAccount() {
                         </>
                     )}
 
-                    {user.role === 'Shipper' && (
-                        <>
-                            Shipper
-                        </>
-                    )}
-
-                    <div className='d-flex justify-content-center align-items-center mt-3' id='homeBtnContainer'>
+                    <div className='d-flex flex-column justify-content-center align-items-center mt-3' id='homeBtnContainer'>
                         <Link to='/'>
-                            <button type='button' id='homeBtn' className='px-3 py-2'>Back to Home</button>
+                            <button type='button' id='homeBtn' className='px-3 py-2 mb-2'>Back to Home</button>
                         </Link>
+                        <button type='button' className='btn btn-outline-danger w-75' onClick={handleSignOut}>
+                            Sign Out
+                        </button>
                     </div>
                 </div>
 
@@ -114,6 +131,22 @@ export default function MyAccount() {
                             <NavLink to='purchased' className={({ isActive }) => `d-flex flex-column justify-content-center align-items-center col-3 py-3 ${isActive ? 'active' : ''}`}>
                                 <i className='fi fi-ts-checklist-task-budget'></i>
                                 <p className='mb-0'>Purchased</p>
+                            </NavLink>
+                        </>
+                    )}
+                    {user.role === 'Vendor' && (
+                        <>
+                            <NavLink to='account' className={({ isActive }) => `d-flex flex-column justify-content-center align-items-center col-4 py-3 ${isActive ? 'active' : ''}`}>
+                                <i className='bi bi-person'></i>
+                                <p className='mb-0'>Account</p>
+                            </NavLink>
+                            <NavLink to='myProducts' className={({ isActive }) => `d-flex flex-column justify-content-center align-items-center col-4 py-3 ${isActive ? 'active' : ''}`}>
+                                <i className='bi bi-box-seam'></i>
+                                <p className='mb-0'>Products</p>
+                            </NavLink>
+                            <NavLink to='addNewProduct' className={({ isActive }) => `d-flex flex-column justify-content-center align-items-center col-4 py-3 ${isActive ? 'active' : ''}`}>
+                                <i className='bi bi-plus-circle'></i>
+                                <p className='mb-0'>Create</p>
                             </NavLink>
                         </>
                     )}
