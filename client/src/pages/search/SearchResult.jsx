@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 
@@ -60,6 +60,10 @@ export default function SearchResult() {
         <div className="row row-cols-2 row-cols-md-3 row-cols-xl-6 g-3">
           {results.map(p => (
             <div className="col" key={p._id || p.id}>
+              <Link
+                to={`/product/${p._id}`}
+                className="text-decoration-none text-dark"
+              >
               <div className="card h-100">
                 <img src={p.productImage} className="card-img-top" alt={p.productName} />
                 <div className="card-body">
@@ -67,6 +71,7 @@ export default function SearchResult() {
                   <p className="card-text text-danger fw-bold">{p.productPrice?.toLocaleString()}₫</p>
                 </div>
               </div>
+              </Link>
             </div>
           ))}
         </div>

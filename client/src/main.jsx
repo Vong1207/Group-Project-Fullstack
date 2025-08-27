@@ -27,6 +27,7 @@ import MyProducts from './pages/myAccount/MyProducts.jsx';
 import AddNewProduct from './pages/myAccount/AddNewProduct.jsx';
 import CategoryPage  from './pages/home/CategoryPages.jsx';
 import SearchResult from './pages/search/SearchResult.jsx';
+import ProductDetail from './pages/productDetails/productDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,11 @@ const router = createBrowserRouter([
   {
     path: "/home/:categoryName",
     element: <CategoryPage />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/product/:productId",
+    element: <ProductDetail />,
     errorElement: <NotFound />
   },
   {
