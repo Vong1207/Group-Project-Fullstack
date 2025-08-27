@@ -8,6 +8,7 @@ import SessionProvider from './SessionProvider.jsx';
 import ProtectedRoute from './ProtectedRoute.jsx';
 
 // Pages
+
 import Home from './pages/home/Home.jsx'
 import NotFound from './pages/partials/NotFound.jsx'
 import SignIn from './pages/signIn/SignIn.jsx'
@@ -25,8 +26,14 @@ import Account from './pages/myAccount/Account.jsx';
 import MyProducts from './pages/myAccount/MyProducts.jsx';
 import AddNewProduct from './pages/myAccount/AddNewProduct.jsx';
 import CategoryPage  from './pages/home/CategoryPages.jsx';
+import SearchResult from './pages/search/SearchResult.jsx';
 
 const router = createBrowserRouter([
+  {
+    path: "/search",
+    element: <SearchResult />,
+    errorElement: <NotFound />
+  },
   {
     path : "/",
     element: <Home />,

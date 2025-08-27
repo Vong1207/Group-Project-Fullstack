@@ -1,7 +1,35 @@
+
 import express from 'express';
 import { Product } from '../db/schema.js';
 
 const router = express.Router();
+
+// Lấy toàn bộ danh sách products (GET /api/product/all)
+router.get('/all', async (req, res) => {
+    try {
+        const products = await Product.find({});
+        res.json(products);
+    } catch (error) {
+        console.error('Error fetching all products:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+// Search products by name (case-insensitive, partial match)
+router.post('/searchByName', async (req, res) => {
+    const { name } = req.body;
+    if (!name || typeof name !== 'string') {
+        return res.status(400).json({ error: 'Missing or invalid name' });
+    }
+    try {
+        // Case-insensitive, partial match
+        const products = await Product.find({ productName: { $regex: name, $options: 'i' } });
+        res.json(products);
+    } catch (error) {
+        console.error('Error searching products by name:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 router.post('/findPostedBy', async (req, res) => {
     const { userId } = req.body;
