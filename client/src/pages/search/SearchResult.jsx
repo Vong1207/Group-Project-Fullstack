@@ -32,7 +32,7 @@ export default function SearchResult() {
     }
   }, [searchedName]);
 
-  // Dummy fallback data nếu API lỗi
+  // Dummy fallback data if API fails
   const dummyProducts = [
     { _id: '1', productName: 'Dummy Product 1', category: 'Test', productPrice: 10000 },
     { _id: '2', productName: 'Dummy Product 2', category: 'Test', productPrice: 20000 },
@@ -48,7 +48,7 @@ export default function SearchResult() {
             <li key={product._id}>{product.productName} <span className="text-muted">({product.category})</span></li>
           ))}
         </ul>
-        <div className="text-muted small">(Hiển thị dữ liệu mẫu do API không trả về kết quả)</div>
+  <div className="text-muted small">(Showing dummy data because API did not return results)</div>
       </div>
     );
   }
@@ -68,7 +68,7 @@ export default function SearchResult() {
                 <img src={p.productImage} className="card-img-top" alt={p.productName} />
                 <div className="card-body">
                   <h6 className="card-title">{p.productName}</h6>
-                  <p className="card-text text-danger fw-bold">{p.productPrice?.toLocaleString()}₫</p>
+                  <p className="card-text text-danger fw-bold">{p.productPrice?.toLocaleString()} VND</p>
                 </div>
               </div>
               </Link>

@@ -4,7 +4,7 @@ import { useParams, useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function CategoryPage() {
-  const { categoryName } = useParams(); // lấy từ URL
+  const { categoryName } = useParams(); // get from URL
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const location = useLocation();
@@ -12,7 +12,7 @@ export default function CategoryPage() {
   const searchedName = query.get("searchedName") || "";
 
   useEffect(() => {
-    // Hàm fetch toàn bộ sản phẩm theo category
+  // Function to fetch all products by category
     const fetchAllByCategory = () => {
       fetch(
         `http://localhost:3000/products/category/${encodeURIComponent(
@@ -43,12 +43,12 @@ export default function CategoryPage() {
           return res.json();
         })
         .then((data) => {
-          // Nếu không có data hoặc không phải mảng, fallback sang fetchAllByCategory
+          // If no data or not an array, fallback to fetchAllByCategory
           if (!Array.isArray(data)) {
             fetchAllByCategory();
             return;
           }
-          // So sánh category không phân biệt hoa thường, khoảng trắng
+          // Compare category case-insensitive, ignore whitespace
           const filtered = data.filter(
             (p) =>
               p.category &&
@@ -60,7 +60,7 @@ export default function CategoryPage() {
         })
         .catch((err) => {
           console.error("Fetch searchByName error:", err);
-          // Nếu lỗi, fallback sang fetchAllByCategory
+          // If error, fallback to fetchAllByCategory
           fetchAllByCategory();
         });
     } else {
@@ -109,7 +109,7 @@ export default function CategoryPage() {
                   <div className="card-body">
                     <h6 className="card-title">{p.productName}</h6>
                     <p className="card-text text-danger fw-bold">
-                      {p.productPrice.toLocaleString()}₫
+                      {p.productPrice.toLocaleString()} VND
                     </p>
                   </div>
                 </div>

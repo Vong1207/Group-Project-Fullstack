@@ -4,7 +4,7 @@ import { Product } from '../db/schema.js';
 
 const router = express.Router();
 
-// Lấy toàn bộ danh sách products (GET /api/product/all)
+// Get all products (GET /api/product/all)
 router.get('/all', async (req, res) => {
     try {
         const products = await Product.find({});
