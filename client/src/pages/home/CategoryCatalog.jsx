@@ -1,5 +1,6 @@
 import './CategoryCatalog.css'
 import { Link } from 'react-router-dom';
+import './CategoryPages.css';
 
 export default function CategoryCatalog() {
     return (

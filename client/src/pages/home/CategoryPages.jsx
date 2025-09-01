@@ -100,11 +100,12 @@ export default function CategoryPage() {
                 className="text-decoration-none text-dark"
               >
                 <div className="card h-100">
+                  <div className="card-img-top">
                   <img
                     src={p.productImage}
-                    className="card-img-top"
                     alt={p.productName}
                   />
+                  </div>
                   <div className="card-body">
                     <h6 className="card-title">{p.productName}</h6>
                     <p className="card-text text-danger fw-bold">
