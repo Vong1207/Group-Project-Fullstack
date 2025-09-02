@@ -44,6 +44,20 @@ const userSlice = createSlice({
                 state.user.cart.splice(index, 1);
             }
         },
+        addProductToCard: (state, action) => {
+            const product = action.payload;
+
+            if (!state.user || !state.user.cart) return;
+
+            const index = state.user.cart.findIndex(item => item.product._id == product._id);
+            if (index !== -1) {
+                // if there are already a product, increase the quanlity
+                state.user.cart[index].quantity += 1;  
+            } else {
+                // if not, add a new product
+                state.user.cart.push({ product, quantity: 1 });
+            }
+        },
         // Wallet reducers
         updateWalletBalance: (state, action) => {
             if (state.user) {
@@ -60,7 +74,8 @@ export const {
     addCartQuantity,
     inputCartQuantity,
     deleteCartProduct,
-    updateWalletBalance
+    updateWalletBalance,
+    addProductToCard
 } = userSlice.actions;
 
 export default userSlice.reducer;
