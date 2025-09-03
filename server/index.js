@@ -11,6 +11,7 @@ import cartRoutes from "./routes/cart.js";
 import walletRoutes from './routes/wallet.js';
 import productRoutes from './routes/product.js';
 import categoryProductRoutes from  './routes/categoryProducts.js';
+import shipperRoutes from './routes/shipper.js';
 
 // Enable dotenv to load environment variables from .env file
 dotenv.config();
@@ -56,6 +57,7 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/wallet', walletRoutes);
 app.use('/api/product', productRoutes);
 app.use('/products', categoryProductRoutes);
+app.use('/api/shipper', shipperRoutes);
 
 // APIs
 app.get('/api/session', (req, res) => {

@@ -38,6 +38,7 @@ router.post("/signin", async (req, res) => {
             sessionUser.businessAddress = user.businessAddress;
         } else if (user.role === 'Shipper') {
             sessionUser.displayName = user.displayName;
+            sessionUser.distributionHub = user.distributionHub;
         }
 
         req.session.user = sessionUser;

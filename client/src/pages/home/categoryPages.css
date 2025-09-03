@@ -291,7 +291,7 @@
     font-size: 1.5rem;
     cursor: pointer;
 }
-
+/* image card */
 .card-img-top {
   position: relative;
   width: 100%;
@@ -300,6 +300,7 @@
   border-bottom: 1px solid #eee;
   overflow: hidden;
 }
+
 
 .card-img-top img {
   position: absolute;

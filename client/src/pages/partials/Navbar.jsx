@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 export default function Navbar() {
   const user = useSelector(state => state.user.user);
-  const profilePath = user ? '/myAccount' : '/signIn';
+  const profilePath = user ? '/shipper' : '/signIn';
   const defaultAvatar = '/customerProfile/defaultProfile.png';
   // Always show avatar if user exists, fallback to default if missing
   const avatarSrc = user ? (user.avatar || defaultAvatar) : defaultAvatar;
