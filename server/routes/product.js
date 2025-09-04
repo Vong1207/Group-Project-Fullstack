@@ -67,5 +67,18 @@ router.post('/edit', async (req, res) => {
     }
 });
 
+router.post('/add', async (req, res) => {
+    const { product } = req.body;
+
+    try {
+        const newProduct = new Product(product);
+        await newProduct.save();
+        res.status(201).json(newProduct);
+    } catch (error) {
+        console.error('Error adding new product:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 
 export default router

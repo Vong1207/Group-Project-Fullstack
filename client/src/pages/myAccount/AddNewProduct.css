@@ -1,0 +1,41 @@
+h1 {
+    color: var(--eerieBlack);
+}
+
+#addProductFormContainer {
+    margin-bottom: 5rem;
+
+    & input[type='number']::-webkit-inner-spin-button, 
+    input[type='number']::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0;
+    }
+
+    & .customDropdownContainer {
+        border: 1px solid var(--eerieBlack);
+        cursor: pointer;
+
+        & .customDropdownToggler {
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--eerieBlack);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        & .customDropdownOptions {
+            z-index: 10;
+            background-color: white;
+            top: 100%;
+            right: 0;
+            left: 0;
+            border: 1px solid var(--eerieBlack);
+            max-height: 6.5rem;
+            overflow-y: auto;
+            cursor: pointer;
+        }
+    }
+}
