@@ -13,7 +13,10 @@ export default function ProductDetail() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const [selectedSize, setSelectedSize] = useState('');
+  const [quantity, setQuantity] = useState(1);
+  function handleQuantityChange(val) {
+    setQuantity(Math.max(1, Math.min(99, val)));
+  }
   const [selectedFrequency, setSelectedFrequency] = useState('one');
   const dispatch = useDispatch();
   const userId = useSelector(state => state.user.user?._id);
@@ -39,13 +42,13 @@ export default function ProductDetail() {
   async function handleAddToCart() {
     if (!userId || !product) return;
     try {
-      dispatch(addProductToCard({ ...product, quantity: 1 }));
+      dispatch(addProductToCard({ ...product, quantity }));
       const existingIndex = currentCart.findIndex(p => p.product._id === product._id);
       let updatedCart = [...currentCart];
       if (existingIndex !== -1) {
-        updatedCart[existingIndex].quantity += 1;
+        updatedCart[existingIndex].quantity += quantity;
       } else {
-        updatedCart.push({ product, quantity: 1 });
+        updatedCart.push({ product, quantity });
       }
       await axios.post('http://localhost:3000/api/cart/update', {
         userId,
@@ -90,14 +93,39 @@ export default function ProductDetail() {
             <p className="mb-2">{product.description}</p>
             <div className="mb-2 text-muted">Category: {product.category}</div>
 
-            {/* Product Variant Selector */}
-            <div className="mb-3">
-              <label className="fw-bold mb-1">Product Variant Selector (Size):</label>
-              <select className="form-select w-auto" value={selectedSize} onChange={e => setSelectedSize(e.target.value)}>
-                <option value="">Select Size</option>
-                <option value="full">Full Size</option>
-                <option value="mini">Mini Size</option>
-              </select>
+            {/* Quantity Selector - Professional UI */}
+            <div className="mb-3 d-flex align-items-center" style={{gap: '12px'}}>
+              <label className="fw-bold mb-0" htmlFor="quantity-input" style={{minWidth: 70}}>Quantity:</label>
+              <div className="input-group" style={{width: '120px'}}>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  style={{borderTopRightRadius:0, borderBottomRightRadius:0, padding:'0 10px'}}
+                  onClick={() => handleQuantityChange(quantity - 1)}
+                  disabled={quantity <= 1}
+                >
+                  -
+                </button>
+                <input
+                  id="quantity-input"
+                  type="number"
+                  className="form-control text-center"
+                  min={1}
+                  max={99}
+                  value={quantity}
+                  onChange={e => handleQuantityChange(Number(e.target.value))}
+                  style={{borderRadius:0, width:'50px', padding:'0 6px'}}
+                />
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  style={{borderTopLeftRadius:0, borderBottomLeftRadius:0, padding:'0 10px'}}
+                  onClick={() => handleQuantityChange(quantity + 1)}
+                  disabled={quantity >= 99}
+                >
+                  +
+                </button>
+              </div>
             </div>
 
             <div className="d-flex gap-3 mb-3">
