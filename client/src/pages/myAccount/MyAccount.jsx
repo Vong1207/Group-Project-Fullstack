@@ -1,27 +1,9 @@
 import './MyAccount.css';
 import { NavLink, Link, Outlet } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { 
-    clearUser 
-} from '../../redux/userSlice.js';
+import { useSelector } from 'react-redux';
 
 export default function MyAccount() {
     const user = useSelector((state) => state.user.user) || {};
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const handleSignOut = async () => {
-        try {
-            await axios.get('http://localhost:3000/logout', { withCredentials: true });
-        } catch (err) {
-            // ignore error
-        }
-        dispatch(clearUser());
-        navigate('/');
-    };
 
     return (
         <div className='container-fluid px-0'>
@@ -34,6 +16,9 @@ export default function MyAccount() {
                         )}
                         {user.role === 'Vendor' && (
                             <i className='fi fi-ts-marketplace-store fs-1'></i>
+                        )}
+                        {user.role === 'Shipper' && (
+                            <i className='fi fi-ts-shipping-fast fs-1'></i>
                         )}
                     </div>
 
@@ -84,7 +69,16 @@ export default function MyAccount() {
 
                     {user.role === 'Shipper' && (
                         <>
-                            shipper
+                            <NavLink to='account' className={({ isActive }) => isActive ? 'active' : ''}>
+                                <div className='ps-4 py-3 fs-5 tabName'>
+                                    <i className='bi bi-person me-2'></i> Account
+                                </div>
+                            </NavLink>
+                            <NavLink to='orders' className={({ isActive }) => isActive ? 'active' : ''}>
+                                <div className='ps-4 py-3 fs-5 tabName'>
+                                    <i className='fi fi-ts-box-open me-2'></i> Orders
+                                </div>
+                            </NavLink>
                         </>
                     )}
 
@@ -145,6 +139,14 @@ export default function MyAccount() {
                     )}
                     {user.role === 'Shipper' && (
                         <>
+                            <NavLink to='account' className={({ isActive }) => `d-flex flex-column justify-content-center align-items-center col-6 py-3 ${isActive ? 'active' : ''}`}>
+                                <i className='bi bi-person'></i>
+                                <p className='mb-0'>Account</p>
+                            </NavLink>
+                            <NavLink to='orders' className={({ isActive }) => `d-flex flex-column justify-content-center align-items-center col-6 py-3 ${isActive ? 'active' : ''}`}>
+                                <i className='fi fi-ts-box-open'></i>
+                                <p className='mb-0'>Orders</p>
+                            </NavLink>
                         </>
                     )}
                 </div>

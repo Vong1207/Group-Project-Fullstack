@@ -28,6 +28,7 @@ import AddNewProduct from './pages/myAccount/AddNewProduct.jsx';
 import CategoryPage  from './pages/home/CategoryPages.jsx';
 import SearchResult from './pages/search/SearchResult.jsx';
 import ProductDetail from './pages/productDetails/productDetails.jsx';
+import Orders from './pages/myAccount/Orders.jsx';
 
 const router = createBrowserRouter([
   {
@@ -129,10 +130,9 @@ const router = createBrowserRouter([
         element: <AddNewProduct />,
         errorElement: <NotFound />
       },
-      // Shipper myAccount page
       {
-        path: 'shipper',
-        element: <ShipperDashboard />, // hoặc tạo component riêng nếu muốn
+        path: 'orders',
+        element: <Orders />,
         errorElement: <NotFound />
       },
     ]
