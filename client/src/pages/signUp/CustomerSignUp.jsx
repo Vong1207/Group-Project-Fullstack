@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './SignUp.css';
 
 export default function CustomerSignUp() {
+    const [showSizeModal, setShowSizeModal] = useState(false);
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -36,16 +37,14 @@ export default function CustomerSignUp() {
 
     const validateFile = (file) => {
         const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-        const maxSize = 5 * 1024 * 1024; // 5MB
-        
+        const minSize = 50 * 1024; // 50 KB
+        const maxSize = 200 * 1024; // 200 KB
         if (!allowedTypes.includes(file.type)) {
             return { valid: false, error: 'Only JPEG, PNG, GIF, and WebP images are allowed' };
         }
-        
-        if (file.size > maxSize) {
-            return { valid: false, error: 'File size must be less than 5MB' };
+        if (file.size < minSize || file.size > maxSize) {
+            return { valid: false, error: 'size-modal' };
         }
-        
         return { valid: true };
     };
 
@@ -88,28 +87,31 @@ export default function CustomerSignUp() {
             if (file) {
                 // Validate file
                 const validation = validateFile(file);
-                
                 if (!validation.valid) {
-                    setErrors(prev => ({
-                        ...prev,
-                        profilePicture: validation.error
-                    }));
+                    if (validation.error === 'size-modal') {
+                        setShowSizeModal(true);
+                        setErrors(prev => ({
+                            ...prev,
+                            profilePicture: ''
+                        }));
+                    } else {
+                        setErrors(prev => ({
+                            ...prev,
+                            profilePicture: validation.error
+                        }));
+                    }
                     return;
                 }
-                
                 // Clear previous preview
                 if (avatarPreview && avatarPreview.startsWith('blob:')) {
                     URL.revokeObjectURL(avatarPreview);
                 }
-                
                 // Set new file and preview
                 setFormData({
                     ...formData,
                     [name]: file
                 });
-                
                 setAvatarPreview(URL.createObjectURL(file));
-                
                 // Clear error
                 setErrors(prev => ({
                     ...prev,
@@ -221,6 +223,22 @@ export default function CustomerSignUp() {
 
     return (
         <div className="container-fluid signup-container d-flex align-items-center justify-content-center">
+            {/* Modal for image size error */}
+            {showSizeModal && (
+                <div className="modal show" style={{display:'block', background:'rgba(0,0,0,0.3)'}} tabIndex="-1">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-body text-center">
+                                <p className="text-danger mb-2">
+                                    Your profile image should be between <b>50 KB</b> and <b>200 KB</b>.<br />
+                                    Please choose a picture that fits this size range for best quality and upload performance.
+                                </p>
+                                <button type="button" className="btn btn-outline-secondary" onClick={()=>setShowSizeModal(false)}>Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
             <div className="signup-card w-100">
                 <div className="signup-header text-center mb-4">
                     <div className="logo mb-3">
