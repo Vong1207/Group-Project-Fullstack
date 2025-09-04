@@ -59,13 +59,7 @@ export default function ProductDetail() {
 
   if (!product) return <div className="text-center my-5">Loading product...</div>;
 
-  // Dummy review data
-  const reviews = [
-    { rating: 5, text: 'Love these Skincare! Really amazing', date: '3 days ago' },
-    // ...more reviews
-  ];
-  const avgRating = 5.0;
-  const totalReviews = 44;
+  // ...existing code...
 
   return (
     <>
@@ -92,9 +86,6 @@ export default function ProductDetail() {
             <h2 className="fw-bold mb-2">{product.productName}</h2>
             <div className="d-flex align-items-center gap-3 mb-2">
               <span className="fs-4 text-danger fw-bold">{Number(product.productPrice).toLocaleString()}₫</span>
-              <span className="badge bg-warning text-dark">{avgRating} ★</span>
-              <span className="text-muted">({totalReviews} Reviews)</span>
-              <a href="#reviews" className="ms-2">Write a Review</a>
             </div>
             <p className="mb-2">{product.description}</p>
             <div className="mb-2 text-muted">Category: {product.category}</div>
@@ -139,37 +130,7 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* Reviews Section */}
-        <div className="mt-5" id="reviews">
-          <h5 className="fw-bold mb-3">Ratings & Reviews of {product.productName}</h5>
-          <div className="mb-2">
-            <span className="fs-4 fw-bold text-warning">{avgRating} / 5</span>
-            <span className="ms-2 text-muted">{totalReviews} Reviews</span>
-          </div>
-          <div className="mb-3">
-            {/* Star breakdown */}
-            <div className="d-flex align-items-center gap-2">
-              {[5,4,3,2,1].map(star => (
-                <div key={star} className="d-flex align-items-center gap-1">
-                  <span className="text-warning">★</span>
-                  <span>{star}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          {/* Product Reviews */}
-          <div>
-            {reviews.map((r, idx) => (
-              <div key={idx} className="border-bottom py-2">
-                <div className="d-flex align-items-center gap-2 mb-1">
-                  <span className="fw-bold">{r.rating} ★</span>
-                  <span className="text-muted">{r.date}</span>
-                </div>
-                <div>{r.text}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+  {/* ...existing code... */}
 
       </div>
       <Footer />
