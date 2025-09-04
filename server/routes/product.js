@@ -4,6 +4,23 @@ import { Product } from '../db/schema.js';
 
 const router = express.Router();
 
+
+// Get products, optionally filter by category (GET /api/product?category=...)
+router.get('/', async (req, res) => {
+    try {
+        const { category } = req.query;
+        let filter = {};
+        if (category) {
+            filter.category = category;
+        }
+        const products = await Product.find(filter);
+        res.json(products);
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 // Get all products (GET /api/product/all)
 router.get('/all', async (req, res) => {
     try {
