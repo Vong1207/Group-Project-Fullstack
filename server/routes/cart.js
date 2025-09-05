@@ -46,16 +46,25 @@ router.post("/order", async (req, res) => {
     });
 
     await newOrder.save();
-    // deltete all products in cart after order successful
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      { cart: [] },
-      { new: true }
-    ).populate("cart.product");
-    // update session cart
-    req.session.user.cart = updatedUser.cart;
+    // currently user
+    const user = await User.findById(userId).populate("cart.product");
 
-    res.json({ success: true, order: newOrder, updatedUser });
+    // get the id list of products that were ordered
+    const orderedProductIds = cart.map(item => item.product.toString());
+
+    // keep products were not order
+    const remainingCart = user.cart.filter(item => {
+      return !orderedProductIds.includes(item.product._id.toString());
+    });
+
+    // update user cart
+    user.cart = remainingCart;
+    await user.save();
+
+    // update cart 
+    req.session.user.cart = user.cart;
+
+    res.json({ success: true, order: newOrder, updatedUser: user });
   } catch (error) {
     console.error("❌ Order error:", error);
     res.status(500).json({ success: false, error: "Internal server error" });

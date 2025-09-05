@@ -14,7 +14,16 @@ export default function Orders() {
         } catch (error) {
             console.error("Error fetching orders:", error);
         }
-    }
+    };
+
+    const handleUpdateStatus = async (orderId, newStatus) => {
+        try {
+            await axios.put(`http://localhost:3000/api/shipper/orders/${orderId}`, { status: newStatus }, { withCredentials: true });
+            fetchOrders(); // refesh after update
+        } catch (err) {
+        console.error("Failed to update order:", err);
+        }
+        };
 
     useEffect(() => {
         fetchOrders();
@@ -55,7 +64,22 @@ export default function Orders() {
                                 <p className='mb-0'>Total: {order.totalPrice.toLocaleString()}₫</p>
                             </div>
 
-                            <button className='acceptOrderBtn fw-bold' type='button'>Accept</button>
+                            <div className='d-flex gap-3 justify-content-end'>
+                                <button
+                                className='btn btn-success fw-bold'
+                                type='button'
+                                onClick={() => handleUpdateStatus(order._id, 'Delivered')}
+                                >
+                                Delivered
+                                </button>
+                                <button
+                                className='btn btn-danger fw-bold'
+                                type='button'
+                                onClick={() => handleUpdateStatus(order._id, 'Canceled')}
+                                >
+                                Canceled
+                                </button>
+                                </div>
                         </div>
                     </div>
                 ))}
