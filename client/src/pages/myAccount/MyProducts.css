@@ -118,3 +118,33 @@ h1 {
         }
     }
 }
+.load-more-container {
+    position: relative;
+    z-index: 10;
+    background-color: #f7f8fa;
+    padding: 20px 0 30px 0;
+    margin-top: 20px;
+}
+
+/* Mobile specific fixes */
+@media (max-width: 767px) {
+    .load-more-container {
+        padding: 30px 15px 50px 15px;
+        margin-bottom: 80px;
+    }
+    
+    .load-more-container .btn {
+        padding: 12px 24px;
+        font-size: 16px;
+        width: auto;
+        min-width: 200px;
+    }
+}
+
+/* Tablet specific fixes */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .load-more-container {
+        padding: 25px 15px 40px 15px;
+        margin-bottom: 60px;
+    }
+}

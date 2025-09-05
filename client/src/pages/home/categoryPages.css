@@ -80,7 +80,8 @@
 
 /* Sidebar Filters */
 .filters-sidebar {
-    background-color: var(--eerieBlack);
+    background-color: transparent;
+    color: var(--eerieBlack);
     color: white;
     min-height: 100vh;
     padding: 0;
@@ -89,6 +90,7 @@
 .filters-header {
     padding: 2rem 1rem 1.5rem 1rem;
     text-align: center;
+    color: var(--eerieBlack);
 }
 
 .filters-content {
@@ -101,7 +103,7 @@
 }
 
 .filters-title {
-    color: white;
+    color: var(--eerieBlack);
     margin-bottom: 1rem;
     font-weight: bold;
 }
@@ -111,7 +113,7 @@
 }
 
 .filter-label {
-    color: white;
+    color: var(--eerieBlack);
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
 }
@@ -119,8 +121,9 @@
 .filter-input {
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid #ddd;
     border-radius: 4px;
+    border: 1px solid var(--eerieBlack);
+    color: var(--eerieBlack);
 }
 
 .filter-input:focus {
@@ -129,14 +132,19 @@
 }
 
 .back-home-container {
-    padding: 1rem;
-    margin-top: auto;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+    width: auto;
 }
 
 .back-home-btn {
     background-color: transparent;
-    color: white;
-    border: 1px solid white;
+    color: var(--eerieBlack);
+    border: 1px solid var(--eerieBlack);
     padding: 0.5rem 1rem;
     border-radius: 4px;
     width: 100%;
@@ -146,16 +154,16 @@
 }
 
 .back-home-btn:hover {
-    background-color: white;
+    background-color: var(--goldenrod);
     color: var(--eerieBlack);
     text-decoration: none;
 }
 
 /* Buttons */
 .btn-apply {
-    background-color: var(--goldenrod);
-    color: white;
-    border: none;
+    background-color: transparent;
+    border: 1px solid var(--eerieBlack);
+    color: var(--eerieBlack);
     padding: 0.5rem 1rem;
     border-radius: 4px;
     width: 100%;
@@ -163,20 +171,21 @@
 }
 
 .btn-apply:hover {
-    background-color: #b8941c;
+    background-color: var(--goldenrod);
+    border: 1px solid var(--eerieBlack);
 }
 
 .btn-reset {
     background-color: transparent;
-    color: white;
-    border: 1px solid white;
+    color: var(--eerieBlack);
+    border: 1px solid var(--eerieBlack);
     padding: 0.5rem 1rem;
     border-radius: 4px;
     width: 100%;
 }
 
 .btn-reset:hover {
-    background-color: white;
+    background-color: var(--goldenrod);
     color: var(--eerieBlack);
 }
 

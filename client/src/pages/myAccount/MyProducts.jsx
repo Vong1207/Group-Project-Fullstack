@@ -2,6 +2,7 @@ import './MyProducts.css';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import '../home/categoryPages.css';
 
 export default function MyProducts() {
     const userId = useSelector(state => state.user.user?._id) || '';
@@ -88,36 +89,81 @@ export default function MyProducts() {
         <>
             <h1 className='mt-4 mb-0 text-center'>View Products</h1>
 
-            <div className='container-fluid mt-4 px-0'>
-                <div className='row mx-0' id='myProductsRow'>
-                    {displayProducts.map((product, index) => (
-                        <div key={index} className='col-lg-4 col-md-6 col-12 mt-4 px-0 d-flex justify-content-center align-items-center'>
-                            <div className='myProductContainer w-100'>
-                                <div className='d-flex justify-content-center myProductImageContainer'>
-                                    <img className='myProductImage' src={product.productImage} alt={`${product.productName} Image`} />
-                                </div>
-                                <div className='p-2'>
-                                    <p className='mb-0 fw-bold myProductName'>{product.productName}</p>
-                                    <div className='d-flex justify-content-between'>
-                                        <p className='mb-0'>{product.productPrice.toLocaleString()}₫</p>
-                                        <p className='mb-0 text-muted'>Stock: {product.stockQuantity}</p>
+            {/* Products Grid - Category Page Style */}
+            <div className='container-fluid mt-4'>
+                <div className="products-container">
+                    <div className="row g-3">
+                        {displayProducts.length > 0 ? (
+                            displayProducts.map((product) => (
+                                <div key={product._id} className="col-lg-4 col-md-6 col-12">
+                                    <div className="card product-card h-100">
+                                        <img 
+                                            src={product.productImage} 
+                                            className="product-image"
+                                            alt={product.productName}
+                                        />
+                                        
+                                        <div className="product-body">
+                                            <h6 className="product-title">
+                                                {product.productName}
+                                            </h6>
+                                            
+                                            <p className="product-description">
+                                                {product.description?.length > 60 
+                                                    ? `${product.description.substring(0, 60)}...`
+                                                    : product.description
+                                                }
+                                            </p>
+                                            
+                                            <div className="product-price">
+                                                {product.productPrice?.toLocaleString()} VNĐ
+                                            </div>
+                                            
+                                            <div className="d-flex gap-2">
+                                                <button 
+                                                    className="btn btn-outline-secondary btn-sm flex-fill"
+                                                    onClick={() => handleEditModalOpen(product)}
+                                                >
+                                                    <i className="bi bi-pencil me-1"></i>
+                                                    Edit
+                                                </button>
+                                                <button 
+                                                    className="btn btn-danger btn-sm flex-fill"
+                                                    onClick={() => handleDeleteProduct(product._id)}
+                                                >
+                                                    <i className="bi bi-trash me-1"></i>
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className='d-flex justify-content-between p-2'>
-                                    <button className='px-4 py-1 editBtn fw-bold' type='button' onClick={() => handleEditModalOpen(product)}>Edit</button>
-                                    <button className='px-3 py-1 deleteBtn fw-bold' type='button' onClick={() => handleDeleteProduct(product._id)}>Delete</button>
-                                </div>
+                            ))
+                        ) : (
+                            <div className="col-12 text-center py-5">
+                                <i className="bi bi-box" style={{ fontSize: '3rem', color: '#666' }}></i>
+                                <h5 className="mt-3 text-muted">No Products Found</h5>
+                                <p className="text-muted">You haven't added any products yet.</p>
                             </div>
-                        </div>
-                    ))}
-
-                    <div className='col-12 mt-5 d-flex justify-content-center align-items-center'>
-                        {displayLoadMore && products.length > 0 && (
-                            <button className='px-4 py-2 loadMoreBtn fw-bold' type='button' onClick={handleLoadMore}>Load More</button>
                         )}
                     </div>
                 </div>
             </div>
+
+            {/* Load More Button - Moved Outside */}
+            {displayLoadMore && products.length > endIndex && (
+                <div className="container-fluid">
+                    <div className="load-more-container text-center">
+                        <button 
+                            className="btn btn-outline-primary px-4 py-2"
+                            onClick={handleLoadMore}
+                        >
+                            <i className="bi bi-arrow-down-circle me-2"></i>
+                            Load More Products
+                        </button>
+                    </div>
+                </div>
+            )}
 
             {showEditModal && selectedProduct && (
                 <div className='modal show d-flex align-items-center' tabIndex='-1' role='dialog'>
