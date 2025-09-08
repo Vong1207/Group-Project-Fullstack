@@ -24,7 +24,7 @@ export default function Navbar() {
           <div className='col-lg-8 col-sm-10 col-9 ps-sm-0 pe-0'>
             <form action="/search" method='GET'>
               <div className='d-flex justify-content-start searchBarContainer'>
-                <input className='ps-3 py-2' id='searchedName' name='searchedName' type="text" placeholder='Vendor/Product' />
+                <input className='ps-3 py-2' id='searchedName' name='searchedName' type="text" placeholder='Product Name' />
                 <button type='submit' className='px-4 my-1 me-1'>
                   <i className='bi bi-search'></i>
                 </button>
