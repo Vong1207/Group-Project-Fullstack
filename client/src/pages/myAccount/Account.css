@@ -76,5 +76,17 @@
                 color: var(--goldenrod);
             }
         }
+
+        & #logoutBtn {
+            border: 2px solid var(--danger);
+            background-color: white;
+            color: var(--danger);
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background-color: var(--danger);
+                color: white;
+            }
+        }
     }
 }

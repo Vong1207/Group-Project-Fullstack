@@ -83,8 +83,7 @@ export default function Account() {
                 </div>
 
                 <div>
-                    <button type='button'>Edit</button>
-                    <button type='button'>Logout</button>
+                    <button id='logoutBtn' className='py-2 px-4 fw-bold' type='button' onClick={handleSignOut}>Logout</button>
                 </div>
             </div>
         </div>
