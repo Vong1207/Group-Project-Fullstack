@@ -1,5 +1,4 @@
-// client/src/pages/product/ProductDetail.jsx
-
+import './productDetails.css';
 
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -17,7 +16,6 @@ export default function ProductDetail() {
   function handleQuantityChange(val) {
     setQuantity(Math.max(1, Math.min(99, val)));
   }
-  const [selectedFrequency, setSelectedFrequency] = useState('one');
   const dispatch = useDispatch();
   const userId = useSelector(state => state.user.user?._id);
   const currentCart = useSelector(state => state.user.user?.cart || []);
@@ -88,7 +86,7 @@ export default function ProductDetail() {
           <div className="col-md-7">
             <h2 className="fw-bold mb-2">{product.productName}</h2>
             <div className="d-flex align-items-center gap-3 mb-2">
-              <span className="fs-4 text-danger fw-bold">{Number(product.productPrice).toLocaleString()}₫</span>
+              <span className="fs-4 productDetailPrice fw-bold">{Number(product.productPrice).toLocaleString()}₫</span>
             </div>
             <p className="mb-2">{product.description}</p>
             <div className="mb-2 text-muted">Category: {product.category}</div>
@@ -149,7 +147,7 @@ export default function ProductDetail() {
                   <div style={{height:180, width:'100%', background:'#f8f9fa', backgroundImage:`url(${rp.productImage || '/defaultProfile.png'})`, backgroundSize:'cover', backgroundPosition:'center', borderRadius:'8px'}} />
                   <div className="card-body d-flex flex-column">
                     <h6 className="card-title fw-bold" style={{minHeight:40, wordBreak:'break-word', overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'normal', maxHeight:40}}>{rp.productName}</h6>
-                    <div className="mb-2 text-danger fw-bold">{Number(rp.productPrice).toLocaleString()}₫</div>
+                    <div className="mb-2 productDetailPrice fw-bold">{Number(rp.productPrice).toLocaleString()}₫</div>
                     <button className="btn btn-outline-dark mt-auto" onClick={()=>navigate(`/product/${rp._id}`)}>Visit</button>
                   </div>
                 </div>
