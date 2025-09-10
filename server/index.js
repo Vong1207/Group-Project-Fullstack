@@ -3,6 +3,7 @@ import cors from 'cors';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import dotenv from 'dotenv';
+import { User } from './db/schema.js';
 
 // Import routes
 import authRoutes from "./routes/auth.js";
@@ -61,8 +62,13 @@ app.use('/api/shipper', shipperRoutes);
 app.use('/api/user', userRoutes);
 
 // APIs
-app.get('/api/session', (req, res) => {
+app.get('/api/session', async (req, res) => {
     if (req.session && req.session.user) {
+        const currentUser = await User.findById(req.session.user._id)
+            .populate("cart.product")
+            .populate("purchased.product")    
+        ;
+        req.session.user = currentUser;
         res.json({ loggedIn: true, user: req.session.user });
     } else {
         res.json({ loggedIn: false });

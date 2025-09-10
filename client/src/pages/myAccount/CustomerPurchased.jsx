@@ -29,7 +29,7 @@ export default function CustomerPurchased() {
                             </div>
 
                             <div className='purchasedTotalPriceContainer d-flex justify-content-end'>
-                                <p className='mb-0'>{`${(product.product.productPrice).toLocaleString()}₫`}</p>
+                                <p className='mb-0'>{`${(product.product?.productPrice ?? 0).toLocaleString()}₫`}</p>
                             </div>
                         </div>
 
@@ -55,7 +55,7 @@ export default function CustomerPurchased() {
                                 </span>
                                 <div className='d-flex justify-content-between'>
                                     <p className='text-muted mb-0 ms-3'><small>x{product.quantity}</small></p>
-                                    <p className='mb-0'>{`${(product.product.productPrice).toLocaleString()}₫`}</p>
+                                    <p className='mb-0'>{`${(product.product?.productPrice ?? 0).toLocaleString()}₫`}</p>
                                 </div>
                             </div>
                         </div>

@@ -12,9 +12,9 @@ export default function SessionProvider({ children }) {
             try {
                 const res = await axios.get("http://localhost:3000/api/session", { withCredentials: true });
                 if (res.data && res.data.loggedIn && res.data.user) {
-                dispatch(setUser(res.data.user));
+                    dispatch(setUser(res.data.user));
                 } else {
-                dispatch(clearUser());
+                    dispatch(clearUser());
                 }
             } catch {
                 dispatch(clearUser());
