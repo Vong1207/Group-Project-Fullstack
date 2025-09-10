@@ -74,6 +74,7 @@ export default function CustomerCart() {
   function handleDeleteProduct(index) {
     dispatch(deleteCartProduct(index));
   }
+
   async function handlePlaceOrder() {
     if (!userId) return;
 
@@ -115,9 +116,7 @@ export default function CustomerCart() {
 
   // Save cart changes to DB
   useEffect(() => {
-    if (productsInCart.length > 0) {
-      saveCartToDB(productsInCart);
-    }
+    saveCartToDB(productsInCart);
   }, [
     handleAddQuantity,
     handleDeleteProduct,
