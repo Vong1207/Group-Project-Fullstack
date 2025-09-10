@@ -5,8 +5,19 @@ header {
     & .navbar {
         & .brandName {
             text-decoration: none;
+            
             color: white;
+            align-self: center;
+            font-family: "Outfit", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 375;
+            font-style: normal;
+            font-size: larger;
+
+        
         }
+        }
+        
 
         & form {
             width: 100%;
@@ -51,4 +62,11 @@ header {
             }
         }
     }
-}
+
+    #logo{
+        object-fit: cover;
+        width: 100px;
+        height: 60px;
+        border-radius: 50px;
+        margin-left: 10px;
+    }

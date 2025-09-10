@@ -16,7 +16,7 @@ export default function Navbar() {
           {/* Brand Name */}
           <div className='col-lg-2 d-lg-block d-none pe-0'>
             <Link to='/' className='brandName'>
-              Brand Name
+                    <img src="../../../public/brandProfile/logo.png" id="logo"  />
             </Link>
           </div>
 

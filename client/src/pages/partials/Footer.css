@@ -2,6 +2,15 @@ footer {
   background-color: var(--eerieBlack);
   color: white;
 
+  & .brandName{
+            text-decoration: none;
+            color: white;
+            align-self: center;
+            font-family: "Caveat", cursive;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
   & .socialsContainer {
     & a {
       text-decoration: none;
@@ -27,6 +36,7 @@ footer {
         & i {
           color: var(--goldenrod);
         }
+        
       }
     }
   }
