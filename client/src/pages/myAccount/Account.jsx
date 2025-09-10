@@ -44,7 +44,12 @@ export default function Account() {
 
     const saveChangesToDB = async () => {
         try {
-            await axios.put('http://localhost:3000/api/user/updateAccount', { avatar: base64Avatar }, { withCredentials: true });
+            if (base64Avatar && base64Avatar !== user.avatar) {
+                await axios.put('http://localhost:3000/api/user/updateAccount', { avatar: base64Avatar }, { withCredentials: true });
+            } else {
+                return;
+            }
+            
             alert('Changes saved successfully!');
         } catch (error) {
             console.error('Error saving changes:', error);
