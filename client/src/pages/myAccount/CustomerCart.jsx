@@ -181,7 +181,7 @@ export default function CustomerCart() {
 
             <div className="d-flex align-items-center justify-content-center priceContainer">
               <p className="mb-0">
-                {product.product.productPrice.toLocaleString()}₫
+                {(product.product?.productPrice ?? 0).toLocaleString()}₫
               </p>
             </div>
 
@@ -206,7 +206,7 @@ export default function CustomerCart() {
             <div className="d-flex align-items-center justify-content-center totalPriceContainer">
               <p className="mb-0">
                 {(
-                  product.product.productPrice * product.quantity
+                  (product.product?.productPrice ?? 0) * (product.quantity ?? 0)
                 ).toLocaleString()}
                 ₫
               </p>
@@ -290,7 +290,7 @@ export default function CustomerCart() {
                   {product.product.productName}
                 </p>
                 <p className="mb-0 mt-2">
-                  {product.product.productPrice.toLocaleString()}₫
+                  {(product.product?.productPrice ?? 0).toLocaleString()}₫
                 </p>
                 <div className="d-flex align-items-center productQuantityContainerSm">
                   <button
