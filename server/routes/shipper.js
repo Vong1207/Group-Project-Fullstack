@@ -57,6 +57,10 @@ router.put("/orders/:orderId", async (req, res) => {
       if (!customer) {
         return res.status(404).json({ success: false, message: "Customer not found" });
       }
+    
+    if (status === "Canceled") {
+      customer.walletBalance += order.totalPrice;
+    }
 
       order.cart.forEach((ci) => {
         customer.purchased.push({

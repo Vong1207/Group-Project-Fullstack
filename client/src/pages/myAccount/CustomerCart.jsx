@@ -9,6 +9,7 @@ import {
   addCartQuantity,
   inputCartQuantity,
   deleteCartProduct,
+  updateWalletBalance,
 } from "../../redux/userSlice.js";
 
 export default function CustomerCart() {
@@ -34,6 +35,7 @@ export default function CustomerCart() {
 
   // Save cart changes to DB function
   const userId = useSelector((state) => state.user.user?._id);
+  const walletBalance = useSelector((state) => state.user.user?.walletBalance) || 0;
 
   async function saveCartToDB(cart) {
     if (!userId) return;
@@ -53,7 +55,7 @@ export default function CustomerCart() {
     const allSelected = checked.every(Boolean);
     setChecked(productsInCart.map(() => !allSelected));
   }
-
+  // Select a product
   function handleSelectProduct(index) {
     setChecked(checked.map((item, i) => (i === index ? !item : item)));
   }
@@ -74,17 +76,22 @@ export default function CustomerCart() {
   function handleDeleteProduct(index) {
     dispatch(deleteCartProduct(index));
   }
-
+  // Order function
   async function handlePlaceOrder() {
     if (!userId) return;
 
     const selectedItems = productsInCart.filter((_, i) => checked[i]);
-
+    // Check the product is not empty
     if (selectedItems.length === 0) {
       alert("Please select at least one item.");
       return;
     }
-
+    // Check wallet balance
+    if (walletBalance < totalPriceSelected) {
+    alert("You don't have enough money in your wallet.");
+    return;
+  }
+    // Create an array of products
     const products = selectedItems.map((item) => ({
       product: item.product._id,
       quantity: item.quantity,
@@ -104,6 +111,7 @@ export default function CustomerCart() {
       if (res.data.success) {
         alert("Order success!");
         dispatch(setUser(res.data.updatedUser));
+        dispatch(updateWalletBalance(walletBalance - totalPriceSelected));
         setChecked([]);
       } else {
         alert("Order failed");

@@ -18,8 +18,8 @@ router.post("/update", async (req, res) => {
 // create order from user cart
 router.post("/order", async (req, res) => {
   const { userId, cart, totalPrice } = req.body;
-  console.log("✅ BODY:", req.body);
-  // check data from client
+  console.log("BODY:", req.body);
+
   if (
     !userId ||
     !Array.isArray(cart) ||
@@ -30,40 +30,42 @@ router.post("/order", async (req, res) => {
   }
 
   try {
-    // create a new array to store products
+    // Get user
+    const user = await User.findById(userId).populate("cart.product");
+    // Check walletBalance
+    if (user.walletBalance < totalPrice) {
+      return res
+        .status(400)
+        .json({ success: false, error: "Insufficient balance in wallet" });
+    }
+
+    // Deduct money from walletBalance.
+    user.walletBalance -= totalPrice;
+
     const orderItems = cart.map((item) => ({
       product: item.product,
       quantity: item.quantity,
     }));
-    // choose a hub randomly
     const hubs = ["Ho Chi Minh", "Da Nang", "Ha Noi"];
     const randomHub = hubs[Math.floor(Math.random() * hubs.length)];
-    // create a new order
     const newOrder = new Order({
       customer: userId,
       cart: orderItems,
       totalPrice,
       distributionHub: randomHub,
     });
-
     await newOrder.save();
-    // currently user
-    const user = await User.findById(userId).populate("cart.product");
 
-    // get the id list of products that were ordered
-    const orderedProductIds = cart.map(item => item.product.toString());
-
-    // keep products were not order
-    const remainingCart = user.cart.filter(item => {
+    const orderedProductIds = cart.map((item) => item.product.toString());
+    const remainingCart = user.cart.filter((item) => {
       return !orderedProductIds.includes(item.product._id.toString());
     });
 
-    // update user cart
     user.cart = remainingCart;
     await user.save();
 
-    // update cart 
     req.session.user.cart = user.cart;
+    req.session.user.walletBalance = user.walletBalance;
 
     res.json({ success: true, order: newOrder, updatedUser: user });
   } catch (error) {

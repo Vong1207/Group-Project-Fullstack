@@ -66,10 +66,10 @@ const userSlice = createSlice({
         },
         // Wallet reducers
         updateWalletBalance: (state, action) => {
-            if (state.user) {
-                state.user.walletBalance = action.payload;
-            }
-        },
+        if (state.user && typeof action.payload === 'number') {
+            state.user.walletBalance = action.payload;
+        }
+        }
     }
 });
 
