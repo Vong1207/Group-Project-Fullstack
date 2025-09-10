@@ -135,6 +135,10 @@ const productSchema = new mongoose.Schema({
     min: 0,
     required: true,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  }
 });
 
 // order schema

@@ -60,6 +60,7 @@ export default function AddNewProduct() {
         try {
             const response = await axios.post('http://localhost:3000/api/product/add', { product: formData }, { withCredentials: true });
             console.log('Product added successfully:', response.data);
+            alert('Product added successfully!');
         } catch (error) {
             console.error('Error adding product:', error);
         }

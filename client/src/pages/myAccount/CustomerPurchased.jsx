@@ -21,7 +21,7 @@ export default function CustomerPurchased() {
                             <div className='purchasedDetailsContainer flex-fill d-flex flex-column ps-3 pe-2'>
                                 <div className='purchasedNameContainer'>
                                     <p className='mb-0 purchasedName fw-bold'>{product.product.productName}</p>
-                                    <span className={`ms-2 badge ${product.status === 'Delivered' ? 'bg-success' : 'bg-danger'}`}>
+                                    <span className={`badge ${product.status === 'Delivered' ? 'bg-success' : 'bg-danger'}`}>
                                     {product.status}
                                     </span>
                                 </div>
@@ -29,12 +29,12 @@ export default function CustomerPurchased() {
                             </div>
 
                             <div className='purchasedTotalPriceContainer d-flex justify-content-end'>
-                                <p className='mb-0'>{`${(product.product?.productPrice ?? 0).toLocaleString()}₫`}</p>
+                                <p className='productPrice mb-0'>{`${(product.product?.productPrice ?? 0).toLocaleString()}₫`}</p>
                             </div>
                         </div>
 
                         <div className='my-2'>
-                            <p className='mb-0 text-end'>{`Total (${product.quantity} ${product.quantity === 1 ? 'product' : 'products'}): ${(product.quantity * product.product.productPrice).toLocaleString()}₫`}</p>
+                            <p className='mb-0 text-end fw-bold totalProductsPrice'>{`Total (${product.quantity} ${product.quantity === 1 ? 'product' : 'products'}): ${(product.quantity * product.product.productPrice).toLocaleString()}₫`}</p>
                         </div>
                     </div>
                 ))}
@@ -50,18 +50,18 @@ export default function CustomerPurchased() {
 
                             <div className='flex-fill purchasedNameContainerSm'>
                                 <p className='mb-2 fw-bold ps-3 purchasedNameSm'>{product.product.productName}</p>
-                                <span className={`ms-2 badge ${product.status === 'Delivered' ? 'bg-success' : 'bg-danger'}`}>
+                                <span className={`ms-3 badge ${product.status === 'Delivered' ? 'bg-success' : 'bg-danger'}`}>
                                     {product.status}
                                 </span>
                                 <div className='d-flex justify-content-between'>
                                     <p className='text-muted mb-0 ms-3'><small>x{product.quantity}</small></p>
-                                    <p className='mb-0'>{`${(product.product?.productPrice ?? 0).toLocaleString()}₫`}</p>
+                                    <p className='mb-0 productPrice'>{`${(product.product?.productPrice ?? 0).toLocaleString()}₫`}</p>
                                 </div>
                             </div>
                         </div>
 
                         <div className='my-2'>
-                            <p className='mb-0 text-end'>{`Total (${product.quantity} ${product.quantity === 1 ? 'product' : 'products'}): ${(product.quantity * product.product.productPrice).toLocaleString()}₫`}</p>
+                            <p className='mb-0 text-end fw-bold totalProductsPrice'>{`Total (${product.quantity} ${product.quantity === 1 ? 'product' : 'products'}): ${(product.quantity * product.product.productPrice).toLocaleString()}₫`}</p>
                         </div>
                     </div>
                 ))}

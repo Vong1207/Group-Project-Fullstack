@@ -25,7 +25,7 @@ import MyProducts from './pages/myAccount/MyProducts.jsx';
 import AddNewProduct from './pages/myAccount/AddNewProduct.jsx';
 import CategoryPage  from './pages/home/CategoryPages.jsx';
 import SearchResult from './pages/search/SearchResult.jsx';
-import ProductDetail from './pages/productDetails/productDetails.jsx';
+import ProductDetails from './pages/productDetails/ProductDetails.jsx';
 import Orders from './pages/myAccount/Orders.jsx';
 
 const router = createBrowserRouter([
@@ -71,7 +71,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/product/:productId",
-    element: <ProductDetail />,
+    element: <ProductDetails />,
     errorElement: <NotFound />
   },
   {

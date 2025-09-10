@@ -27,3 +27,14 @@ input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.relatedProducts::-webkit-scrollbar {
+    height: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+
+.relatedProducts::-webkit-scrollbar-thumb {
+    background-color: var(--goldenrod);
+    border-radius: 0.25rem;
+}

@@ -1,4 +1,4 @@
-import { User, Product } from "./schema.js";
+import { User, Product, Order } from "./schema.js";
 import { hashPassword } from "../bcrypt/bcrypt.js";
 
 // This file is used to automatically create sample data for the database
@@ -1500,6 +1500,9 @@ await Product.deleteMany()
   .catch((error) => {
     console.error("Error seeding product data:", error);
   });
+
+await Order.deleteMany({});
+console.log("Order Data Cleared");
 
 // End script
 process.exit(0);
