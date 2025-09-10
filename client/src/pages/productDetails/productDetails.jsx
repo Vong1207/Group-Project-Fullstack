@@ -1,14 +1,14 @@
-import './productDetails.css';
+import './ProductDetails.css';
 
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProductToCard , setCart} from '../../redux/userSlice';
+import { addProductToCard , setCart} from '../../redux/userSlice.js';
 import axios from 'axios';
 import Navbar from '../partials/Navbar.jsx';
 import Footer from '../partials/Footer.jsx';
 
-export default function ProductDetail() {
+export default function ProductDetails() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
