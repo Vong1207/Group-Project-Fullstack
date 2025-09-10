@@ -66,36 +66,84 @@ export default function AddNewProduct() {
     }
 
     return (
-        <>
-            <h1 className="mb-0 text-center mt-4">Add New Product</h1>
+        <div className="add-product-container">
+            <div className="add-product-header">
+                <h1>
+                    <i className="bi bi-plus-circle me-2"></i>
+                    Add New Product
+                </h1>
+                <p className="add-product-subtitle">
+                    Create a new product for your storee
+                </p>
+            </div>
 
-            <div id='addProductFormContainer' className='mt-4 p-3'>
-                <form method='post'>
-                    <div className='d-flex flex-column mb-3'>
-                        <label className='mb-1' htmlFor="productName">Product Name</label>
-                        <input onChange={(event) => setFormData({ ...formData, productName: event.target.value })} type="text" id="productName" name="productName" required />
+            <div className="add-product-form-container">
+                <form onSubmit={handleSubmit} className="add-product-form">
+                    
+                    <div className="form-group">
+                        <label className="form-label">
+                            <i className="bi bi-tag me-2"></i>
+                            Product Name
+                        </label>
+                        <input 
+                            onChange={(event) => setFormData({ ...formData, productName: event.target.value })} 
+                            type="text" 
+                            className="form-input"
+                            placeholder="Enter product name..."
+                            required 
+                        />
                     </div>
-                    <div className='d-flex flex-column mb-3'>
-                        <label className='mb-1' htmlFor="productImage">Product Image</label>
-                        <input onChange={(event) => handleChangeInputImage(event)} type="file" id="productImage" name="productImage" accept="image/*" required />
+
+                    <div className="form-group">
+                        <label className="form-label">
+                            <i className="bi bi-image me-2"></i>
+                            Product Image
+                        </label>
+                        <input 
+                            onChange={(event) => handleChangeInputImage(event)} 
+                            type="file" 
+                            className="form-input file-input"
+                            accept="image/*" 
+                            required 
+                        />
                     </div>
-                    <div className='d-flex flex-column mb-3'>
-                        <label className='mb-1' htmlFor="productPrice">Product Price</label>
-                        <input onChange={(event) => setFormData({ ...formData, productPrice: Number(event.target.value) })} type="number" id="productPrice" name="productPrice" required />
+
+                    <div className="form-group">
+                        <label className="form-label">
+                            <i className="bi bi-currency-dollar me-2"></i>
+                            Product Price (₫)
+                        </label>
+                        <input 
+                            onChange={(event) => setFormData({ ...formData, productPrice: Number(event.target.value) })} 
+                            type="number" 
+                            className="form-input"
+                            placeholder="Enter price..."
+                            required 
+                        />
                     </div>
-                    <div className='d-flex flex-column mb-3'>
-                        <label className='mb-1' htmlFor="category">Product Category</label>
-                        <div className='customDropdownContainer position-relative px-2 py-1'>
-                            { categoryOption }
-                            <button className='position-absolute customDropdownToggler' type='button' onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                                <i className={ isDropdownOpen ? 'bi bi-chevron-up' : 'bi bi-chevron-down' }></i>
+
+                    <div className="form-group">
+                        <label className="form-label">
+                            <i className="bi bi-grid me-2"></i>
+                            Product Category
+                        </label>
+                        <div className="dropdown-container">
+                            <button 
+                                type="button"
+                                className={`dropdown-toggle ${isDropdownOpen ? 'active' : ''}`}
+                                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                            >
+                                <span>{categoryOption}</span>
                             </button>
-
-                            {/* Dropdown Options */}
+                            
                             {isDropdownOpen && (
-                                <div className='customDropdownOptions position-absolute px-2 py-1'>
+                                <div className="dropdown-options">
                                     {categories.map((category) => (
-                                        <div key={category} className='customDropdownOption' onClick={() => { setCategoryOption(category); setIsDropdownOpen(false); }}>
+                                        <div 
+                                            key={category} 
+                                            className="dropdown-option"
+                                            onClick={() => { setCategoryOption(category); setIsDropdownOpen(false); }}
+                                        >
                                             {category}
                                         </div>
                                     ))}
@@ -103,18 +151,41 @@ export default function AddNewProduct() {
                             )}
                         </div>
                     </div>
-                    <div className='d-flex flex-column mb-3'>
-                        <label className='mb-1' htmlFor="description">Product Description</label>
-                        <textarea onChange={(event) => setFormData({ ...formData, description: event.target.value })} id="description" name="description" rows="3" required></textarea>
-                    </div>
-                    <div className='d-flex flex-column mb-3'>
-                        <label className='mb-1' htmlFor="stockQuantity">Product Stock</label>
-                        <input onChange={(event) => setFormData({ ...formData, stockQuantity: Number(event.target.value) })} type="number" id="stockQuantity" name="stockQuantity" required />
+
+                    <div className="form-group">
+                        <label className="form-label">
+                            <i className="bi bi-file-text me-2"></i>
+                            Product Description
+                        </label>
+                        <textarea 
+                            onChange={(event) => setFormData({ ...formData, description: event.target.value })} 
+                            className="form-textarea"
+                            placeholder="Enter product description..."
+                            rows="4" 
+                            required
+                        />
                     </div>
 
-                    <button type="submit" onClick={(event) => handleSubmit(event)}>Add Product</button>
+                    <div className="form-group">
+                        <label className="form-label">
+                            <i className="bi bi-box me-2"></i>
+                            Stock Quantity
+                        </label>
+                        <input 
+                            onChange={(event) => setFormData({ ...formData, stockQuantity: Number(event.target.value) })} 
+                            type="number" 
+                            className="form-input"
+                            placeholder="Enter stock quantity..."
+                            required 
+                        />
+                    </div>
+
+                    <button type="submit" className="submit-btn">
+                        <i className="bi bi-plus-circle me-2"></i>
+                        Add Product
+                    </button>
                 </form>
             </div>
-        </>
+        </div>
     )
 }

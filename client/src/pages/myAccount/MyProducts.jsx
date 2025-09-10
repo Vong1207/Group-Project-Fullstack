@@ -121,7 +121,7 @@ export default function MyProducts() {
                                             
                                             <div className="d-flex gap-2">
                                                 <button 
-                                                    className="btn btn-outline-secondary btn-sm flex-fill"
+                                                    className="btn editBtn btn-outline-secondary btn-sm flex-fill"
                                                     onClick={() => handleEditModalOpen(product)}
                                                 >
                                                     <i className="bi bi-pencil me-1"></i>
@@ -166,36 +166,94 @@ export default function MyProducts() {
             )}
 
             {showEditModal && selectedProduct && (
-                <div className='modal show d-flex align-items-center' tabIndex='-1' role='dialog'>
-                    <div className='modal-dialog' role='document'>
-                        <div className='modal-content'>
-                            <div className='modal-header d-flex justify-content-between'>
-                                <h5 className='modal-title fw-bold'>Edit Product</h5>
-                                <button className='closeModalBtn' type='button' onClick={handleEditModalClose}>
-                                    <i className='bi bi-x-lg'></i>
-                                </button>
+                <div className="edit-modal-overlay" onClick={(e) => e.target === e.currentTarget && handleEditModalClose()}>
+                    <div className="edit-modal-container">
+                        <div className="edit-modal-header">
+                            <h3 className="edit-modal-title">
+                                <i className="bi bi-pencil-square me-2"></i>
+                                Edit Product
+                            </h3>
+                            <button className="edit-modal-close" onClick={handleEditModalClose}>
+                                <i className="bi bi-x-lg"></i>
+                            </button>
+                        </div>
+                        
+                        <div className="edit-modal-body">
+                            <div className="edit-form-group">
+                                <label className="edit-form-label">
+                                    <i className="bi bi-tag me-2"></i>
+                                    Product Name
+                                </label>
+                                <input 
+                                    type="text" 
+                                    className="edit-form-input"
+                                    defaultValue={selectedProduct.productName}
+                                    onChange={(e) => setSelectedProduct({...selectedProduct, productName: e.target.value})}
+                                    placeholder="Enter product name..."
+                                />
                             </div>
-                            <div className='modal-body'>
-                                <div className='d-flex justify-content-between mb-2'>
-                                    <label htmlFor="productName">Name:</label>
-                                    <input className='px-2' type="text" defaultValue={selectedProduct.productName} onChange={(event) => setSelectedProduct({ ...selectedProduct, productName: event.target.value })} />
-                                </div>
-                                <div className='d-flex justify-content-between mb-2'>
-                                    <label htmlFor="productPrice">Price:</label>
-                                    <input className='px-2' type="number" defaultValue={selectedProduct.productPrice} onChange={(event) => setSelectedProduct({ ...selectedProduct, productPrice: parseInt(event.target.value) })} />
-                                </div>
-                                <div className='d-flex justify-content-between mb-2'>
-                                    <label htmlFor="description">Description:</label>
-                                    <input className='px-2' type="text" defaultValue={selectedProduct.description} onChange={(event) => setSelectedProduct({ ...selectedProduct, description: event.target.value })} />
-                                </div>
-                                <div className='d-flex justify-content-between'>
-                                    <label htmlFor="stock">Stock:</label>
-                                    <input className='px-2' type="number" defaultValue={selectedProduct.stockQuantity} onChange={(event) => setSelectedProduct({ ...selectedProduct, stockQuantity: parseInt(event.target.value) })} />
-                                </div>
+                            
+                            <div className="edit-form-group">
+                                <label className="edit-form-label">
+                                    <i className="bi bi-currency-dollar me-2"></i>
+                                    Price (₫)
+                                </label>
+                                <input 
+                                    type="number" 
+                                    className="edit-form-input"
+                                    defaultValue={selectedProduct.productPrice}
+                                    onChange={(e) => setSelectedProduct({...selectedProduct, productPrice: parseInt(e.target.value)})}
+                                    placeholder="Enter price..."
+                                    min="0"
+                                />
                             </div>
-                            <div className='modal-footer'>
-                                <button className={`py-1 px-3 fw-bold ${isProductChanged() ? 'saveChanges' : 'disabled'}`} disabled={!isProductChanged()} type='button' onClick={() => handleEditProduct(selectedProduct)}>Save changes</button>
+                            
+                            <div className="edit-form-group">
+                                <label className="edit-form-label">
+                                    <i className="bi bi-file-text me-2"></i>
+                                    Description
+                                </label>
+                                <textarea 
+                                    className="edit-form-textarea"
+                                    defaultValue={selectedProduct.description}
+                                    onChange={(e) => setSelectedProduct({...selectedProduct, description: e.target.value})}
+                                    placeholder="Enter product description..."
+                                    rows="4"
+                                />
                             </div>
+                            
+                            <div className="edit-form-group">
+                                <label className="edit-form-label">
+                                    <i className="bi bi-box me-2"></i>
+                                    Stock Quantity
+                                </label>
+                                <input 
+                                    type="number" 
+                                    className="edit-form-input"
+                                    defaultValue={selectedProduct.stockQuantity}
+                                    onChange={(e) => setSelectedProduct({...selectedProduct, stockQuantity: parseInt(e.target.value)})}
+                                    placeholder="Enter stock quantity..."
+                                    min="0"
+                                />
+                            </div>
+                        </div>
+                        
+                        <div className="edit-modal-footer">
+                            <button 
+                                className="btn-cancel"
+                                onClick={handleEditModalClose}
+                            >
+                                <i className="bi bi-x-circle me-2"></i>
+                                Cancel
+                            </button>
+                            <button 
+                                className={`btn-save ${isProductChanged() ? 'enabled' : 'disabled'}`}
+                                disabled={!isProductChanged()}
+                                onClick={() => handleEditProduct(selectedProduct)}
+                            >
+                                <i className="bi bi-check-circle me-2"></i>
+                                Save Changes
+                            </button>
                         </div>
                     </div>
                 </div>

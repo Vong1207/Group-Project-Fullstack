@@ -142,7 +142,7 @@
 }
 
 .back-home-btn {
-    background-color: transparent;
+    background-color: white;
     color: var(--eerieBlack);
     border: 1px solid var(--eerieBlack);
     padding: 0.5rem 1rem;

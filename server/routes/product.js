@@ -97,5 +97,41 @@ router.post('/add', async (req, res) => {
     }
 });
 
+router.post('/filterByCategory', async (req, res) => {
+    const { category, searchName, minPrice, maxPrice } = req.body;
+    
+    try {
+        let query = {};
+        
+        if (category) {
+            query.category = new RegExp(category.trim(), 'i');
+        }
+        
+        if (searchName && searchName.trim()) {
+            query.productName = new RegExp(searchName.trim(), 'i');
+        }
+        
+        if (minPrice || maxPrice) {
+            query.productPrice = {};
+            if (minPrice && !isNaN(minPrice)) {
+                query.productPrice.$gte = parseInt(minPrice);
+            }
+            if (maxPrice && !isNaN(maxPrice)) {
+                query.productPrice.$lte = parseInt(maxPrice);
+            }
+        }
+        
+        console.log('Filter Query:', query); 
+        
+        const products = await Product.find(query).lean();
+        
+        console.log(`Found ${products.length} products`); 
+        res.json(products);
+        
+    } catch (error) {
+        console.error('Error filtering products by category:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 export default router

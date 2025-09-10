@@ -18,3 +18,58 @@
     background-color: var(--eerieBlack);
     color: white;
 }
+
+.all-products-section {
+    padding: 60px 0 80px 0;
+    background: #f8f9fa;
+    margin-top: 40px;
+}
+
+.products-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.products-title {
+    color: var(--eerieBlack);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.products-count {
+    color: var(--goldenrod);
+    font-size: 1rem;
+}
+
+.number-product-text {
+    color: var(--goldenrod);
+}
+
+.product-card {
+    width: 100%;
+}
+
+/* Desktop: ≥1024px = 3 columns */
+@media (min-width: 1024px) {
+    .products-container .col-lg-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+/* Tablet: 768-1023px = 2 columns */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .products-container .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+/* Smartphone: ≤767px = 1 column */
+@media (max-width: 767px) {
+    .products-container .col-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
