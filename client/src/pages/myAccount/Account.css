@@ -88,5 +88,17 @@
                 color: white;
             }
         }
+
+        & #saveChangesBtn {
+            border: 2px solid var(--success);
+            background-color: white;
+            color: var(--success);
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                background-color: var(--success);
+                color: white;
+            }
+        }
     }
 }

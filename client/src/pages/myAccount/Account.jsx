@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { clearUser } from '../../redux/userSlice.js';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export default function Account() {
     const dispatch = useDispatch();
@@ -11,6 +11,8 @@ export default function Account() {
     const fileInputRef = useRef();
 
     const user = useSelector((state) => state.user.user || {});
+    const [avatarImage, setAvatarImage] = useState(user.avatar);
+    const [base64Avatar, setBase64Avatar] = useState(user.avatar);
 
     const handleSignOut = async () => {
         try {
@@ -28,12 +30,38 @@ export default function Account() {
         }
     }
 
+    const handleAvatarChange = async (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setAvatarImage(reader.result);
+                setBase64Avatar(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    const saveChangesToDB = async () => {
+        try {
+            if (base64Avatar && base64Avatar !== user.avatar) {
+                await axios.put('http://localhost:3000/api/user/updateAccount', { avatar: base64Avatar }, { withCredentials: true });
+            } else {
+                return;
+            }
+            
+            alert('Changes saved successfully!');
+        } catch (error) {
+            console.error('Error saving changes:', error);
+        }
+    }
+
     return (
         <div className='accountPageContainer mt-4 px-3'>
             <div className='accountPageContentContainer px-md-5 px-3 py-4'>
                 <div className='my-3 position-relative accountAvatarContainer d-md-block d-none'>
-                    <img className='accountAvatar' src={user.avatar} alt="User Profile Picture" />
-                    <input className='d-none' ref={fileInputRef} type="file" accept='images/*' />
+                    <img className='accountAvatar' src={avatarImage} alt="User Profile Picture" />
+                    <input className='d-none' onChange={handleAvatarChange} ref={fileInputRef} type="file" accept='images/*' />
                     <button className='position-absolute accountAvatarBtn' type='button' onClick={handleAvatarBtnClick}>
                         <i className='fi fi-ts-camera'></i>
                     </button>
@@ -47,7 +75,7 @@ export default function Account() {
 
                 <div className='my-3 d-md-none d-flex flex-column align-items-center accountAvatarContainer'>
                     <div className='mb-3 avatarContainer d-flex align-items-center justify-content-center w-100 position-relative'>
-                        <img className='accountAvatarSm' src={user.avatar} alt="User Profile Picture" />
+                        <img className='accountAvatarSm' src={avatarImage} alt="User Profile Picture" />
                         <button className='position-absolute accountAvatarBtnSm' type='button' onClick={handleAvatarBtnClick}>
                             <i className='fi fi-ts-camera'></i>
                         </button>
@@ -83,6 +111,7 @@ export default function Account() {
                 </div>
 
                 <div>
+                    <button id='saveChangesBtn' className='py-2 px-4 fw-bold me-4' type='button' onClick={saveChangesToDB}>Save Changes</button>
                     <button id='logoutBtn' className='py-2 px-4 fw-bold' type='button' onClick={handleSignOut}>Logout</button>
                 </div>
             </div>
