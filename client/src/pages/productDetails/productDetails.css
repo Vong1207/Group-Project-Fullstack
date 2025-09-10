@@ -1,20 +1,29 @@
 .productDetailPrice {
     color: var(--goldenrod);
+    
 }
+/* .productDetailPrice:hover{
+   
 
+} */
+
+/* color: white;
+    border: none;
+    border-radius: 7px; */
+
+.btn-buy{
+    background-color: var(--goldenrod);
+    color: white;
+    border: none;
+    border-radius: 7px; 
+}
+.btn-buy:hover{
+    background-color: var(--goldenrodHover);
+    
+}
+/* background-color: var(--goldenrodHover); */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
-
-.relatedProducts::-webkit-scrollbar {
-    height: 0.5rem;
-    background-color: lightgray;
-    border-radius: 0.25rem;
-}
-
-.relatedProducts::-webkit-scrollbar-thumb {
-    background-color: var(--goldenrod);
-    border-radius: 0.25rem;
 }

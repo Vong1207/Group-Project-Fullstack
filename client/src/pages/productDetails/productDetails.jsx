@@ -130,7 +130,7 @@ export default function ProductDetail() {
               <button className="btn btn-dark px-4 py-2 fw-bold" onClick={handleAddToCart}>
                 ADD TO CART
               </button>
-              <button className="btn btn-danger px-4 py-2 fw-bold">BUY NOW</button>
+              <button className="btn-buy px-4 py-2 fw-bold" >BUY NOW</button>
             </div>
             {/* <button className="btn btn-outline-secondary px-4 ms-2">Add to Wishlist</button> */}
           </div>
@@ -139,7 +139,7 @@ export default function ProductDetail() {
         {/* Related Products Carousel */}
         <div className="mt-5">
           <h4 className="fw-bold mb-3">We think you'll love</h4>
-          <div className='relatedProducts' style={{overflowX: 'auto', whiteSpace: 'nowrap', paddingBottom: '10px'}}>
+          <div style={{overflowX: 'auto', whiteSpace: 'nowrap', paddingBottom: '10px'}}>
             {relatedProducts.length === 0 && <div className="text-muted">No related products found.</div>}
             {relatedProducts.map(rp => (
               <div key={rp._id} style={{display: 'inline-block', width: 220, marginRight: 16, verticalAlign: 'top'}}>
