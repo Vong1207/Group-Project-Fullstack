@@ -209,6 +209,8 @@
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.2s ease;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 .product-card:hover {
@@ -224,6 +226,9 @@
 
 .product-body {
     padding: 1rem;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 .product-title {
@@ -242,6 +247,7 @@
     color: #666;
     font-size: 0.85rem;
     margin-bottom: 1rem;
+    flex: 1 !important;
 }
 
 .product-price {
@@ -258,10 +264,17 @@
     padding: 0.5rem 1rem;
     border-radius: 4px;
     width: 100%;
+    margin-top: auto;
 }
 
 .btn-view-details:hover {
     background-color: var(--goldenrod);
+}
+
+.product-price,
+.btn-view-details,
+.product-actions {
+    margin-top: auto !important;
 }
 
 /* Mobile Modal */
