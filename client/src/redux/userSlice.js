@@ -13,6 +13,12 @@ const userSlice = createSlice({
         clearUser: (state) => {
             state.user = null;
         },
+        setCart: (state, action) => {
+        if (state.user) {
+            state.user.cart = action.payload;
+        }
+        },
+
         // Cart reducers
         subtractCartQuantity: (state, action) => {
             const index = action.payload;
@@ -75,7 +81,8 @@ export const {
     inputCartQuantity,
     deleteCartProduct,
     updateWalletBalance,
-    addProductToCard
+    addProductToCard,
+    setCart,
 } = userSlice.actions;
 
 export default userSlice.reducer;

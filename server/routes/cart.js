@@ -14,6 +14,7 @@ router.post("/update", async (req, res) => {
     res.status(500).json({ success: false, error: error.message });
   }
 });
+
 // create order from user cart
 router.post("/order", async (req, res) => {
   const { userId, cart, totalPrice } = req.body;

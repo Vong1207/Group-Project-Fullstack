@@ -4,7 +4,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProductToCard } from '../../redux/userSlice';
+import { addProductToCard , setCart} from '../../redux/userSlice';
 import axios from 'axios';
 import Navbar from '../partials/Navbar.jsx';
 import Footer from '../partials/Footer.jsx';
@@ -40,25 +40,56 @@ export default function ProductDetail() {
   }, [productId]);
 
   async function handleAddToCart() {
-    if (!userId || !product) return;
-    try {
-      dispatch(addProductToCard({ ...product, quantity }));
-      const existingIndex = currentCart.findIndex(p => p.product._id === product._id);
-      let updatedCart = [...currentCart];
-      if (existingIndex !== -1) {
-        updatedCart[existingIndex].quantity += quantity;
-      } else {
-        updatedCart.push({ product, quantity });
-      }
-      await axios.post('http://localhost:3000/api/cart/update', {
-        userId,
-        cart: updatedCart
-      }, { withCredentials: true });
-      alert('Product has been added to your cart!');
-    } catch (err) {
-      console.error('Error adding to cart:', err);
+  if (!userId || !product) return;
+  try {
+    let updatedCart = [...currentCart];
+    const existingIndex = updatedCart.findIndex(p => p.product._id === product._id);
+
+    if (existingIndex !== -1) {
+      updatedCart[existingIndex].quantity = quantity;
+    } else {
+      updatedCart.push({ product, quantity });
     }
+
+     dispatch(setCart(updatedCart)); 
+
+    await axios.post('http://localhost:3000/api/cart/update', {
+      userId,
+      cart: updatedCart
+    }, { withCredentials: true });
+
+    alert('Product has been added to your cart!');
+  } catch (err) {
+    console.error('Error adding to cart:', err);
   }
+}
+
+  // when you click on buy now
+  async function hanldeAddToOrder() {
+  if (!userId || !product) return;
+
+  try {
+    const orderItem = {
+      product: product._id,
+      quantity
+    };
+
+    const res = await axios.post(
+      'http://localhost:3000/api/cart/order',
+      {
+        userId,
+        cart: [orderItem],
+        totalPrice: product.productPrice * quantity
+      },
+      { withCredentials: true }
+    );
+
+    alert('Order placed successfully!');
+  } catch (error) {
+    console.error('Error placing order:', error);
+    alert('Error placing order.');
+  }
+}
 
   if (!product) return <div className="text-center my-5">Loading product...</div>;
 
@@ -132,7 +163,7 @@ export default function ProductDetail() {
               <button className="btn btn-dark px-4 py-2 fw-bold" onClick={handleAddToCart}>
                 ADD TO CART
               </button>
-              <button className="btn btn-danger px-4 py-2 fw-bold">BUY NOW</button>
+              <button className="btn btn-danger px-4 py-2 fw-bold" onClick={hanldeAddToOrder}>BUY NOW</button>
             </div>
             {/* <button className="btn btn-outline-secondary px-4 ms-2">Add to Wishlist</button> */}
           </div>

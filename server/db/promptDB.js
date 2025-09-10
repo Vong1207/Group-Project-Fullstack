@@ -151,21 +151,11 @@ await Product.deleteMany()
       {
         postedBy: vendor._id,
         productName: "Wilson Airless Gen1 Basketball",
-        productImage: "/product/card&toy11.jpg",
-        productPrice: 65000000,
-        category: "Playing Cards & Toys",
-        description:
-          "Elegant drop earrings with pearl accents and silver-tone planetary design, perfect for evening events and galas.",
-        stockQuantity: 100,
-      },
-      {
-        postedBy: vendor._id,
-        productName: "Orbit Black Hole Playing Cards",
         productImage: "/product/card&toy12.png",
         productPrice: 380000,
         category: "Playing Cards & Toys",
         description:
-          "Elegant drop earrings with pearl accents and silver-tone planetary design, perfect for evening events and galas.",
+          "The Wilson Airless Gen1 Basketball is a groundbreaking innovation in sports equipment. Designed with a futuristic 3D-printed lattice structure, this basketball does not require any air and never needs to be pumped. Despite being airless, it offers the same weight, bounce, and size as a regulation basketball.",
         stockQuantity: 100,
       },
       // Sprots
