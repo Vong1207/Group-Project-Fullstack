@@ -3,7 +3,6 @@ import cors from 'cors';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import dotenv from 'dotenv';
-import crypto from 'crypto';
 
 // Import routes
 import authRoutes from "./routes/auth.js";
@@ -12,6 +11,7 @@ import walletRoutes from './routes/wallet.js';
 import productRoutes from './routes/product.js';
 import categoryProductRoutes from  './routes/categoryProducts.js';
 import shipperRoutes from './routes/shipper.js';
+import userRoutes from './routes/user.js';
 
 // Enable dotenv to load environment variables from .env file
 dotenv.config();
@@ -58,6 +58,7 @@ app.use('/api/wallet', walletRoutes);
 app.use('/api/product', productRoutes);
 app.use('/products', categoryProductRoutes);
 app.use('/api/shipper', shipperRoutes);
+app.use('/api/user', userRoutes);
 
 // APIs
 app.get('/api/session', (req, res) => {
