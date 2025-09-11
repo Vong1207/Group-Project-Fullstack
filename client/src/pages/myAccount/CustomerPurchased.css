@@ -11,12 +11,12 @@ h1 {
         & .purchasedImageContainer {
             width: 9rem;
             height: 6rem;
-            border: 1px solid var(--eerieBlack);
 
             & .purchasedImage {
                 width: 9rem;
                 height: 6rem;
                 object-fit: cover;
+                border: 1px solid var(--eerieBlack);
             }
         }
 
@@ -63,4 +63,8 @@ h1 {
             word-break: break-word;
         }
     }
+}
+
+.totalProductsPrice, .productPrice {
+    color: var(--success);
 }

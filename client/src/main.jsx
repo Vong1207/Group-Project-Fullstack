@@ -25,8 +25,9 @@ import MyProducts from './pages/myAccount/MyProducts.jsx';
 import AddNewProduct from './pages/myAccount/AddNewProduct.jsx';
 import CategoryPage  from './pages/home/CategoryPages.jsx';
 import SearchResult from './pages/search/SearchResult.jsx';
-import ProductDetail from './pages/productDetails/productDetails.jsx';
+import ProductDetails from './pages/productDetails/ProductDetails.jsx';
 import Orders from './pages/myAccount/Orders.jsx';
+import { About, Privacy, Help } from './pages/footerPartial';
 
 const router = createBrowserRouter([
   {
@@ -71,7 +72,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/product/:productId",
-    element: <ProductDetail />,
+    element: <ProductDetails />,
     errorElement: <NotFound />
   },
   {
@@ -124,7 +125,22 @@ const router = createBrowserRouter([
         errorElement: <NotFound />
       },
     ]
-  }
+  },
+  {
+    path: "/about",
+    element: <About />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/privacy",
+    element: <Privacy />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/help",
+    element: <Help />,
+    errorElement: <NotFound />
+  },
 ])
 const root = createRoot(document.getElementById("root"));
 root.render(

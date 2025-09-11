@@ -88,9 +88,9 @@ export default function CustomerCart() {
     }
     // Check wallet balance
     if (walletBalance < totalPriceSelected) {
-    alert("You don't have enough money in your wallet.");
-    return;
-  }
+      alert("You don't have enough money in your wallet.");
+      return;
+    }
     // Create an array of products
     const products = selectedItems.map((item) => ({
       product: item.product._id,

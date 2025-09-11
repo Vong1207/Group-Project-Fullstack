@@ -52,7 +52,7 @@ router.post('/findPostedBy', async (req, res) => {
     const { userId } = req.body;
 
     try {
-        const products = await Product.find({ postedBy: userId });
+        const products = await Product.find({ postedBy: userId }).sort({ createdAt: -1 });
         res.json(products);
     } catch (error) {
         console.error('Error fetching products:', error);
