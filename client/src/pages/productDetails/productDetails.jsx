@@ -3,7 +3,7 @@ import './productDetails.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProductToCard , setCart} from '../../redux/userSlice';
+import { addProductToCard , setCart, updateWalletBalance} from '../../redux/userSlice';
 import axios from 'axios';
 import Navbar from '../partials/Navbar.jsx';
 import Footer from '../partials/Footer.jsx';
@@ -20,6 +20,7 @@ export default function ProductDetail() {
   const userId = useSelector(state => state.user.user?._id);
   const currentCart = useSelector(state => state.user.user?.cart || []);
   const navigate = useNavigate();
+  const walletBalance = useSelector((state) => state.user.user?.walletBalance) || 0;
 
   useEffect(() => {
     // Fetch main product by id using the correct backend route
@@ -66,6 +67,12 @@ export default function ProductDetail() {
   async function hanldeAddToOrder() {
   if (!userId || !product) return;
 
+  // Check wallet balance
+    if (walletBalance < product.productPrice) {
+    alert("You don't have enough money in your wallet.");
+    return;
+  }
+
   try {
     const orderItem = {
       product: product._id,
@@ -83,6 +90,7 @@ export default function ProductDetail() {
     );
 
     alert('Order placed successfully!');
+    dispatch(updateWalletBalance(walletBalance - (product.productPrice * quantity)));
   } catch (error) {
     console.error('Error placing order:', error);
     alert('Error placing order.');

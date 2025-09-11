@@ -67,7 +67,13 @@ router.post("/order", async (req, res) => {
     req.session.user.cart = user.cart;
     req.session.user.walletBalance = user.walletBalance;
 
-    res.json({ success: true, order: newOrder, updatedUser: user });
+    const updatedUser = await User.findById(userId)
+      .populate("cart.product")
+      .populate("purchased.product");
+
+    req.session.user = updatedUser;
+
+    res.json({ success: true, order: newOrder, updatedUser });
   } catch (error) {
     console.error("❌ Order error:", error);
     res.status(500).json({ success: false, error: "Internal server error" });
