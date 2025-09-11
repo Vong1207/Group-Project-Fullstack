@@ -161,7 +161,7 @@ export default function ProductDetails() {
               <button className="btn btn-dark px-4 py-2 fw-bold" onClick={handleAddToCart}>
                 ADD TO CART
               </button>
-              <button className="btn btn-danger px-4 py-2 fw-bold" onClick={hanldeAddToOrder}>BUY NOW</button>
+              <button className="btn btn-buy px-4 py-2 fw-bold" onClick={hanldeAddToOrder}>BUY NOW</button>
             </div>
             {/* <button className="btn btn-outline-secondary px-4 ms-2">Add to Wishlist</button> */}
           </div>
