@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (
-        <footer>
+        <footer className="footer" style={{ textAlign: 'center', padding: '1rem' }}>
             <div className='container px-sm-0'>
                 <div className='row mx-0 py-5'>
                     <div className='col-md-7 col-12'>
@@ -48,7 +48,23 @@ export default function Footer() {
                 <hr />
 
                 <div className='row text-center'>
-                    <p>© 2025 by Cartello</p>
+                    <p style={{ fontSize: '0.9rem', color: '#888' }}>
+                        &copy; {new Date().getFullYear()} Cartello Group. All rights reserved.
+                    </p>
+                    <nav style={{ marginTop: '0.5rem' }}>
+                        <Link to="/about" style={{ margin: '0 12px', fontSize: '0.95em', color: '#aaa', textDecoration: 'none', transition: 'color 0.2s' }}
+                            onMouseOver={e => e.target.style.textDecoration = 'underline'}
+                            onMouseOut={e => e.target.style.textDecoration = 'none'}
+                        >About</Link>
+                        <Link to="/privacy" style={{ margin: '0 12px', fontSize: '0.95em', color: '#aaa', textDecoration: 'none', transition: 'color 0.2s' }}
+                            onMouseOver={e => e.target.style.textDecoration = 'underline'}
+                            onMouseOut={e => e.target.style.textDecoration = 'none'}
+                        >Privacy</Link>
+                        <Link to="/help" style={{ margin: '0 12px', fontSize: '0.95em', color: '#aaa', textDecoration: 'none', transition: 'color 0.2s' }}
+                            onMouseOver={e => e.target.style.textDecoration = 'underline'}
+                            onMouseOut={e => e.target.style.textDecoration = 'none'}
+                        >Help</Link>
+                    </nav>
                 </div>
             </div>
         </footer>

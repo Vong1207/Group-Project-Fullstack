@@ -27,6 +27,7 @@ import CategoryPage  from './pages/home/CategoryPages.jsx';
 import SearchResult from './pages/search/SearchResult.jsx';
 import ProductDetails from './pages/productDetails/ProductDetails.jsx';
 import Orders from './pages/myAccount/Orders.jsx';
+import { About, Privacy, Help } from './pages/footerPartial';
 
 const router = createBrowserRouter([
   {
@@ -124,7 +125,22 @@ const router = createBrowserRouter([
         errorElement: <NotFound />
       },
     ]
-  }
+  },
+  {
+    path: "/about",
+    element: <About />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/privacy",
+    element: <Privacy />,
+    errorElement: <NotFound />
+  },
+  {
+    path: "/help",
+    element: <Help />,
+    errorElement: <NotFound />
+  },
 ])
 const root = createRoot(document.getElementById("root"));
 root.render(
