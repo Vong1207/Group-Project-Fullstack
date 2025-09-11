@@ -40,6 +40,13 @@ export default function ProductDetails() {
 
   async function handleAddToCart() {
   if (!userId || !product) return;
+
+  // check stock quantity
+  if (product.stockQuantity < quantity) {
+    alert("There are not enough products to order");
+    return;
+  }
+
   try {
     let updatedCart = [...currentCart];
     const existingIndex = updatedCart.findIndex(p => p.product._id === product._id);
@@ -66,6 +73,12 @@ export default function ProductDetails() {
   // when you click on buy now
   async function hanldeAddToOrder() {
   if (!userId || !product) return;
+  
+  // check stock quantity
+  if (product.stockQuantity < quantity) {
+    alert("There are not enough products to order");
+    return;
+  }
 
   // Check wallet balance
     if (walletBalance < product.productPrice) {
@@ -89,8 +102,14 @@ export default function ProductDetails() {
       { withCredentials: true }
     );
 
+    
     alert('Order placed successfully!');
     dispatch(updateWalletBalance(walletBalance - (product.productPrice * quantity)));
+    
+    // Re-fetch product after successful order
+    const resProduct = await axios.get(`http://localhost:3000/products/${product._id}`);
+    setProduct(resProduct.data);
+
   } catch (error) {
     console.error('Error placing order:', error);
     alert('Error placing order.');
@@ -129,6 +148,7 @@ export default function ProductDetails() {
             </div>
             <p className="mb-2">{product.description}</p>
             <div className="mb-2 text-muted">Category: {product.category}</div>
+            <div className="mb-2 text-muted">Stock Quantity: {product.stockQuantity}</div>
 
             {/* Quantity Selector - Professional UI */}
             <div className="mb-3 d-flex align-items-center" style={{gap: '12px'}}>

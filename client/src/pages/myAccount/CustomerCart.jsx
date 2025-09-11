@@ -91,11 +91,19 @@ export default function CustomerCart() {
       alert("You don't have enough money in your wallet.");
       return;
     }
+
+    
     // Create an array of products
     const products = selectedItems.map((item) => ({
       product: item.product._id,
       quantity: item.quantity,
     }));
+
+    // check stock quantity
+    if (products.stockQuantity < inputCartQuantity) {
+      alert("There are not enough products to order");
+      return;
+    }
 
     try {
       const res = await axios.post(
@@ -114,11 +122,11 @@ export default function CustomerCart() {
         dispatch(updateWalletBalance(walletBalance - totalPriceSelected));
         setChecked([]);
       } else {
-        alert("Order failed");
+        alert(res.data.error || "Order failed");
       }
     } catch (err) {
+      alert(err.response?.data?.error || "Something went wrong.");
       console.error("Order error:", err);
-      alert("Something went wrong while placing the order.");
     }
   }
 

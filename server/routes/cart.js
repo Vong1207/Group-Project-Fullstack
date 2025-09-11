@@ -32,6 +32,20 @@ router.post("/order", async (req, res) => {
   try {
     // Get user
     const user = await User.findById(userId).populate("cart.product");
+    // check stock quantity
+    for (const item of cart) {
+      const product = await Product.findById(item.product);
+      if (!product) {
+        return res.status(404).json({ success: false, error: "Product not found" });
+      }
+      if (product.stockQuantity < item.quantity) {
+        return res.status(400).json({
+          success: false,
+          error: `Not enough stock for "${product.productName}". Only ${product.stockQuantity} left.`,
+        });
+      }
+    }
+
     // Check walletBalance
     if (user.walletBalance < totalPrice) {
       return res
@@ -56,6 +70,15 @@ router.post("/order", async (req, res) => {
     });
     await newOrder.save();
 
+    // decrease stock quantity
+    for (const item of orderItems) {
+      const product = await Product.findById(item.product);
+      if (!product) continue;
+      product.stockQuantity -= item.quantity;
+      if (product.stockQuantity < 0) product.stockQuantity = 0;
+      await product.save();
+    }
+    
     const orderedProductIds = cart.map((item) => item.product.toString());
     const remainingCart = user.cart.filter((item) => {
       return !orderedProductIds.includes(item.product._id.toString());
