@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './CategoryPages.css';
+import Navbar from '../partials/Navbar.jsx';
+
 
 export default function CategoryPage() {
   const { categoryName } = useParams();
@@ -14,13 +16,6 @@ export default function CategoryPage() {
   });
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [screenSize, setScreenSize] = useState('desktop');
-  const [globalSearchTerm, setGlobalSearchTerm] = useState(''); // For navbar search
-
-  
-  const user = useSelector(state => state.user.user);
-  const profilePath = user ? '/myAccount' : '/signIn';
-  const defaultAvatar = '/customerProfile/defaultProfile.png';
-  const avatarSrc = user ? (user.avatar || defaultAvatar) : defaultAvatar;
 
   // Screen size detection - KEEP ORIGINAL
   useEffect(() => {
@@ -35,29 +30,6 @@ export default function CategoryPage() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  const handleGlobalSearch = async (e) => {
-    e.preventDefault();
-    
-    if (globalSearchTerm.trim()) {
-      try {
-        const response = await fetch("/api/product/searchByName", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: globalSearchTerm }),
-        });
-        
-        if (!response.ok) throw new Error("API searchByName failed");
-        const data = await response.json();
-        if (Array.isArray(data)) {
-          setProducts([]);
-          setFilteredProducts(data);
-        }
-      } catch (error) {
-        console.error("Global search error:", error);
-      }
-    }
-  };
 
   useEffect(() => {
     // Function to fetch all products by category
@@ -199,65 +171,22 @@ export default function CategoryPage() {
         />
       </div>
 
-      <button className="btn-apply" onClick={applyFilters}>
-        <i className="bi bi-check-circle me-1"></i>
-        Apply
-      </button>
-      <button className="btn-reset" onClick={resetFilters}>
-        <i className="bi bi-arrow-clockwise me-1"></i>
-        Reset
-      </button>
+      <div className={screenSize === 'smartphone' ? 'mobile-filters-buttons' : ''}>
+        <button className="btn-apply" onClick={applyFilters}>
+          <i className="bi bi-check-circle me-1"></i>
+          Apply
+        </button>
+        <button className="btn-reset" onClick={resetFilters}>
+          <i className="bi bi-arrow-clockwise me-1"></i>
+          Reset
+        </button>
+      </div>
     </>
   );
 
   return (
     <div className="category-page">
-      <header className='position-sticky sticky-top mb-0 navbar-header'>
-        <nav className='navbar container px-0' id='mainNavbar'>
-          <div className='row m-0 w-100 align-items-center py-2'>
-            {/* Brand Name */}
-            <div className='col-lg-2 d-lg-block d-none pe-0'>
-              <Link to='/' className='brandName'>
-                Brand Name
-              </Link>
-            </div>
-            <div className='col-lg-8 col-sm-10 col-9 ps-sm-0 pe-0'>
-              <form onSubmit={handleGlobalSearch}>
-                <div className='d-flex justify-content-start searchBarContainer'>
-                  <input 
-                    className='ps-3 py-2' 
-                    type="text" 
-                    placeholder='Vendor/Product'
-                    value={globalSearchTerm}
-                    onChange={(e) => setGlobalSearchTerm(e.target.value)}
-                  />
-                  <button type='submit' className='px-4 my-1 me-1'>
-                    <i className='bi bi-search'></i>
-                  </button>
-                </div>
-              </form>
-            </div>
-
-            {/* Login/SignUp/Profile */}
-            <div className='col-sm-2 col-3 px-3 d-flex justify-content-end profileContainer'>
-              <Link to={profilePath}>
-                {/* If user not exist then display button */}
-                {!user && (
-                  <button type='button' className='d-flex justify-content-center align-items-center'>
-                    <i className='bi bi-person-fill'></i>
-                  </button>
-                )}
-
-                {/* If user logged in then display avatar (fallback to default if missing) */}
-                {user && (
-                  <img src={avatarSrc} alt="Profile" />
-                )}
-              </Link>
-            </div>
-          </div>
-        </nav>
-      </header>
-
+      <Navbar />
       <div className="container-fluid">
         <div className="row mx-0">
           {/* Sidebar - Desktop/Tablet */}
