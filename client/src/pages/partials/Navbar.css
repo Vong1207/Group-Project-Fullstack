@@ -1,72 +1,75 @@
+/* # RMIT University Vietnam
+// # Course: COSC2769 - Full Stack Development
+// # Semester: 2025B
+// # Assessment: Assignment 02
+// # Author: Nguyen Vu Linh
+// # ID: 3999487 */
 header {
-    background-color: var(--eerieBlack);
+  background-color: var(--eerieBlack);
 
-    /* Navbar decoration */
-    & .navbar {
-        & .brandName {
-            text-decoration: none;
-            
-            color: white;
-            align-self: center;
-            font-family: "Outfit", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 375;
-            font-style: normal;
-            font-size: larger;
+  /* Navbar decoration */
+  & .navbar {
+    & .brandName {
+      text-decoration: none;
 
-        
-        }
-        }
-        
-
-        & form {
-            width: 100%;
-
-            & .searchBarContainer {
-                background-color: white;
-
-                & input {
-                    width: 100%;
-                    border: none;
-                }
-
-                & button {
-                    background-color: var(--goldenrod);
-                    color: white;
-                    border: none;
-                }
-            }
-        }
-
-        & .profileContainer {
-            & a {
-                display: block;
-                height: 2.5rem;
-                width: 2.5rem;
-                background-color: white;
-                border-radius: 50%;
-
-                & img {
-                    height: 2.5rem;
-                    width: 2.5rem;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
-
-                & button {
-                    height: 2.5rem;
-                    width: 2.5rem;
-                    border-radius: 50%;
-                    border: none;
-                }
-            }
-        }
+      color: white;
+      align-self: center;
+      font-family: "Outfit", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 375;
+      font-style: normal;
+      font-size: larger;
     }
+  }
 
-    #logo{
+  & form {
+    width: 100%;
+
+    & .searchBarContainer {
+      background-color: white;
+
+      & input {
+        width: 100%;
+        border: none;
+      }
+
+      & button {
+        background-color: var(--goldenrod);
+        color: white;
+        border: none;
+      }
+    }
+  }
+
+  & .profileContainer {
+    & a {
+      display: block;
+      height: 2.5rem;
+      width: 2.5rem;
+      background-color: white;
+      border-radius: 50%;
+
+      & img {
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
         object-fit: cover;
-        width: 100px;
-        height: 60px;
-        border-radius: 50px;
-        margin-left: 10px;
+      }
+
+      & button {
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+        border: none;
+      }
     }
+  }
+}
+
+#logo {
+  object-fit: cover;
+  width: 100px;
+  height: 60px;
+  border-radius: 50px;
+  margin-left: 10px;
+}

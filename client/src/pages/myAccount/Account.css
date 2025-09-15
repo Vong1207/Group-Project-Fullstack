@@ -1,104 +1,110 @@
+/* # RMIT University Vietnam
+// # Course: COSC2769 - Full Stack Development
+// # Semester: 2025B
+// # Assessment: Assignment 02
+// # Author: Your Names (e.g. Nguyen Van Minh)
+// # ID: Your Student ID (e.g. 1234567) */
 .accountPageContainer {
-    margin-bottom: 5rem;
+  margin-bottom: 5rem;
 
-    & .accountPageContentContainer {
-        border: 1px solid var(--eerieBlack);
+  & .accountPageContentContainer {
+    border: 1px solid var(--eerieBlack);
 
-        & .accountAvatarContainer {
-            & .accountAvatar {
-                width: 10rem;
-                height: 10rem;
-                border: 2px solid var(--eerieBlack);
-                border-radius: 50%;
-            }
+    & .accountAvatarContainer {
+      & .accountAvatar {
+        width: 10rem;
+        height: 10rem;
+        border: 2px solid var(--eerieBlack);
+        border-radius: 50%;
+      }
 
-            & .accountAvatarBtn {
-                bottom: -1rem;
-                left: 3.5rem;
-                width: 3rem;
-                height: 3rem;
-                border-radius: 50%;
-                background-color: white;
-                border: 1px solid var(--goldenrod);
-                color: var(--goldenrod);
-                transition: all 0.3s ease-in-out;
+      & .accountAvatarBtn {
+        bottom: -1rem;
+        left: 3.5rem;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background-color: white;
+        border: 1px solid var(--goldenrod);
+        color: var(--goldenrod);
+        transition: all 0.3s ease-in-out;
 
-                &:hover {
-                    background-color: var(--goldenrod);
-                    color: white;
-                }
-            }
+        &:hover {
+          background-color: var(--goldenrod);
+          color: white;
+        }
+      }
 
-            & .accountDisplayName {
-                font-size: 3rem;
-                top: 3.5rem;
-                left: 12rem;
-                color: var(--eerieBlack);
-            }
+      & .accountDisplayName {
+        font-size: 3rem;
+        top: 3.5rem;
+        left: 12rem;
+        color: var(--eerieBlack);
+      }
 
-            & .avatarContainer {
-                & .accountAvatarSm {
-                    width: 10rem;
-                    height: 10rem;
-                    border: 2px solid var(--eerieBlack);
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
-
-                & .accountAvatarBtnSm {
-                    bottom: -1rem;
-                    left: 50;
-                    width: 3rem;
-                    height: 3rem;
-                    border-radius: 50%;
-                    background-color: white;
-                    border: 1px solid var(--goldenrod);
-                    color: var(--goldenrod);
-                    transition: all 0.3s ease-in-out;
-
-                    &:hover {
-                        background-color: var(--goldenrod);
-                        color: white;
-                    }
-                }
-            }
-
-            & .accountDisplayNameSm {
-                color: var(--eerieBlack);
-                font-size: 3rem;
-            }
+      & .avatarContainer {
+        & .accountAvatarSm {
+          width: 10rem;
+          height: 10rem;
+          border: 2px solid var(--eerieBlack);
+          border-radius: 50%;
+          object-fit: cover;
         }
 
-        & .accountInfoContainer {
-            font-size: 1.5rem;
+        & .accountAvatarBtnSm {
+          bottom: -1rem;
+          left: 50;
+          width: 3rem;
+          height: 3rem;
+          border-radius: 50%;
+          background-color: white;
+          border: 1px solid var(--goldenrod);
+          color: var(--goldenrod);
+          transition: all 0.3s ease-in-out;
 
-            & .accountInfoLabel {
-                color: var(--goldenrod);
-            }
+          &:hover {
+            background-color: var(--goldenrod);
+            color: white;
+          }
         }
+      }
 
-        & #logoutBtn {
-            border: 2px solid var(--danger);
-            background-color: white;
-            color: var(--danger);
-            transition: all 0.3s ease-in-out;
-
-            &:hover {
-                background-color: var(--danger);
-                color: white;
-            }
-        }
-
-        & #saveChangesBtn {
-            border: 2px solid var(--success);
-            background-color: white;
-            color: var(--success);
-            transition: all 0.3s ease-in-out;
-
-            &:hover {
-                background-color: var(--success);
-                color: white;
-            }
-        }
+      & .accountDisplayNameSm {
+        color: var(--eerieBlack);
+        font-size: 3rem;
+      }
     }
+
+    & .accountInfoContainer {
+      font-size: 1.5rem;
+
+      & .accountInfoLabel {
+        color: var(--goldenrod);
+      }
+    }
+
+    & #logoutBtn {
+      border: 2px solid var(--danger);
+      background-color: white;
+      color: var(--danger);
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: var(--danger);
+        color: white;
+      }
+    }
+
+    & #saveChangesBtn {
+      border: 2px solid var(--success);
+      background-color: white;
+      color: var(--success);
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: var(--success);
+        color: white;
+      }
+    }
+  }
 }

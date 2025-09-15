@@ -1,70 +1,77 @@
+/* # RMIT University Vietnam
+// # Course: COSC2769 - Full Stack Development
+// # Semester: 2025B
+// # Assessment: Assignment 02
+// # Author: Your Names (e.g. Nguyen Van Minh)
+// # ID: Your Student ID (e.g. 1234567) */
 h1 {
-    color: var(--eerieBlack);
+  color: var(--eerieBlack);
 }
 
 #purchasedSection {
-    margin-bottom: 5rem;
+  margin-bottom: 5rem;
 
-    .purchasedContainer {
+  .purchasedContainer {
+    border: 1px solid var(--eerieBlack);
+
+    & .purchasedImageContainer {
+      width: 9rem;
+      height: 6rem;
+
+      & .purchasedImage {
+        width: 9rem;
+        height: 6rem;
+        object-fit: cover;
         border: 1px solid var(--eerieBlack);
-
-        & .purchasedImageContainer {
-            width: 9rem;
-            height: 6rem;
-
-            & .purchasedImage {
-                width: 9rem;
-                height: 6rem;
-                object-fit: cover;
-                border: 1px solid var(--eerieBlack);
-            }
-        }
-
-        & .purchasedDetailsContainer {
-            & .purchasedNameContainer .purchasedName {
-                color: var(--eerieBlack);
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: normal;
-                word-break: break-word;
-            }
-        }
-
-        & .purchasedTotalPriceContainer {
-            width: 6rem;
-        }
+      }
     }
+
+    & .purchasedDetailsContainer {
+      & .purchasedNameContainer .purchasedName {
+        color: var(--eerieBlack);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        word-break: break-word;
+      }
+    }
+
+    & .purchasedTotalPriceContainer {
+      width: 6rem;
+    }
+  }
 }
 
 #purchasedSectionSm {
-    margin-bottom: 5rem;
+  margin-bottom: 5rem;
 
-    & .purchasedContainerSm {
-        border: 1px solid var(--eerieBlack);
+  & .purchasedContainerSm {
+    border: 1px solid var(--eerieBlack);
 
-        & .purchasedImageSm {
-            height: 5rem;
-            width: 5rem;
-            object-fit: cover;
-            border: 1px solid var(--eerieBlack);
-        }
-
-        & .purchasedNameContainerSm .purchasedNameSm {
-            color: var(--eerieBlack);
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: normal;
-            word-break: break-word;
-        }
+    & .purchasedImageSm {
+      height: 5rem;
+      width: 5rem;
+      object-fit: cover;
+      border: 1px solid var(--eerieBlack);
     }
+
+    & .purchasedNameContainerSm .purchasedNameSm {
+      color: var(--eerieBlack);
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+      word-break: break-word;
+    }
+  }
 }
 
-.totalProductsPrice, .productPrice {
-    color: var(--success);
+.totalProductsPrice,
+.productPrice {
+  color: var(--success);
 }

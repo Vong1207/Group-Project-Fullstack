@@ -1,16 +1,22 @@
+/* # RMIT University Vietnam
+// # Course: COSC2769 - Full Stack Development
+// # Semester: 2025B
+// # Assessment: Assignment 02
+// # Author: Nguyen Vu Linh
+// # ID: 3999487 */
 footer {
   background-color: var(--eerieBlack);
   color: white;
 
-  & .brandName{
-            text-decoration: none;
-            color: white;
-            align-self: center;
-            font-family: "Caveat", cursive;
-            font-optical-sizing: auto;
-            font-weight: 400;
-            font-style: normal;
-        }
+  & .brandName {
+    text-decoration: none;
+    color: white;
+    align-self: center;
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
   & .socialsContainer {
     & a {
       text-decoration: none;
@@ -22,7 +28,7 @@ footer {
         border: 1px solid white;
         border-radius: 50%;
         transition: all 0.3s ease-in-out;
-        
+
         & i {
           color: white;
           transition: all 0.3s ease-in-out;
@@ -36,7 +42,6 @@ footer {
         & i {
           color: var(--goldenrod);
         }
-        
       }
     }
   }

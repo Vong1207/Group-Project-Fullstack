@@ -1,3 +1,9 @@
+/* # RMIT University Vietnam
+// # Course: COSC2769 - Full Stack Development
+// # Semester: 2025B
+// # Assessment: Assignment 02
+// # Author: Nguyen Vu Linh
+// # ID: 3999487 */
 import './Wallet.css';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

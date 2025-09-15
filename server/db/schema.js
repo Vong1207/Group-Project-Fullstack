@@ -1,3 +1,9 @@
+/* # RMIT University Vietnam
+// # Course: COSC2769 - Full Stack Development
+// # Semester: 2025B
+// # Assessment: Assignment 02
+// # Author: Nguyen Vu Linh
+// # ID: 3999487 */
 import { mongoose } from "./mongoose.js";
 
 const userSchema = new mongoose.Schema({
@@ -46,9 +52,9 @@ const userSchema = new mongoose.Schema({
       product: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
       quantity: { type: Number, min: 1 },
       status: {
-      type: String,
-      enum: ["Delivered", "Canceled"],
-      }
+        type: String,
+        enum: ["Delivered", "Canceled"],
+      },
     },
   ],
   walletBalance: {
@@ -138,7 +144,7 @@ const productSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now(),
-  }
+  },
 });
 
 // order schema

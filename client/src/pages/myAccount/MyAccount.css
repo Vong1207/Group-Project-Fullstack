@@ -1,75 +1,81 @@
+/* # RMIT University Vietnam
+// # Course: COSC2769 - Full Stack Development
+// # Semester: 2025B
+// # Assessment: Assignment 02
+// # Author: Your Names (e.g. Nguyen Van Minh)
+// # ID: Your Student ID (e.g. 1234567) */
 #sidebar {
-    background-color: var(--eerieBlack);
+  background-color: var(--eerieBlack);
+  color: white;
+  min-height: 100vh;
+
+  & a {
+    text-decoration: none;
     color: white;
-    min-height: 100vh;
+  }
 
-    & a {
-        text-decoration: none;
-        color: white;
+  & a.active {
+    & .tabName {
+      background-color: var(--goldenrodHover);
+      color: var(--goldenrod);
+    }
+  }
+
+  & a:hover {
+    & .tabName {
+      color: var(--goldenrod);
+    }
+  }
+
+  & #homeBtnContainer {
+    height: 5rem;
+
+    & #homeBtn {
+      background-color: var(--eerieBlack);
+      color: white;
+      border: 1px solid white;
+      transition: all 0.3s ease-in-out;
     }
 
-    & a.active {
-        & .tabName {
-            background-color: var(--goldenrodHover);
-            color: var(--goldenrod);
-        }
+    & #homeBtn:hover {
+      border: 1px solid var(--goldenrod);
+      color: var(--goldenrod);
     }
-
-    & a:hover {
-        & .tabName {
-            color: var(--goldenrod);
-        }
-    }
-
-    & #homeBtnContainer {
-        height: 5rem;
-
-        & #homeBtn {
-            background-color: var(--eerieBlack);
-            color: white;
-            border: 1px solid white;
-            transition: all 0.3s ease-in-out;
-        }
-
-        & #homeBtn:hover {
-            border: 1px solid var(--goldenrod);
-            color: var(--goldenrod);
-        }
-    }
+  }
 }
 
 #sidebarSm {
-    background-color: var(--eerieBlack);
-    
-    & a {
-        color: white;
-        text-decoration: none;
+  background-color: var(--eerieBlack);
 
-        & p {
-            font-size: 0.8rem;
-        }
-    }
+  & a {
+    color: white;
+    text-decoration: none;
 
-    & a.active {
-        background-color: var(--goldenrodHover);
-        color: var(--goldenrod);
+    & p {
+      font-size: 0.8rem;
     }
+  }
+
+  & a.active {
+    background-color: var(--goldenrodHover);
+    color: var(--goldenrod);
+  }
 }
 
 main {
-    & #backToHomeContainer {
-        background-color: var(--eerieBlack);
-        height: 3rem;
+  & #backToHomeContainer {
+    background-color: var(--eerieBlack);
+    height: 3rem;
 
-        & a {
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease-in-out;
-            left: 2rem;
-        }
-
-        & a:hover {
-            color: var(--goldenrod);
-        }
+    & a {
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease-in-out;
+      left: 2rem;
     }
+
+    & a:hover {
+      color: var(--goldenrod);
+    }
+  }
 }

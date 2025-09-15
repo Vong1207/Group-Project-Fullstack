@@ -1,3 +1,9 @@
+/* # RMIT University Vietnam
+// # Course: COSC2769 - Full Stack Development
+// # Semester: 2025B
+// # Assessment: Assignment 02
+// # Author: Nguyen Vu Linh,
+// # ID: 3999487 */
 import "./CustomerCart.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
@@ -35,7 +41,8 @@ export default function CustomerCart() {
 
   // Save cart changes to DB function
   const userId = useSelector((state) => state.user.user?._id);
-  const walletBalance = useSelector((state) => state.user.user?.walletBalance) || 0;
+  const walletBalance =
+    useSelector((state) => state.user.user?.walletBalance) || 0;
 
   async function saveCartToDB(cart) {
     if (!userId) return;
@@ -92,7 +99,6 @@ export default function CustomerCart() {
       return;
     }
 
-    
     // Create an array of products
     const products = selectedItems.map((item) => ({
       product: item.product._id,
