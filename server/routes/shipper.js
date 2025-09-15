@@ -1,5 +1,5 @@
 import express from "express";
-import { Order, User } from "../db/schema.js";
+import { Product, Order, User } from "../db/schema.js";
 
 const router = express.Router();
 
@@ -59,8 +59,29 @@ router.put("/orders/:orderId", async (req, res) => {
       }
     
     if (status === "Canceled") {
-      customer.walletBalance += order.totalPrice;
-    }
+  let totalRefund = 0;
+
+  for (const item of order.cart) {
+    const product = await Product.findById(item.product).populate("postedBy");
+    if (!product || !product.postedBy) continue;
+
+    const vendor = await User.findById(product.postedBy._id);
+    if (!vendor) continue;
+
+    const refundAmount = product.productPrice * item.quantity;
+    // refund money to customer
+    customer.walletBalance += refundAmount;
+    // deduct money from vendor
+    vendor.walletBalance -= refundAmount;
+    if (vendor.walletBalance < 0) vendor.walletBalance = 0;
+
+    await vendor.save();
+    totalRefund += refundAmount;
+  }
+  await customer.save();
+  console.log(`🔁 Refunded ${totalRefund}₫ to customer and deducted from vendors`);
+}
+
 
       order.cart.forEach((ci) => {
         customer.purchased.push({

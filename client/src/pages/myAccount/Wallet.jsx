@@ -9,6 +9,7 @@ export default function Wallet() {
 
     // Redux state
     const walletBalance = useSelector(state => state.user.user?.walletBalance) || 0;
+    
 
     // Local states
     const [walletBalanceVisibility, setVisibility] = useState(false);

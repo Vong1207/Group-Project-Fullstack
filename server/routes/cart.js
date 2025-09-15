@@ -70,14 +70,21 @@ router.post("/order", async (req, res) => {
     });
     await newOrder.save();
 
-    // decrease stock quantity
     for (const item of orderItems) {
-      const product = await Product.findById(item.product);
-      if (!product) continue;
+      const product = await Product.findById(item.product).populate('postedBy');
+      if (!product || !product.postedBy) continue;
+
       product.stockQuantity -= item.quantity;
-      if (product.stockQuantity < 0) product.stockQuantity = 0;
       await product.save();
+
+      const vendor = await User.findById(product.postedBy._id);
+      if (vendor) {
+        const amount = item.quantity * product.productPrice;
+        vendor.walletBalance += amount;
+        await vendor.save();
+      }
     }
+
     
     const orderedProductIds = cart.map((item) => item.product.toString());
     const remainingCart = user.cart.filter((item) => {

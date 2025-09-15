@@ -36,6 +36,7 @@ router.post("/signin", async (req, res) => {
         } else if (user.role === 'Vendor') {
             sessionUser.businessName = user.businessName;
             sessionUser.businessAddress = user.businessAddress;
+            sessionUser.walletBalance = user.walletBalance;
         } else if (user.role === 'Shipper') {
             sessionUser.displayName = user.displayName;
             sessionUser.distributionHub = user.distributionHub;

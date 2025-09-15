@@ -2,7 +2,7 @@ import './Account.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { clearUser, setUserAvatar } from '../../redux/userSlice.js';
+import { clearUser, setUser, setUserAvatar } from '../../redux/userSlice.js';
 import { useRef, useState } from 'react';
 
 export default function Account() {
@@ -46,7 +46,7 @@ export default function Account() {
         try {
             if (base64Avatar && base64Avatar !== user.avatar) {
                 await axios.put('http://localhost:3000/api/user/updateAccount', { avatar: base64Avatar }, { withCredentials: true });
-                dispatch(setUserAvatar(avatarImage));
+                dispatch(setUserAvatar(avatarImage))
             } else {
                 return;
             }
@@ -56,6 +56,7 @@ export default function Account() {
             console.error('Error saving changes:', error);
         }
     }
+    
 
     return (
         <div className='accountPageContainer mt-4 px-3'>
@@ -104,6 +105,7 @@ export default function Account() {
                         <>
                             <p className='accountInfo mb-0'><span className='fw-bold accountInfoLabel'>Address: </span>{user.businessAddress}</p>
                             <p className='accountInfo mb-0'><span className='fw-bold accountInfoLabel'>Wallet Balance: </span>{(user.walletBalance ?? 0).toLocaleString()}₫</p>
+                            
                         </>
                     )}
                     {user.role === 'Shipper' && (
