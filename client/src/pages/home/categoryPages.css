@@ -3,61 +3,6 @@
     min-height: 100vh;
 }
 
-.navbar-header {
-    background-color: var(--eerieBlack);
-    margin-bottom: 0; /* Loại bỏ khoảng trắng */
-
-    /* Navbar decoration */
-    & .navbar {
-        & .brandName {
-            text-decoration: none;
-            color: white;
-        }
-
-        & form {
-            width: 100%;
-
-            & .searchBarContainer {
-                background-color: white;
-
-                & input {
-                    width: 100%;
-                    border: none;
-                }
-
-                & button {
-                    background-color: var(--goldenrod);
-                    color: white;
-                    border: none;
-                }
-            }
-        }
-
-        & .profileContainer {
-            & a {
-                display: block;
-                height: 2.5rem;
-                width: 2.5rem;
-                background-color: white;
-                border-radius: 50%;
-
-                & img {
-                    height: 2.5rem;
-                    width: 2.5rem;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
-
-                & button {
-                    height: 2.5rem;
-                    width: 2.5rem;
-                    border-radius: 50%;
-                    border: none;
-                }
-            }
-        }
-    }
-}
 /* Header */
 .category-header {
     color: var(--eerieBlack);
@@ -291,10 +236,12 @@
 .mobile-filters-modal {
     background-color: var(--eerieBlack);
     color: white;
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
-    overflow-y: auto;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .mobile-filters-header {
@@ -313,6 +260,9 @@
     font-size: 1.5rem;
     cursor: pointer;
 }
+
+
+
 /* image card */
 .card-img-top {
   position: relative;
@@ -332,6 +282,70 @@
   height: 100%;
   object-fit: contain;
   transform: translate(-50%, -50%);
+}
+
+/* Fix Mobile Modal Colors */
+.mobile-filters-header h5 {
+    color: white !important;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Fix Label Colors */
+.mobile-filters-modal .filter-label {
+    color: white !important;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: block;
+}
+
+/* Fix Input Colors */
+.mobile-filters-modal .filter-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #555;
+    border-radius: 8px;
+    background: white !important;
+    color: var(--eerieBlack) !important;
+    font-size: 16px;
+}
+
+.mobile-filters-modal .filter-input:focus {
+    border-color: var(--goldenrod) !important;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(218, 165, 32, 0.2);
+}
+
+/* Fix Button Colors */
+.mobile-filters-buttons .btn-apply {
+    background: var(--goldenrod) !important;
+    color: white !important;
+}
+
+.mobile-filters-buttons .btn-apply:hover {
+    background: #C4941A !important;
+    color: white !important;
+}
+
+.mobile-filters-buttons .btn-reset {
+    background: white !important;
+    color: var(--eerieBlack) !important;
+    border: 2px solid white !important;
+    font-weight: 600;
+}
+
+.mobile-filters-buttons .btn-reset:hover {
+    background: #e8e8e8 !important;
+    border-color: #e8e8e8 !important;
+    color: var(--eerieBlack) !important;
+}
+
+/* Close button fix */
+.mobile-filters-close {
+    color: white !important;
+    font-size: 1.5rem;
 }
 
 @media (min-width: 1024px) {
