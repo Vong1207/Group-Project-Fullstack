@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux';
 import './CategoryPages.css';
 import Navbar from '../partials/Navbar.jsx';
 
-
 export default function CategoryPage() {
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);

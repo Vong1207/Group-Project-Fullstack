@@ -21,9 +21,6 @@ const userSchema = new mongoose.Schema({
     enum: ["Customer", "Vendor", "Shipper"],
     required: true,
   },
-  number: {
-    type: String,
-  },
   avatar: {
     type: String,
     required: true,
@@ -91,13 +88,19 @@ const userSchema = new mongoose.Schema({
       return this.role === "Shipper";
     },
   },
+
+  distributionHubAddress: {
+    type: String,
+    enum: ["702 Nguyen Van Linh, District 7, HCMC", "Ba Na Hills, Da Nang", "Hoan Kiem Lake, Ha Noi"]
+  }
 });
 
 const productSchema = new mongoose.Schema({
   productName: {
     type: String,
     required: true,
-    minlength: 5,
+    minlength: 10,
+    maxlength: 20
   },
   productImage: {
     type: String,
