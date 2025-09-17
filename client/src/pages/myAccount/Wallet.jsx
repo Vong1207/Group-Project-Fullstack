@@ -18,9 +18,9 @@ export default function Wallet() {
     
 
     // Local states
-    const [walletBalanceVisibility, setVisibility] = useState(false);
-    const [toggleIcon, setIcon] = useState('bi bi-eye-slash');
-    const [amount, setAmount] = useState('');
+    const [walletBalanceVisibility, setVisibility] = useState(false); // Toggle visibility of wallet balance
+    const [toggleIcon, setIcon] = useState('bi bi-eye-slash');  // Icon class based on visibility
+    const [amount, setAmount] = useState(''); // User input amount to add
 
     // Save changes to DB
     const userId = useSelector(state => state.user.user?._id);
@@ -34,11 +34,12 @@ export default function Wallet() {
         }
     }
 
-    // Wallet functions
+    // Toggle wallet balance visibility
     function toggleVisibility() {
         setVisibility(!walletBalanceVisibility);
     }
 
+    // Only allow digits for input
     function handleAmountChange(event) {
         const value = event.target.value;
         if (value === '' || /^\d+$/.test(value)) {
@@ -46,6 +47,7 @@ export default function Wallet() {
         }
     }
 
+    // Add money to wallet
     function addMoneyToWallet(amount) {
         const amountNumber = parseInt(amount);
 
@@ -57,10 +59,12 @@ export default function Wallet() {
         }
     }
 
+    // Update icon when visibility changes
     useEffect(() => {
         setIcon(walletBalanceVisibility ? 'bi bi-eye' : 'bi bi-eye-slash');
     }, [walletBalanceVisibility]);
 
+    // Save to DB whenever wallet balance changes
     useEffect(() => {
         if (!isNaN(walletBalance)) {
             saveWalletToDB(walletBalance);

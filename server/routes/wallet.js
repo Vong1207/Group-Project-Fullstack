@@ -9,6 +9,7 @@ import { User } from '../db/schema.js';
 
 const router = express.Router();
 
+// Update wallet balance
 router.post('/update', async (req, res) => {
     const { userId, walletBalance } = req.body;
     try {

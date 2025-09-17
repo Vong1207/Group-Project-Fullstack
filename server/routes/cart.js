@@ -9,11 +9,15 @@ import { Product, User, Order } from "../db/schema.js";
 
 const router = express.Router();
 
+// update user cart
 router.post("/update", async (req, res) => {
   const { userId, cart } = req.body;
   try {
+    // Update cart in database
     await User.findByIdAndUpdate(userId, { cart });
+    // Re-fetch updated user with populated product info in cart
     const updatedUser = await User.findById(userId).populate("cart.product");
+    // Update session user cart
     req.session.user.cart = updatedUser.cart;
     res.json({ success: true });
   } catch (error) {
@@ -26,6 +30,7 @@ router.post("/order", async (req, res) => {
   const { userId, cart, totalPrice } = req.body;
   console.log("BODY:", req.body);
 
+  // Validate input
   if (
     !userId ||
     !Array.isArray(cart) ||
@@ -62,10 +67,12 @@ router.post("/order", async (req, res) => {
     // Deduct money from walletBalance.
     user.walletBalance -= totalPrice;
 
+    // Create order
     const orderItems = cart.map((item) => ({
       product: item.product,
       quantity: item.quantity,
     }));
+    // Randomly assign a distribution hub
     const hubs = ["Ho Chi Minh", "Da Nang", "Ha Noi"];
     const randomHub = hubs[Math.floor(Math.random() * hubs.length)];
     const newOrder = new Order({
@@ -76,6 +83,7 @@ router.post("/order", async (req, res) => {
     });
     await newOrder.save();
 
+    // Update product stock and vendor walletBalance
     for (const item of orderItems) {
       const product = await Product.findById(item.product).populate('postedBy');
       if (!product || !product.postedBy) continue;
@@ -91,7 +99,7 @@ router.post("/order", async (req, res) => {
       }
     }
 
-    
+    // Remove ordered items from user's cart
     const orderedProductIds = cart.map((item) => item.product.toString());
     const remainingCart = user.cart.filter((item) => {
       return !orderedProductIds.includes(item.product._id.toString());
@@ -100,13 +108,16 @@ router.post("/order", async (req, res) => {
     user.cart = remainingCart;
     await user.save();
 
+    // Update session user cart and walletBalance
     req.session.user.cart = user.cart;
     req.session.user.walletBalance = user.walletBalance;
 
+    // Re-fetch updated user with populated product info in cart and purchased
     const updatedUser = await User.findById(userId)
       .populate("cart.product")
       .populate("purchased.product");
 
+    // Update session user
     req.session.user = updatedUser;
 
     res.json({ success: true, order: newOrder, updatedUser });

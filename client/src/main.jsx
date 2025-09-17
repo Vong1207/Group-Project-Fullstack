@@ -35,6 +35,7 @@ import ProductDetails from './pages/productDetails/ProductDetails.jsx';
 import Orders from './pages/myAccount/Orders.jsx';
 import { About, Privacy, Help } from './pages/footerPartial';
 
+// Create the router
 const router = createBrowserRouter([
   {
     path: "/search",
@@ -148,6 +149,8 @@ const router = createBrowserRouter([
     errorElement: <NotFound />
   },
 ])
+
+// Render the app
 const root = createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>

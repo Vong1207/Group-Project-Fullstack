@@ -14,9 +14,14 @@ function useQuery() {
 
 export default function SearchResult() {
   const query = useQuery();
+
+  // Extract the searched product name from the query string
   const searchedName = query.get('searchedName') || '';
+
+  // State to hold search results
   const [results, setResults] = useState([]);
 
+  // Fetch search results from backend API when searchedName changes
   useEffect(() => {
     if (searchedName.trim()) {
   fetch('/api/product/searchByName', {
@@ -26,14 +31,17 @@ export default function SearchResult() {
       })
         .then(res => res.json())
         .then(data => {
+          // Ensure data is an array before setting state
           if (Array.isArray(data)) setResults(data);
           else setResults([]);
         })
         .catch(err => {
+          // In case of error, fallback to empty results
           setResults([]);
           console.error('Search API error:', err);
         });
     } else {
+      // If search term is empty, clear results
       setResults([]);
     }
   }, [searchedName]);

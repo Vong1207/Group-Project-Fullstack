@@ -351,8 +351,8 @@ export default function ShipperSignUp() {
             {errors.distributionHub && (
               <div className="invalid-feedback">{errors.distributionHub}</div>
             )}
-            <div className="form-text">
-              Select the distribution hub you'll be delivering from
+            <div className="form-text ">
+              Select the distribution hub you'll be delivering from 
             </div>
           </div>
           {/* Profile Picture Upload */}

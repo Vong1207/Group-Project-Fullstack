@@ -42,6 +42,7 @@ router.put("/orders/:orderId", async (req, res) => {
     const { status } = req.body;
 
     const allowed = ["Delivered", "Canceled"];
+    // validate status
     if (!allowed.includes(status)) {
       return res.status(400).json({ success: false, message: "Invalid status" });
     }
@@ -67,6 +68,7 @@ router.put("/orders/:orderId", async (req, res) => {
     if (status === "Canceled") {
   let totalRefund = 0;
 
+  // refund money to customer and deduct from vendor
   for (const item of order.cart) {
     const product = await Product.findById(item.product).populate("postedBy");
     if (!product || !product.postedBy) continue;
@@ -88,7 +90,7 @@ router.put("/orders/:orderId", async (req, res) => {
   console.log(`🔁 Refunded ${totalRefund}₫ to customer and deducted from vendors`);
 }
 
-
+  // Update customer's purchased items
       order.cart.forEach((ci) => {
         customer.purchased.push({
           product: ci.product._id,
@@ -103,6 +105,7 @@ router.put("/orders/:orderId", async (req, res) => {
     order.status = status;
     await order.save();
 
+    // Return the updated order with populated fields
     const updated = await Order.findById(order._id)
       .populate("customer", "displayName customerAddress")
       .populate("cart.product");

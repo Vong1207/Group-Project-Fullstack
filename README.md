@@ -1,17 +1,71 @@
-# Group-Project-Fullstack
-- GitHub Repository Link: https://github.com/Vong1207/Group-Project-Fullstack.git
-- OneDrive Video Demo Link:
-- Login Credentials for Testing:
-    + Vendor: 
-        - Username: 
-        - Password: 
-    + Customer: 
-        - Username: 
-        - Password: 
-    + Shipper: 
-        - Username: 
-        - Password: 
-- Steps to Start and Run the Website:
-- Contribution Table:
+# Group Project - COSC2769 - Full Stack Development(Semester 2, 2025)
 
-    Member Name              Role              Assigned Tasks             Contribution Score
+Group Name: Group 07
+| Student Name              | Student Number | Contribution |
+| :------------------------:| :------: |  :------: |
+| Nguyen Vu Linh            | s3999487 |   25% |
+| Nguyen Minh Nguyen Khoa   | s4033604 |   25% |
+| Nguyen Trong Nhan         | s3975356 |   25% |
+| Tran Gia Vong             | sxxxxxxx |   25% |
+
+# GitHub Repository Link:
+- https://github.com/Vong1207/Group-Project-Fullstack.git
+
+# OneDrive Video Demo Link:
+- 
+
+# Customer Account
+- Email: 
+- Password: 
+# Shippeer Account
+- Email: 
+- Password: 
+
+# Vendor Account
+- Email: 
+- Password: 
+
+# MongoDB Atlas Connection URL
+MONGO_URI=mongodb+srv://vongtran:Camtien120703@mycluster.mqx8osn.mongodb.net/cartelloDB
+
+# How to run the project
+From Your Terminal or SHELL
+
+1. **Navigate to project directory**
+   ```bash
+   cd Group-Project-Fullstack
+   ```
+2. **Navigate to Backend folder**
+    ```bash
+   cd server
+   ```
+
+3. **Install packages**
+   ```bash
+   npm install
+   ```
+4. **Run the server**
+    ```bash
+   node index.js
+   ```
+Open a new terminal
+
+5. **Navigate to Frontend folder**
+    ```bash
+   cd client
+   ```
+6. **Install packages**
+    ```bash
+   npm install
+   ```
+4. **Run the client**
+    ```bash
+   npm run dev
+   ```
+| Name                        | Student ID | Contributions                                                                           | Percentage (%) |
+| --------------------------- | ---------- | --------------------------------------------------------------------------------------- | -------------- |
+| **Nguyen Minh Nguyen Khoa** | s4033604   | Backend development, Database schema design, API integration | 25%            |
+| **Nguyen Vu Linh**          | s3999487   | Backend development README setup          | 25%            |
+| **Nguyen Trong Nhan**       | s3975356   | Authentication logic, session handling, secure password hashing (bcrypt), middleware    | 25%            |
+| **Tran Gia Vong**           | sXXXXXXX   | Testing & Debugging, Code refactoring, Folder structure, Git & deployment setup         | 25%            |
+

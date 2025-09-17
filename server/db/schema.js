@@ -6,6 +6,7 @@
 // # ID: 3999487 */
 import { mongoose } from "./mongoose.js";
 
+// user schema
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -95,6 +96,7 @@ const userSchema = new mongoose.Schema({
   }
 });
 
+// product schema
 const productSchema = new mongoose.Schema({
   productName: {
     type: String,
@@ -184,6 +186,7 @@ const orderSchema = new mongoose.Schema({
   },
 });
 
+// create models
 const User = mongoose.model("User", userSchema);
 const Product = mongoose.model("Product", productSchema);
 const Order = mongoose.model("Order", orderSchema);

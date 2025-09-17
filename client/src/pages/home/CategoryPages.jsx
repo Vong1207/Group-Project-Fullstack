@@ -4,37 +4,37 @@
 // # Assessment: Assignment 02
 // # Author: Nguyen Vu Linh, Nguyen Minh Nguyen Khoa
 // # ID: 3999487, 4033604 */
-import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import './CategoryPages.css';
-import Navbar from '../partials/Navbar.jsx';
-import Footer from '../partials/Footer.jsx';
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import "./CategoryPages.css";
+import Navbar from "../partials/Navbar.jsx";
+import Footer from "../partials/Footer.jsx";
 
 export default function CategoryPage() {
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [filters, setFilters] = useState({
-    searchName: '',
-    minPrice: '',
-    maxPrice: ''
+    searchName: "",
+    minPrice: "",
+    maxPrice: "",
   });
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-  const [screenSize, setScreenSize] = useState('desktop');
+  const [screenSize, setScreenSize] = useState("desktop");
 
   // Screen size detection - KEEP ORIGINAL
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width <= 767) setScreenSize('smartphone');
-      else if (width >= 768 && width <= 1023) setScreenSize('tablet');
-      else setScreenSize('desktop');
+      if (width <= 767) setScreenSize("smartphone");
+      else if (width >= 768 && width <= 1023) setScreenSize("tablet");
+      else setScreenSize("desktop");
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -101,35 +101,44 @@ export default function CategoryPage() {
     let filtered = [...products];
 
     if (filters.searchName.trim()) {
-      filtered = filtered.filter(product =>
-        product.productName.toLowerCase().includes(filters.searchName.toLowerCase())
+      filtered = filtered.filter((product) =>
+        product.productName
+          .toLowerCase()
+          .includes(filters.searchName.toLowerCase())
       );
     }
 
     if (filters.minPrice) {
-      filtered = filtered.filter(product => product.productPrice >= parseInt(filters.minPrice));
+      filtered = filtered.filter(
+        (product) => product.productPrice >= parseInt(filters.minPrice)
+      );
     }
 
     if (filters.maxPrice) {
-      filtered = filtered.filter(product => product.productPrice <= parseInt(filters.maxPrice));
+      filtered = filtered.filter(
+        (product) => product.productPrice <= parseInt(filters.maxPrice)
+      );
     }
 
     setFilteredProducts(filtered);
-    if (screenSize === 'smartphone') setShowMobileFilters(false);
+    if (screenSize === "smartphone") setShowMobileFilters(false);
   };
 
   const resetFilters = () => {
-    setFilters({ searchName: '', minPrice: '', maxPrice: '' });
-    setGlobalSearchTerm(''); // Reset global search
+    setFilters({ searchName: "", minPrice: "", maxPrice: "" });
+    setGlobalSearchTerm(""); // Reset global search
     fetchCategoryProducts(); // Về lại products theo category
-    if (screenSize === 'smartphone') setShowMobileFilters(false);
+    if (screenSize === "smartphone") setShowMobileFilters(false);
   };
 
   const getColumnClasses = () => {
     switch (screenSize) {
-      case 'smartphone': return 'col-12';
-      case 'tablet': return 'col-md-6';
-      default: return 'col-lg-4';
+      case "smartphone":
+        return "col-12";
+      case "tablet":
+        return "col-md-6";
+      default:
+        return "col-lg-4";
     }
   };
 
@@ -149,8 +158,10 @@ export default function CategoryPage() {
           className="filter-input"
           placeholder="Enter product name..."
           value={filters.searchName}
-          onChange={(e) => setFilters({ ...filters, searchName: e.target.value })}
-          onKeyPress={(e) => e.key === 'Enter' && applyFilters()}
+          onChange={(e) =>
+            setFilters({ ...filters, searchName: e.target.value })
+          }
+          onKeyPress={(e) => e.key === "Enter" && applyFilters()}
         />
       </div>
 
@@ -177,7 +188,9 @@ export default function CategoryPage() {
         />
       </div>
 
-      <div className={screenSize === 'smartphone' ? 'mobile-filters-buttons' : ''}>
+      <div
+        className={screenSize === "smartphone" ? "mobile-filters-buttons" : ""}
+      >
         <button className="btn-apply" onClick={applyFilters}>
           <i className="bi bi-check-circle me-1"></i>
           Apply
@@ -196,42 +209,61 @@ export default function CategoryPage() {
       <div className="container-fluid">
         <div className="row mx-0">
           {/* Sidebar - Desktop/Tablet */}
-          {screenSize !== 'smartphone' && (
+          {screenSize !== "smartphone" && (
             <div className="col-md-3 col-lg-2 px-0">
               <div className="filters-sidebar d-flex flex-column">
                 <div className="filters-header">
                   <div className="text-center mb-3">
-                  <i className="bi bi-funnel" style={{ fontSize: '2rem' }}></i>
+                    <i
+                      className="bi bi-funnel"
+                      style={{ fontSize: "2rem" }}
+                    ></i>
+                  </div>
                 </div>
-              </div>
-              <div className="filters-content">
-                {renderFilters()}
-                <div className="back-home-container mt-5">
-                  <a href="/" className="back-home-btn">
-                    <i className="bi bi-house me-2"></i>
-                    Back to Home
-                  </a>
+                <div className="filters-content">
+                  {renderFilters()}
+                  <div className="back-home-container mt-5">
+                    <a href="/" className="back-home-btn">
+                      <i className="bi bi-house me-2"></i>
+                      Back to Home
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
           {/* Main Content */}
-          <div className={screenSize !== 'smartphone' ? 'col-md-9 col-lg-10' : 'col-12'}>
+          <div
+            className={
+              screenSize !== "smartphone" ? "col-md-9 col-lg-10" : "col-12"
+            }
+          >
+            {/* Back to homepage – only on smartphone */}
+            {screenSize === "smartphone" && (
+              <div className="mobile-back-home text-start mb-2">
+                <Link to="/" className="back-home-link">
+                  <i className="bi bi-arrow-left me-1"></i>Back to homepage
+                </Link>
+              </div>
+            )}
             {/* Header */}
             <div className="category-header d-flex justify-content-between align-items-center">
               <div>
-                <h1 className="category-title">{categoryName || 'All Products'}</h1>
+                <h1 className="category-title">
+                  {categoryName || "All Products"}
+                </h1>
                 <small>
                   <i className="number-product bi bi-grid me-1"></i>
-                  <span className="number-product-text">{filteredProducts.length} products found</span>
+                  <span className="number-product-text">
+                    {filteredProducts.length} products found
+                  </span>
                 </small>
               </div>
-              
+
               {/* Mobile Filter Toggle */}
-              {screenSize === 'smartphone' && (
-                <button 
+              {screenSize === "smartphone" && (
+                <button
                   className="mobile-filter-toggle"
                   onClick={() => setShowMobileFilters(true)}
                 >
@@ -247,33 +279,32 @@ export default function CategoryPage() {
                 {filteredProducts.length > 0 ? (
                   filteredProducts.map((product) => (
                     <div key={product._id} className={getColumnClasses()}>
-                      <div 
+                      <div
                         className="card product-card h-100"
                         onClick={() => handleProductClick(product._id)}
                       >
-                        <img 
-                          src={product.productImage} 
+                        <img
+                          src={product.productImage}
                           className="product-image"
                           alt={product.productName}
                         />
-                        
+
                         <div className="product-body">
                           <h6 className="product-title">
                             {product.productName}
                           </h6>
-                          
+
                           <p className="product-description">
-                            {product.description?.length > 60 
+                            {product.description?.length > 60
                               ? `${product.description.substring(0, 60)}...`
-                              : product.description
-                            }
+                              : product.description}
                           </p>
-                          
+
                           <div className="product-price">
                             {product.productPrice?.toLocaleString()}₫
                           </div>
-                          
-                          <button 
+
+                          <button
                             className="btn-view-details"
                             onClick={(e) => {
                               e.stopPropagation();
@@ -289,9 +320,15 @@ export default function CategoryPage() {
                   ))
                 ) : (
                   <div className="col-12 text-center py-5">
-                    <i className="bi bi-search" style={{ fontSize: '3rem', color: '#666' }}></i>
+                    <i
+                      className="bi bi-search"
+                      style={{ fontSize: "3rem", color: "#666" }}
+                    ></i>
                     <h5 className="mt-3 text-muted">No Products Found</h5>
-                    <button className="btn btn-primary mt-2" onClick={resetFilters}>
+                    <button
+                      className="btn btn-primary mt-2"
+                      onClick={resetFilters}
+                    >
                       Reset Filters
                     </button>
                   </div>
@@ -303,10 +340,12 @@ export default function CategoryPage() {
       </div>
 
       {/* Mobile Modal */}
-      {screenSize === 'smartphone' && showMobileFilters && (
-        <div 
+      {screenSize === "smartphone" && showMobileFilters && (
+        <div
           className="mobile-filters-overlay"
-          onClick={(e) => e.target === e.currentTarget && setShowMobileFilters(false)}
+          onClick={(e) =>
+            e.target === e.currentTarget && setShowMobileFilters(false)
+          }
         >
           <div className="mobile-filters-modal">
             <div className="mobile-filters-header">
@@ -314,14 +353,14 @@ export default function CategoryPage() {
                 <i className="bi bi-funnel me-2"></i>
                 Filter Products
               </h5>
-              <button 
+              <button
                 className="mobile-filters-close"
                 onClick={() => setShowMobileFilters(false)}
               >
                 <i className="bi bi-x-lg"></i>
               </button>
             </div>
-            
+
             {renderFilters()}
           </div>
         </div>

@@ -11,11 +11,18 @@ import { useEffect, useState } from "react";
 import "../home/categoryPages.css";
 
 export default function MyProducts() {
+  // Get the vendor's user ID from Redux
   const userId = useSelector((state) => state.user.user?._id) || "";
+
+  // State to manage the list of posted products
   const [products, setProducts] = useState([]);
+
+  // State for "Load More" feature
   const [endIndex, setEndIndex] = useState(12);
   const [displayLoadMore, setDisplayLoadMore] = useState(true);
   const displayProducts = products.slice(0, endIndex) || [];
+
+  // Modal state for editing a product
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [originalProduct, setOriginalProduct] = useState(null);
@@ -35,10 +42,12 @@ export default function MyProducts() {
     }
   };
 
+  // Initial fetch when component mounts
   useEffect(() => {
     fetchPostedProducts();
   }, []);
 
+  // Handle "Load More" button click
   function handleLoadMore() {
     setEndIndex((prevIndex) => {
       if (prevIndex + 6 >= products.length) {
@@ -49,18 +58,21 @@ export default function MyProducts() {
     });
   }
 
+  // Open the edit modal and store current product
   function handleEditModalOpen(product) {
     setSelectedProduct(product);
     setOriginalProduct(product);
     setShowEditModal(true);
   }
 
+  // Close the edit modal
   function handleEditModalClose() {
     setShowEditModal(false);
     setOriginalProduct(null);
     setSelectedProduct(null);
   }
 
+  // Delete a product and update local state
   async function handleDeleteProduct(productId) {
     try {
       await axios.delete(
@@ -76,6 +88,7 @@ export default function MyProducts() {
     }
   }
 
+  // Submit edited product to the backend and update local state
   async function handleEditProduct(product) {
     try {
       await axios.post(
@@ -92,6 +105,7 @@ export default function MyProducts() {
     }
   }
 
+  // Check if user has changed any product field before saving
   function isProductChanged() {
     if (!originalProduct || !selectedProduct) return false;
 
