@@ -2,8 +2,8 @@
 // # Course: COSC2769 - Full Stack Development
 // # Semester: 2025B
 // # Assessment: Assignment 02
-// # Author: Your Names (e.g. Nguyen Van Minh)
-// # ID: Your Student ID (e.g. 1234567) */
+// # Author: Nguyen Trong Nhan
+// # ID: s3975356 */
 import express from "express";
 import { User } from "../db/schema.js";
 import { comparePasswords, hashPassword } from "../bcrypt/bcrypt.js";

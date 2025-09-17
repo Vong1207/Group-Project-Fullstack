@@ -1,9 +1,9 @@
-/* # RMIT University Vietnam
+// # RMIT University Vietnam
 // # Course: COSC2769 - Full Stack Development
 // # Semester: 2025B
 // # Assessment: Assignment 02
-// # Author: Nguyen Vu Linh
-// # ID: 3999487 */
+// # Author: Nguyen Trong Nhan
+// # ID: s3975356
 import './ProductDetails.css';
 
 import { useParams, useNavigate } from 'react-router-dom';
@@ -19,9 +19,10 @@ export default function ProductDetails() {
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [quantity, setQuantity] = useState(0);
-
+  
   const dispatch = useDispatch();
   const userId = useSelector(state => state.user.user?._id);
+  const userRole = useSelector(state => state.user.user?.role);
   const currentCart = useSelector(state => state.user.user?.cart || []);
   const navigate = useNavigate();
   const walletBalance = useSelector((state) => state.user.user?.walletBalance) || 0;
@@ -48,13 +49,23 @@ export default function ProductDetails() {
   }
 
   async function handleAddToCart() {
-    if (!userId || !product) return;
+  if (!userId) {
+    navigate('/signin');
+    return;
+  }
+  if (!product) return;
 
     // check quantity
     if (quantity === 0) {
       alert("Invalid quantity");
       return;
     }
+
+  // check stock quantity
+  if (product.stockQuantity < quantity) {
+    alert("There are not enough products to order");
+    return;
+  }
 
     try {
       let updatedCart = [...currentCart];
@@ -81,13 +92,23 @@ export default function ProductDetails() {
 
   // when you click on buy now
   async function hanldeAddToOrder() {
-    if (!userId || !product) return;
-    
-    // check quantity
+  if (!userId) {
+    navigate('/signin');
+    return;
+  }
+  if (!product) return;
+
+   // check quantity
     if (quantity === 0) {
       alert("Invalid quantity");
       return;
     }
+  
+  // check stock quantity
+  if (product.stockQuantity < quantity) {
+    alert("There are not enough products to order");
+    return;
+  }
 
     // Check wallet balance
     if (walletBalance < product.productPrice) {
@@ -195,11 +216,16 @@ export default function ProductDetails() {
             </div>
 
             <div className="d-flex gap-3 mb-3">
-              <button className="btn btn-dark px-4 py-2 fw-bold" onClick={handleAddToCart}>
+              <button className="btn btn-dark px-4 py-2 fw-bold" onClick={handleAddToCart} disabled={userRole === 'Vendor' || userRole === 'Shipper'}>
                 ADD TO CART
               </button>
-              <button className="btn btn-buy px-4 py-2 fw-bold" onClick={hanldeAddToOrder}>BUY NOW</button>
+              <button className="btn btn-buy px-4 py-2 fw-bold" onClick={hanldeAddToOrder} disabled={userRole === 'Vendor' || userRole === 'Shipper'}>BUY NOW</button>
             </div>
+            {(userRole === 'Vendor' || userRole === 'Shipper') && (
+              <div className="text-danger small mt-1">
+                Only customers can purchase products.
+              </div>
+            )}
             {/* <button className="btn btn-outline-secondary px-4 ms-2">Add to Wishlist</button> */}
           </div>
         </div>

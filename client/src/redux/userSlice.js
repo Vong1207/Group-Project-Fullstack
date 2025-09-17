@@ -9,7 +9,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
     name: "user",
     initialState: { 
-        user: null
+        user: null // User object will be set after login or signup
     },
     reducers: {
         // Set the user & Clear user
@@ -41,12 +41,14 @@ const userSlice = createSlice({
                 }
             }
         },
+        // Add cart quantity
         addCartQuantity: (state, action) => {
             const index = action.payload;
             if (state.user && state.user.cart && state.user.cart[index]) {
                 state.user.cart[index].quantity += 1;
             }
         },
+        // Input cart quantity directly
         inputCartQuantity: (state, action) => {
             const { index, value } = action.payload;
             if (value === '' || parseInt(value) <= 0) {
@@ -55,12 +57,14 @@ const userSlice = createSlice({
                 state.user.cart[index].quantity = value;
             }
         },
+        // Delete a product from cart
         deleteCartProduct: (state, action) => {
             const index = action.payload;
             if (state.user && state.user.cart && state.user.cart[index]) {
                 state.user.cart.splice(index, 1);
             }
         },
+        // Add product to cart
         addProductToCard: (state, action) => {
             const product = action.payload;
 

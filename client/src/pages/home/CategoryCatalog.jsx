@@ -10,10 +10,14 @@ import { Link } from 'react-router-dom';
 import './CategoryPages.css';
 import { useEffect, useState } from 'react';
 
+
+// Main component to display product categories and all available products
 export default function CategoryCatalog() {
-    const [products, setProducts] = useState([]);
-    const [endIndex, setEndIndex] = useState(12);
-    const [displayLoadMore, setDisplayLoadMore] = useState(true);
+    const [products, setProducts] = useState([]);  // List of all products fetched from the server
+    const [endIndex, setEndIndex] = useState(12);   // Number of products to display initially
+    const [displayLoadMore, setDisplayLoadMore] = useState(true);   // Flag to toggle the "Load More" button
+    
+    // Slice products up to the current endIndex to render on UI
     const displayProducts = products.slice(0, endIndex) || [];
 
     // Fetch all products
@@ -24,16 +28,19 @@ export default function CategoryCatalog() {
             setProducts(data || []);
         } catch (error) {
             console.error('Error fetching all products:', error);
-            setProducts([]);
+            setProducts([]); // Set to empty array on error
         }
     };
 
+    // Fetch products once after component is mounted
     useEffect(() => {
         fetchAllProducts();
     }, []);
 
+    // Handler for the "Load More" button
     const handleLoadMore = () => {
         setEndIndex((prevIndex) => {
+            // If end of product list is reached, disable the button
             if (prevIndex + 12 >= products.length) {
                 setDisplayLoadMore(false);
                 return products.length;
@@ -42,10 +49,12 @@ export default function CategoryCatalog() {
         });
     };
 
+    // Navigate to product detail page when a product is clicked
     const handleProductClick = (productId) => {
         window.location.href = `/product/${productId}`;
     };
 
+    // Responsive column classes for product cards
     const getColumnClasses = () => {
         return 'col-lg-4 col-md-6 col-12';
     };

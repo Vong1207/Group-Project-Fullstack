@@ -80,7 +80,7 @@ app.get('/api/session', async (req, res) => {
         res.json({ loggedIn: false });
     }
 })
-
+// Logout
 app.get('/logout', (req, res) => {
     req.session.destroy(err => {
         if (err) {
@@ -91,6 +91,7 @@ app.get('/logout', (req, res) => {
     });
 }); 
 
+// Start server
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {

@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
+// List of predefined product categories
 const categories = [
   "Electronics",
   "Men's Wear",
@@ -25,12 +26,16 @@ const categories = [
 ];
 
 export default function AddNewProduct() {
+  // Get current vendor ID from Redux
   const vendorId = useSelector((state) => state.user.user?._id || "");
+  
+  // Validation error states
   const [productNameError, setProductNameError] = useState(null);
   const [productPriceError, setProductPriceError] = useState(null);
   const [productDescriptionError, setProductDescriptionError] = useState(null);
   const [productQuantityError, setProductQuantityError] = useState(null);
 
+  // Form data state
   const [formData, setFormData] = useState({
     productName: "",
     productImage: "",
@@ -40,6 +45,8 @@ export default function AddNewProduct() {
     stockQuantity: 0,
     postedBy: vendorId,
   });
+
+  // Dropdown state
   const [categoryOption, setCategoryOption] = useState("Select a category");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -51,6 +58,7 @@ export default function AddNewProduct() {
     }));
   }, [categoryOption]);
 
+  // Update category in formData whenever dropdown value changes
   async function handleChangeInputImage(event) {
     const file = event.target.files[0];
 
@@ -64,9 +72,11 @@ export default function AddNewProduct() {
     reader.readAsDataURL(file);
   }
 
+  // Submit form to server with validation
   async function handleSubmit(event) {
     event.preventDefault();
 
+    // Prevent submission if any validation error exists
     if (productNameError || productPriceError || productDescriptionError || productQuantityError) {
       return;
     }

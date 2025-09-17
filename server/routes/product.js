@@ -52,7 +52,7 @@ router.post('/searchByName', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-
+// Get products posted by a specific user
 router.post('/findPostedBy', async (req, res) => {
     const { userId } = req.body;
 
@@ -64,7 +64,7 @@ router.post('/findPostedBy', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-
+// Delete a product by ID
 router.delete('/delete', async (req, res) => {
     const { productId } = req.body;
 
@@ -76,7 +76,7 @@ router.delete('/delete', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-
+// Edit a product
 router.post('/edit', async (req, res) => {
     const { product } = req.body;
 
@@ -88,7 +88,7 @@ router.post('/edit', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-
+// Add a new product
 router.post('/add', async (req, res) => {
     const { product } = req.body;
 
@@ -101,7 +101,7 @@ router.post('/add', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-
+// Filter products by category, name, and price range
 router.post('/filterByCategory', async (req, res) => {
     const { category, searchName, minPrice, maxPrice } = req.body;
     

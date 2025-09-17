@@ -11,15 +11,19 @@ import axios from 'axios';
 import { clearUser, setUser, setUserAvatar } from '../../redux/userSlice.js';
 import { useRef, useState } from 'react';
 
+
 export default function Account() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const fileInputRef = useRef();
 
+    // Get current user data from Redux store
     const user = useSelector((state) => state.user.user || {});
+    // State to manage avatar image display and base64 string for upload
     const [avatarImage, setAvatarImage] = useState(user.avatar);
     const [base64Avatar, setBase64Avatar] = useState(user.avatar);
 
+    // Handle user logout
     const handleSignOut = async () => {
         try {
             await axios.get('http://localhost:3000/logout', { withCredentials: true });
@@ -30,29 +34,32 @@ export default function Account() {
         navigate('/');
     };
 
+    // Open the file input when user clicks camera button
     const handleAvatarBtnClick = () => {
         if (fileInputRef.current) {
             fileInputRef.current.click();
         }
     }
 
+    // Handle avatar image selection and convert it to base64
     const handleAvatarChange = async (event) => {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setAvatarImage(reader.result);
-                setBase64Avatar(reader.result);
+                setAvatarImage(reader.result);  // For preview
+                setBase64Avatar(reader.result); // For upload
             };
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(file);     // Convert image to base64
         }
     }
 
+    // Save avatar changes to backend and update Redux store
     const saveChangesToDB = async () => {
         try {
             if (base64Avatar && base64Avatar !== user.avatar) {
                 await axios.put('http://localhost:3000/api/user/updateAccount', { avatar: base64Avatar }, { withCredentials: true });
-                dispatch(setUserAvatar(avatarImage))
+                dispatch(setUserAvatar(avatarImage))    // Update Redux state
             } else {
                 return;
             }
@@ -100,7 +107,6 @@ export default function Account() {
                 <div className='accountInfoContainer my-5'>
                     <p className='accountInfo mb-0'><span className='fw-bold accountInfoLabel'>Username: </span>{user.username}</p>
                     <p className='accountInfo mb-0'><span className='fw-bold accountInfoLabel'>Role: </span>{user.role}</p>
-                    <p className='accountInfo mb-0'><span className='fw-bold accountInfoLabel'>Number: </span>{user.number || ''}</p>
                     {user.role === 'Customer' && (
                         <>
                             <p className='accountInfo mb-0'><span className='fw-bold accountInfoLabel'>Address: </span>{user.customerAddress}</p>

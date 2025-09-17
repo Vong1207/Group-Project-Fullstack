@@ -9,19 +9,22 @@ import axios from 'axios';
 import { useState, useEffect, use } from 'react';
 
 export default function Orders() {
+    // State to store all fetched orders
     const [orders, setOrders] = useState([]);
 
+    // Fetch all orders from the backend for the shipper
     const fetchOrders = async () => {
         try {
             const response = await axios.get("http://localhost:3000/api/shipper/orders", { withCredentials: true });
             const orders = response.data.orders;
-            setOrders(orders);
-            console.log(orders);
+            setOrders(orders);  // Update local state with fetched orders
+            console.log(orders);    // Debug: show orders in console
         } catch (error) {
             console.error("Error fetching orders:", error);
         }
     };
 
+    // Update order status (Delivered or Canceled)
     const handleUpdateStatus = async (orderId, newStatus) => {
         try {
             await axios.put(`http://localhost:3000/api/shipper/orders/${orderId}`, { status: newStatus }, { withCredentials: true });
@@ -30,7 +33,8 @@ export default function Orders() {
         console.error("Failed to update order:", err);
         }
         };
-
+    
+    // Fetch orders when component mounts
     useEffect(() => {
         fetchOrders();
     }, []);

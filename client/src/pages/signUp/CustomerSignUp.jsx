@@ -2,13 +2,16 @@
 // # Course: COSC2769 - Full Stack Development
 // # Semester: 2025B
 // # Assessment: Assignment 02
-// # Author: Nguyen Minh Nguyen Khoa,
-// # ID: 4033604, */
+// # Author: Nguyen Minh Nguyen Khoa, Nguyen Trong Nhan
+// # ID: 4033604, 3975356 */
 import React, { useState, useEffect } from 'react';
 import './SignUp.css';
 
 export default function CustomerSignUp() {
+    // Modal state for image size error
     const [showSizeModal, setShowSizeModal] = useState(false);
+
+    // Form data state
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -17,6 +20,7 @@ export default function CustomerSignUp() {
         profilePicture: null
     });
 
+    // Other states
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState({});
     const [avatarPreview, setAvatarPreview] = useState('/customerProfile/defaultProfile.png');
@@ -54,6 +58,9 @@ export default function CustomerSignUp() {
         return { valid: true };
     };
 
+    /**
+     * Field-level validation
+     */
     const validateField = (name, value) => {
         let error = '';
         
@@ -84,6 +91,9 @@ export default function CustomerSignUp() {
         return error === '';
     };
 
+    /**
+     * Handle all input changes (text + file)
+     */
     const handleChange = (e) => {
         const { name, value, files } = e.target;
         

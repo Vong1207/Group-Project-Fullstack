@@ -8,6 +8,7 @@ import "./CustomerCart.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 // Import reducers
 import {
   setUser,
@@ -21,18 +22,20 @@ import {
 export default function CustomerCart() {
   const dispatch = useDispatch();
 
-  // Redux state
+  // Get cart products from Redux
   const productsInCart = useSelector((state) => state.user.user?.cart) || [];
 
-  // Local state
+  // Checkbox state for selected products (used for ordering)
   const [checked, setChecked] = useState(productsInCart.map(() => false));
 
+  // Calculate total price for selected products only
   const totalPriceSelected = productsInCart.reduce((total, product, index) => {
     return checked[index]
       ? total + product.product.productPrice * product.quantity
       : total;
   }, 0);
 
+  // Ensure checked state stays in sync when products change
   useEffect(() => {
     if (checked.length === 0 && productsInCart.length > 0) {
       setChecked(productsInCart.map(() => false));
@@ -67,19 +70,23 @@ export default function CustomerCart() {
     setChecked(checked.map((item, i) => (i === index ? !item : item)));
   }
 
+  // Decrease product quantity
   function handleSubtractQuantity(index) {
     dispatch(subtractCartQuantity(index));
   }
 
+  // Increase product quantity
   function handleAddQuantity(index) {
     dispatch(addCartQuantity(index));
   }
 
+  // Set product quantity by input
   function handleInputQuantity(event, index) {
     const value = event.target.value;
     dispatch(inputCartQuantity({ index, value }));
   }
 
+  // Remove product from cart
   function handleDeleteProduct(index) {
     dispatch(deleteCartProduct(index));
   }
