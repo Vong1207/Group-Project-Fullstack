@@ -1,12 +1,12 @@
 # Group Project - COSC2769 - Full Stack Development(Semester 2, 2025)
 
 Group Name: Group 07
-| Student Name              | Student Number | Contribution |
-| :------------------------:| :------: |  :------: |
-| Nguyen Vu Linh            | s3999487 |   25% |
-| Nguyen Minh Nguyen Khoa   | s4033604 |   25% |
-| Nguyen Trong Nhan         | s3975356 |   25% |
-| Tran Gia Vong             | sxxxxxxx |   25% |
+| Student Name              | Student Number |
+| :------------------------:| :------: |
+| Nguyen Vu Linh            | s3999487 |
+| Nguyen Minh Nguyen Khoa   | s4033604 |
+| Nguyen Trong Nhan         | s3975356 |
+| Tran Gia Vong             | sxxxxxxx |
 
 # GitHub Repository Link:
 - https://github.com/Vong1207/Group-Project-Fullstack.git
@@ -65,7 +65,7 @@ Open a new terminal
 | Name                        | Student ID | Contributions                                                                           | Percentage (%) |
 | --------------------------- | ---------- | --------------------------------------------------------------------------------------- | -------------- |
 | **Nguyen Minh Nguyen Khoa** | s4033604   | Backend development, Database schema design, API integration | 25%            |
-| **Nguyen Vu Linh**          | s3999487   | Backend development README setup          | 25%            |
+| **Nguyen Vu Linh**          | s3999487   | Backend Development: Shopping Process, Wallet Transaction Handling ,API Development, Initial Data Seeding, Mongoose Schema Design, Testing & Debugging and README Documentation | 25%            |
 | **Nguyen Trong Nhan**       | s3975356   | Authentication logic, session handling, secure password hashing (bcrypt), middleware    | 25%            |
 | **Tran Gia Vong**           | sXXXXXXX   | Testing & Debugging, Code refactoring, Folder structure, Git & deployment setup         | 25%            |
 
