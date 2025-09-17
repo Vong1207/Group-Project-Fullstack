@@ -45,7 +45,11 @@ export default function ProductDetails() {
   }, [productId]);
 
   async function handleAddToCart() {
-  if (!userId || !product) return;
+  if (!userId) {
+    navigate('/signin');
+    return;
+  }
+  if (!product) return;
 
   // check stock quantity
   if (product.stockQuantity < quantity) {
@@ -78,7 +82,11 @@ export default function ProductDetails() {
 
   // when you click on buy now
   async function hanldeAddToOrder() {
-  if (!userId || !product) return;
+  if (!userId) {
+    navigate('/signin');
+    return;
+  }
+  if (!product) return;
   
   // check stock quantity
   if (product.stockQuantity < quantity) {
