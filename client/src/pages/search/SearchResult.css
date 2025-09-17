@@ -1,0 +1,28 @@
+.resultCard {
+    box-sizing: border-box;
+    border: 1px solid var(--eerieBlack);
+}
+
+.goldenrod {
+    color: var(--goldenrod);
+}
+
+.resultImage {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-bottom: 1px solid var(--eerieBlack);
+}
+
+a {
+    text-decoration: none;
+}
+
+.resultName {
+    color: var(--eerieBlack);
+    font-size: 1.3rem;
+}
+
+.resultPrice {
+    color: var(--goldenrod);
+    font-size: 1.3rem;
+}
