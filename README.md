@@ -64,8 +64,8 @@ Open a new terminal
    ```
 | Name                        | Student ID | Contributions                                                                           | Percentage (%) |
 | --------------------------- | ---------- | --------------------------------------------------------------------------------------- | -------------- |
-| **Tran Gia Vong** | s4012094   | Backend development, Database schema design, Account page for 3 roles, API integration, MongoDB connection | 25%            |
-| **Nguyen Vu Linh**          | s3999487   | Backend Development: Shopping Process, Wallet Transaction Handling ,API Development, Initial Data Seeding, Mongoose Schema Design, Testing & Debugging and README Documentation | 25%            |
-| **Nguyen Trong Nhan**       | s3975356   | Authentication logic, session handling, secure password hashing (bcrypt), middleware    | 25%            |
-| **Nguyen Minh Nguyen Khoa**           | s4033604   | Frontend development, Filters function Categorypages, API Integration,  Writting Report    | 25%           |
+| **Tran Gia Vong** | s4012094   | Backend development, Database schema design, Account page for 3 roles, API integration, MongoDB connection, Testing & Debugging| 25%,Writting Report            |
+| **Nguyen Vu Linh**          | s3999487   | Backend Development: Shopping Process, Wallet Transaction Handling ,API Development, Initial Data Seeding, Mongoose Schema Design, Testing & Debugging and README Documentation, Writting Report  | 25%            |
+| **Nguyen Trong Nhan**       | s3975356   | Frontend development, Authentication logic, session handling, secure password hashing (bcrypt), middleware, Writting Report, Testing & Debugging    | 25%            |
+| **Nguyen Minh Nguyen Khoa**           | s4033604   | Frontend development, Filters function Categorypages, API Integration,  Writting Report, Testing & Debugging   | 25%           |
 
