@@ -2,8 +2,8 @@
 // # Course: COSC2769 - Full Stack Development
 // # Semester: 2025B
 // # Assessment: Assignment 02
-// # Author: Nguyen Vu Linh
-// # ID: 3999487 */
+// # Author: Nguyen Vu Linh, Tran Gia Vong
+// # ID: 3999487, 4012094 */
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { useSelector } from 'react-redux';
