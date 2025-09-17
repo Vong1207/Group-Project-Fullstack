@@ -6,7 +6,7 @@ Group Name: Group 07
 | Nguyen Vu Linh            | s3999487 |
 | Nguyen Minh Nguyen Khoa   | s4033604 |
 | Nguyen Trong Nhan         | s3975356 |
-| Tran Gia Vong             | sxxxxxxx |
+| Tran Gia Vong             | s4012094 |
 
 # GitHub Repository Link:
 - https://github.com/Vong1207/Group-Project-Fullstack.git
