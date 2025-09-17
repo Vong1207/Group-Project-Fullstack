@@ -6,7 +6,7 @@ Group Name: Group 07
 | Nguyen Vu Linh            | s3999487 |
 | Nguyen Minh Nguyen Khoa   | s4033604 |
 | Nguyen Trong Nhan         | s3975356 |
-| Tran Gia Vong             | sxxxxxxx |
+| Tran Gia Vong             | s4012094 |
 
 # GitHub Repository Link:
 - https://github.com/Vong1207/Group-Project-Fullstack.git
@@ -66,6 +66,6 @@ Open a new terminal
 | --------------------------- | ---------- | --------------------------------------------------------------------------------------- | -------------- |
 | **Nguyen Minh Nguyen Khoa** | s4033604   | Backend development, Database schema design, API integration | 25%            |
 | **Nguyen Vu Linh**          | s3999487   | Backend Development: Shopping Process, Wallet Transaction Handling ,API Development, Initial Data Seeding, Mongoose Schema Design, Testing & Debugging and README Documentation | 25%            |
-| **Nguyen Trong Nhan**       | s3975356   | Authentication logic, session handling, secure password hashing (bcrypt), middleware    | 25%            |
-| **Tran Gia Vong**           | s4012094   | Testing & Debugging, Code refactoring, Folder structure, Git & deployment setup         | 25%            |
+| **Nguyen Trong Nhan**       | s3975356   | Authentication logic, session handling, middleware    | 25%            |
+| **Tran Gia Vong**           | s4012094   | Testing & Debugging, Code refactoring, Folder structure, Git & deployment setup, Schema Design, Navbar, Footer, Carousel, Category Section, Not Found Page, My Account Pages, hash password, Search Result Page, setup server and session, modify and/or fix UI         | 25%            |
 
