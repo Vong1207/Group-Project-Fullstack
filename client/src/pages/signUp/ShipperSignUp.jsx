@@ -2,8 +2,8 @@
 // # Course: COSC2769 - Full Stack Development
 // # Semester: 2025B
 // # Assessment: Assignment 02
-// # Author: Nguyen Minh Nguyen Khoa,
-// # ID: 4033604, */
+// # Author: Nguyen Minh Nguyen Khoa, Nguyen Trong Nhan
+// # ID: 4033604, 3975356 */
 // Username: 8-15 characters, letters and numbers only
 const validateUsername = (username) => {
   return /^[A-Za-z0-9]{8,15}$/.test(username);
