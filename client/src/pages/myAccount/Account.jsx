@@ -107,7 +107,6 @@ export default function Account() {
                 <div className='accountInfoContainer my-5'>
                     <p className='accountInfo mb-0'><span className='fw-bold accountInfoLabel'>Username: </span>{user.username}</p>
                     <p className='accountInfo mb-0'><span className='fw-bold accountInfoLabel'>Role: </span>{user.role}</p>
-                    <p className='accountInfo mb-0'><span className='fw-bold accountInfoLabel'>Number: </span>{user.number || ''}</p>
                     {user.role === 'Customer' && (
                         <>
                             <p className='accountInfo mb-0'><span className='fw-bold accountInfoLabel'>Address: </span>{user.customerAddress}</p>
