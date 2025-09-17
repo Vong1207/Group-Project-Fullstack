@@ -45,7 +45,7 @@ export default function SearchResult() {
     <div className='d-flex flex-column min-vh-100'>
       <Navbar />
         <div className="container mt-4 flex-fill">
-          <h2 className="fw-bold mb-4">Search Results for: <span className="goldenrod">{searchedName}</span></h2>
+          <h2 className="fw-bold mb-4">Search Results for: <span className="goldenrod">{searchedName}</span><small className='eerieBlack'>{` (${results.length})`}</small></h2>
           {results.length > 0 ? (
             <div className='row mx-0 gy-4 mb-4'>
               {results.map((p, idx) => (

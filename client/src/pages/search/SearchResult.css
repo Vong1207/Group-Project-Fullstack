@@ -26,3 +26,8 @@ a {
     color: var(--goldenrod);
     font-size: 1.3rem;
 }
+
+.eerieBlack {
+    color: var(--eerieBlack);
+    font-size: 1rem;
+}
