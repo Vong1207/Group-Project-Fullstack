@@ -1,3 +1,9 @@
+// # RMIT University Vietnam
+// # Course: COSC2769 - Full Stack Development
+// # Semester: 2025B
+// # Assessment: Assignment 02
+// # Author: Nguyen Trong Nhan
+// # ID: s3975356
 import './NotFound.css'
 import { Link } from 'react-router-dom'
 
