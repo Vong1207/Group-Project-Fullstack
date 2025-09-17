@@ -26,6 +26,10 @@ const categories = [
 
 export default function AddNewProduct() {
   const vendorId = useSelector((state) => state.user.user?._id || "");
+  const [productNameError, setProductNameError] = useState(null);
+  const [productPriceError, setProductPriceError] = useState(null);
+  const [productDescriptionError, setProductDescriptionError] = useState(null);
+  const [productQuantityError, setProductQuantityError] = useState(null);
 
   const [formData, setFormData] = useState({
     productName: "",
@@ -63,6 +67,10 @@ export default function AddNewProduct() {
   async function handleSubmit(event) {
     event.preventDefault();
 
+    if (productNameError || productPriceError || productDescriptionError || productQuantityError) {
+      return;
+    }
+
     try {
       const response = await axios.post(
         "http://localhost:3000/api/product/add",
@@ -96,14 +104,19 @@ export default function AddNewProduct() {
               Product Name
             </label>
             <input
-              onChange={(event) =>
-                setFormData({ ...formData, productName: event.target.value })
+              onChange={(event) => {
+                  setFormData({ ...formData, productName: event.target.value })
+                  {event.target.value !== '' && (event.target.value.length < 10 || event.target.value.length > 20 ) ? setProductNameError('Product name must have length of 10 to 20') : setProductNameError(null)}
+                }
               }
               type="text"
               className="form-input"
               placeholder="Enter product name..."
               required
             />
+            {productNameError && (
+              <small className="text-danger mt-1">{productNameError}</small>
+            )}
           </div>
 
           <div className="form-group">
@@ -126,17 +139,21 @@ export default function AddNewProduct() {
               Product Price (₫)
             </label>
             <input
-              onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  productPrice: Number(event.target.value),
-                })
+              onChange={(event) => {
+                  setFormData({
+                    ...formData,
+                    productPrice: Number(event.target.value),
+                  })
+
+                  {event.target.value !== '' && event.target.value < 0 ? setProductPriceError('Price cannot be negative') : setProductPriceError(null)}
+                }
               }
               type="number"
               className="form-input"
               placeholder="Enter price..."
               required
             />
+            <small className="text-danger mt-1">{productPriceError}</small>
           </div>
 
           <div className="form-group">
@@ -178,14 +195,18 @@ export default function AddNewProduct() {
               Product Description
             </label>
             <textarea
-              onChange={(event) =>
-                setFormData({ ...formData, description: event.target.value })
+              onChange={(event) => {
+                  setFormData({ ...formData, description: event.target.value })
+
+                  {event.target.value.length > 500 ? setProductDescriptionError('Description cannot exceed 500 characters') : setProductDescriptionError(null)}
+                }
               }
               className="form-textarea"
               placeholder="Enter product description..."
               rows="4"
               required
             />
+            <small className="text-danger mt-1">{productDescriptionError}</small>
           </div>
 
           <div className="form-group">
@@ -195,16 +216,21 @@ export default function AddNewProduct() {
             </label>
             <input
               onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  stockQuantity: Number(event.target.value),
-                })
+                {
+                  setFormData({
+                    ...formData,
+                    stockQuantity: Number(event.target.value),
+                  })
+
+                  {event.target.value !== '' && event.target.value < 0 ? setProductQuantityError('Stock quantity cannot be negative') : setProductQuantityError(null)}
+                }
               }
               type="number"
               className="form-input"
               placeholder="Enter stock quantity..."
               required
             />
+            <small className="text-danger mt-1">{productQuantityError}</small>
           </div>
 
           <button type="submit" className="submit-btn">

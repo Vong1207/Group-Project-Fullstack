@@ -56,7 +56,7 @@ await Product.deleteMany()
       //playing cards & toys
       {
         postedBy: vendor._id,
-        productName: "LEGO Batmobile with Batman Minifigure",
+        productName: "LEGO Batmobile Set",
         productImage: "/product/card&toy1.png",
         productPrice: 690000,
         category: "Playing Cards & Toys",
@@ -66,7 +66,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Minions Bob Prison Edition Figure",
+        productName: "Minions Bob Figure",
         productImage: "/product/card&toy2.png",
         productPrice: 320000,
         category: "Playing Cards & Toys",
@@ -76,7 +76,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "RX-78-2 Gundam Action Model",
+        productName: "RX-78-2 Gundam Toy",
         productImage: "/product/card&toy3.png",
         productPrice: 850000,
         category: "Playing Cards & Toys",
@@ -86,7 +86,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Vintage Cream Mini Car Model",
+        productName: "Vintage Mini Car",
         productImage: "/product/card&toy4.png",
         productPrice: 270000,
         category: "Playing Cards & Toys",
@@ -96,7 +96,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Classic Wind-up Tin Robot Toy",
+        productName: "Classic Tin Robot",
         productImage: "/product/card&toy5.png",
         productPrice: 210000,
         category: "Playing Cards & Toys",
@@ -106,7 +106,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Luxury Black & Gold Playing Cards",
+        productName: "Black Gold Cards",
         productImage: "/product/card&toy6.png",
         productPrice: 180000,
         category: "Playing Cards & Toys",
@@ -116,7 +116,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Monarchs Premium Playing Cards",
+        productName: "Monarchs Cards",
         productImage: "/product/card&toy7.png",
         productPrice: 240000,
         category: "Playing Cards & Toys",
@@ -126,7 +126,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Bicycle Standard Playing Cards - Blue",
+        productName: "Bicycle Cards Blue",
         productImage: "/product/card&toy8.png",
         productPrice: 95000,
         category: "Playing Cards & Toys",
@@ -136,7 +136,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "UNO Minimalist Edition Card Game",
+        productName: "UNO Minimalist Deck",
         productImage: "/product/card&toy9.png",
         productPrice: 145000,
         category: "Playing Cards & Toys",
@@ -146,7 +146,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Rainbow HOLO Playing Cards By TCC Fashion",
+        productName: "Rainbow HOLO Cards",
         productImage: "/product/card&toy10.png",
         productPrice: 300000,
         category: "Playing Cards & Toys",
@@ -156,7 +156,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Wilson Airless Gen1 Basketball",
+        productName: "Wilson Airless Ball",
         productImage: "/product/card&toy12.png",
         productPrice: 380000,
         category: "Playing Cards & Toys",
@@ -167,7 +167,7 @@ await Product.deleteMany()
       // Sprots
       {
         postedBy: vendor._id,
-        productName: "Nike All-Field American Football",
+        productName: "Nike All-Field Ball",
         productImage: "/product/sport1.png",
         productPrice: 490000,
         category: "Sports",
@@ -177,7 +177,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Outdoor Rubber Basketball",
+        productName: "Outdoor Basketball",
         productImage: "/product/sport2.png",
         productPrice: 220000,
         category: "Sports",
@@ -187,7 +187,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Blue Graphite Tennis Racket",
+        productName: "Blue Tennis Racket",
         productImage: "/product/sport3.png",
         productPrice: 670000,
         category: "Sports",
@@ -197,7 +197,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Indoor PU Leather Basketball",
+        productName: "Indoor PU Basketball",
         productImage: "/product/sport4.png",
         productPrice: 340000,
         category: "Sports",
@@ -207,7 +207,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Mini Textured Basketball Toy",
+        productName: "Mini Basketball Toy",
         productImage: "/product/sport5.png",
         productPrice: 49000,
         category: "Sports",
@@ -217,7 +217,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Adidas White Court Sneakers",
+        productName: "Adidas Court Shoes",
         productImage: "/product/sport6.png",
         productPrice: 1150000,
         category: "Sports",
@@ -227,7 +227,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Adidas Prophere Mint Running Shoes",
+        productName: "Adidas Prophere Mint",
         productImage: "/product/sport7.png",
         productPrice: 1390000,
         category: "Sports",
@@ -237,7 +237,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Adidas POD-S3.1 Olive Trainers",
+        productName: "Adidas POD-S3.1",
         productImage: "/product/sport8.png",
         productPrice: 1290000,
         category: "Sports",
@@ -247,7 +247,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Standard Yellow Tennis Ball",
+        productName: "Standard Tennis Ball",
         productImage: "/product/sport9.png",
         productPrice: 25000,
         category: "Sports",
@@ -257,7 +257,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Lightweight Racing Shoes - RACE Edition",
+        productName: "RACE Racing Shoes",
         productImage: "/product/sport10.png",
         productPrice: 1580000,
         category: "Sports",
@@ -267,7 +267,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Red High-Top Basketball Sneakers",
+        productName: "Red High-Top Shoes",
         productImage: "/product/sport11.png",
         productPrice: 980000,
         category: "Sports",
@@ -277,7 +277,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "TaylorMade P790 Golf Iron Set",
+        productName: "TaylorMade P790 Set",
         productImage: "/product/sport12.png",
         productPrice: 8690000,
         category: "Sports",
@@ -288,7 +288,7 @@ await Product.deleteMany()
       // Jewelery
       {
         postedBy: vendor._id,
-        productName: "Celestial Pearl Drop Earrings",
+        productName: "Celestial Pearl Drop",
         productImage: "/product/jewelery1.png",
         productPrice: 1450000,
         category: "Jewelery",
@@ -298,7 +298,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Ocean Sapphire Halo Ring",
+        productName: "Ocean Sapphire Ring",
         productImage: "/product/jewelery2.png",
         productPrice: 2200000,
         category: "Jewelery",
@@ -338,7 +338,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Starlight Charm Bracelet",
+        productName: "Starlight Charm Band",
         productImage: "/product/jewelery6.png",
         productPrice: 1600000,
         category: "Jewelery",
@@ -348,7 +348,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Crystal Bow Statement Earrings",
+        productName: "Crystal Bow Earrings",
         productImage: "/product/jewelery7.png",
         productPrice: 2300000,
         category: "Jewelery",
@@ -358,7 +358,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Blossom Charm Bracelet",
+        productName: "Blossom Charm Band",
         productImage: "/product/jewelery8.png",
         productPrice: 1850000,
         category: "Jewelery",
@@ -368,7 +368,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Infinity Loop Pendant Necklace",
+        productName: "Infinity Loop Chain",
         productImage: "/product/jewelery9.png",
         productPrice: 2100000,
         category: "Jewelery",
@@ -378,7 +378,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Golden Grace Multi-Strand Bracelet",
+        productName: "Golden Grace Band",
         productImage: "/product/jewelery10.png",
         productPrice: 2600000,
         category: "Jewelery",
@@ -388,7 +388,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Classic Diamond Hoop Earrings",
+        productName: "Diamond Hoop Pair",
         productImage: "/product/jewelery11.png",
         productPrice: 2200000,
         category: "Jewelery",
@@ -398,7 +398,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Vintage Heart Locket Necklace",
+        productName: "Vintage Heart Locket",
         productImage: "/product/jewelery12.png",
         productPrice: 1450000,
         category: "Jewelery",
@@ -409,7 +409,7 @@ await Product.deleteMany()
       //Furniture
       {
         postedBy: vendor._id,
-        productName: "Modern Beige Sofa Set",
+        productName: "Modern Beige Sofa",
         productImage: "/product/furniture1.png",
         productPrice: 8500000,
         category: "Furniture",
@@ -419,7 +419,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Classic Wooden Armchair",
+        productName: "Classic Armchair",
         productImage: "/product/furniture2.png",
         productPrice: 3500000,
         category: "Furniture",
@@ -429,7 +429,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Minimalist Coffee Table",
+        productName: "Minimalist CoffeeTbl",
         productImage: "/product/furniture3.png",
         productPrice: 2800000,
         category: "Furniture",
@@ -439,7 +439,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Blue Velvet Lounge Chair",
+        productName: "Blue Velvet Chair",
         productImage: "/product/furniture4.png",
         productPrice: 4200000,
         category: "Furniture",
@@ -449,7 +449,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Wooden Storage Cabinet",
+        productName: "Wooden Storage Box",
         productImage: "/product/furniture5.png",
         productPrice: 5200000,
         category: "Furniture",
@@ -479,7 +479,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Luxury King Size Bed",
+        productName: "Luxury King Bed",
         productImage: "/product/furniture8.png",
         productPrice: 11500000,
         category: "Furniture",
@@ -489,7 +489,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Executive Wooden Desk",
+        productName: "Executive Desk",
         productImage: "/product/furniture9.png",
         productPrice: 9800000,
         category: "Furniture",
@@ -509,7 +509,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Emerald Green Lounge Chair",
+        productName: "Emerald Lounge Chair",
         productImage: "/product/furniture11.png",
         productPrice: 4200000,
         category: "Furniture",
@@ -519,7 +519,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Nordic Wooden Study Desk",
+        productName: "Nordic Study Desk",
         productImage: "/product/furniture12.png",
         productPrice: 6500000,
         category: "Furniture",
@@ -530,7 +530,7 @@ await Product.deleteMany()
       // watch
       {
         postedBy: vendor._id,
-        productName: "Seiko Chronograph Sport",
+        productName: "Seiko Chronograph",
         productImage: "/product/Watch_1.png",
         productPrice: 7200000,
         category: "Watches",
@@ -540,7 +540,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Timex Classic White Dial",
+        productName: "Timex White Dial",
         productImage: "/product/Watch_2.png",
         productPrice: 1800000,
         category: "Watches",
@@ -550,7 +550,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Fossil Chronograph Leather",
+        productName: "Fossil Chrono Watch",
         productImage: "/product/Watch_3.png",
         productPrice: 4500000,
         category: "Watches",
@@ -560,7 +560,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Seiko Diver Automatic",
+        productName: "Seiko Diver Auto",
         productImage: "/product/Watch_4.png",
         productPrice: 9500000,
         category: "Watches",
@@ -570,7 +570,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Rolex Submariner Two-Tone",
+        productName: "Rolex Submariner",
         productImage: "/product/Watch_5.png",
         productPrice: 280000000,
         category: "Watches",
@@ -580,7 +580,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Rolex Oyster Perpetual Black",
+        productName: "Rolex Oyster Black",
         productImage: "/product/Watch_6.png",
         productPrice: 160000000,
         category: "Watches",
@@ -590,7 +590,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Omega Seamaster Chronograph",
+        productName: "Omega Seamaster",
         productImage: "/product/Watch_7.png",
         productPrice: 115000000,
         category: "Watches",
@@ -600,7 +600,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Amphibian Vintage Leather",
+        productName: "Amphibian Leather",
         productImage: "/product/Watch_8.png",
         productPrice: 3200000,
         category: "Watches",
@@ -610,7 +610,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Rolex Datejust Gold-Tone",
+        productName: "Rolex Datejust Gold",
         productImage: "/product/Watch_9.png",
         productPrice: 135000000,
         category: "Watches",
@@ -620,7 +620,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Nixon Rose Gold Minimal",
+        productName: "Nixon Rose Minimal",
         productImage: "/product/Watch_10.png",
         productPrice: 3800000,
         category: "Watches",
@@ -630,7 +630,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Breitling Super Avenger Chronograph",
+        productName: "Breitling Avenger",
         productImage: "/product/Watch_11.png",
         productPrice: 145000000,
         category: "Watches",
@@ -640,7 +640,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Timex Classic Black Dial",
+        productName: "Timex Black Dial",
         productImage: "/product/Watch_12.png",
         productPrice: 2500000,
         category: "Watches",
@@ -681,7 +681,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Ceramic Dinnerware Set",
+        productName: "Ceramic Dinnerware",
         productImage: "/product/appliance4.png",
         productPrice: 1800000,
         category: "Home Appliances",
@@ -691,7 +691,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Dual-Compartment Trash Bin",
+        productName: "Dual Trash Bin",
         productImage: "/product/appliance5.png",
         productPrice: 1200000,
         category: "Home Appliances",
@@ -711,7 +711,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Stainless Steel Cookware Set",
+        productName: "Steel Cookware Set",
         productImage: "/product/appliance7.png",
         productPrice: 3500000,
         category: "Home Appliances",
@@ -731,7 +731,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Compact Bread Toaster",
+        productName: "Bread Toaster",
         productImage: "/product/appliance9.png",
         productPrice: 600000,
         category: "Home Appliances",
@@ -741,7 +741,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Cordless Vacuum Cleaner",
+        productName: "Cordless Vacuum",
         productImage: "/product/appliance10.png",
         productPrice: 2700000,
         category: "Home Appliances",
@@ -751,7 +751,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Klarstein Built-in Dishwasher",
+        productName: "Klarstein Dishwasher",
         productImage: "/product/appliance11.png",
         productPrice: 12500000,
         category: "Home Appliances",
@@ -761,7 +761,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Multipurpose Cleaning Brush Set",
+        productName: "Cleaning Brush Set",
         productImage: "/product/appliance12.png",
         productPrice: 350000,
         category: "Home Appliances",
@@ -772,7 +772,7 @@ await Product.deleteMany()
       // beauty products
       {
         postedBy: vendor._id,
-        productName: "Glossier Super Bounce Serum",
+        productName: "Glossier Bounce",
         productImage: "/product/beauty_1.png",
         productPrice: 450000,
         category: "Beauty Products",
@@ -782,7 +782,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Curology Skincare Set",
+        productName: "Curology Set",
         productImage: "/product/beauty_2.png",
         productPrice: 650000,
         category: "Beauty Products",
@@ -792,7 +792,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Curology Daily Cleanser",
+        productName: "Curology Cleanser",
         productImage: "/product/beauty_3.png",
         productPrice: 280000,
         category: "Beauty Products",
@@ -802,7 +802,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Cocooil Organic Body Oil",
+        productName: "Cocooil Body Oil",
         productImage: "/product/beauty_4.png",
         productPrice: 520000,
         category: "Beauty Products",
@@ -812,7 +812,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Sesderma Salises Foamy Cream",
+        productName: "Sesderma Foamy Cream",
         productImage: "/product/beauty_5.png",
         productPrice: 490000,
         category: "Beauty Products",
@@ -822,7 +822,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Benton Shea Butter & Coconut Body Lotion",
+        productName: "Benton Body Lotion",
         productImage: "/product/beauty_6.png",
         productPrice: 350000,
         category: "Beauty Products",
@@ -832,7 +832,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Jo Malone Blackberry & Bay Cologne",
+        productName: "Jo Malone Cologne",
         productImage: "/product/beauty_7.png",
         productPrice: 2200000,
         category: "Beauty Products",
@@ -842,7 +842,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Blank And Be Floral Perfume",
+        productName: "Blank Be Perfume",
         productImage: "/product/beauty_8.png",
         productPrice: 1600000,
         category: "Beauty Products",
@@ -852,7 +852,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Glossier Super Glow & Super Bounce Serums",
+        productName: "Glossier Serums",
         productImage: "/product/beauty_9.png",
         productPrice: 720000,
         category: "Beauty Products",
@@ -862,7 +862,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Hylastra Gold Hydrating Serum",
+        productName: "Hylastra Gold Serum",
         productImage: "/product/beauty_10.png",
         productPrice: 890000,
         category: "Beauty Products",
@@ -872,7 +872,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Evanhealy Chilean Wild Rosehip Seed Oil",
+        productName: "Evanhealy Oil",
         productImage: "/product/beauty_11.png",
         productPrice: 420000,
         category: "Beauty Products",
@@ -882,7 +882,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Act+Acre Restorative Hair Mask",
+        productName: "ActAcre Hair Mask",
         productImage: "/product/beauty_12.png",
         productPrice: 550000,
         category: "Beauty Products",
@@ -891,7 +891,6 @@ await Product.deleteMany()
         stockQuantity: 100,
       },
       //Men's Wear
-
       {
         postedBy: vendor._id,
         productName: "Beige Casual Jacket",
@@ -904,7 +903,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Classic Black Trousers",
+        productName: "Classic Black Pants",
         productImage: "/product/menwear2.png",
         productPrice: 750000,
         category: "Men's Wear",
@@ -924,7 +923,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Star Patch Baseball Cap",
+        productName: "Star Patch Cap",
         productImage: "/product/menwear4.png",
         productPrice: 350000,
         category: "Men's Wear",
@@ -944,7 +943,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Classic Black Puffer Jacket",
+        productName: "Black Puffer Jacket",
         productImage: "/product/menwear6.png",
         productPrice: 1500000,
         category: "Men's Wear",
@@ -954,7 +953,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Navy Blue Oversized T-Shirt",
+        productName: "Navy Oversized Tee",
         productImage: "/product/menwear7.png",
         productPrice: 400000,
         category: "Men's Wear",
@@ -964,7 +963,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Beige Ribbed Polo Shirt",
+        productName: "Beige Ribbed Polo",
         productImage: "/product/menwear8.png",
         productPrice: 550000,
         category: "Men's Wear",
@@ -974,7 +973,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Striped White Polo Shirt",
+        productName: "Striped Polo Shirt",
         productImage: "/product/menwear9.png",
         productPrice: 600000,
         category: "Men's Wear",
@@ -984,7 +983,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Green Long-Sleeve Polo Shirt",
+        productName: "Green Polo Shirt",
         productImage: "/product/menwear10.png",
         productPrice: 700000,
         category: "Men's Wear",
@@ -994,7 +993,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Spider Graphic Navy T-Shirt",
+        productName: "Spider Navy Tee",
         productImage: "/product/menwear11.png",
         productPrice: 350000,
         category: "Men's Wear",
@@ -1004,7 +1003,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Striped Casual Oversized T-Shirt",
+        productName: "Striped Tee",
         productImage: "/product/menwear12.png",
         productPrice: 280000,
         category: "Men's Wear",
@@ -1015,7 +1014,7 @@ await Product.deleteMany()
       // women's wear
       {
         postedBy: vendor._id,
-        productName: "Loose Fit Maroon Blouse",
+        productName: "Loose Maroon Blouse",
         productImage: "/product/womenwear1.png",
         productPrice: 680000,
         category: "Women's Wear",
@@ -1025,7 +1024,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Brown Satin Wrap Top",
+        productName: "Brown Satin WrapTop",
         productImage: "/product/womenwear2.png",
         productPrice: 890000,
         category: "Women's Wear",
@@ -1035,7 +1034,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Beige Satin Two-Piece Set",
+        productName: "Beige Satin Set",
         productImage: "/product/womenwear3.png",
         productPrice: 1350000,
         category: "Women's Wear",
@@ -1045,7 +1044,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "High Waist Grey Midi Skirt",
+        productName: "Grey Midi Skirt",
         productImage: "/product/womenwear4.png",
         productPrice: 750000,
         category: "Women's Wear",
@@ -1055,7 +1054,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Classic Brown Leather Jacket",
+        productName: "Brown Leather Jacket",
         productImage: "/product/womenwear5.png",
         productPrice: 1200000,
         category: "Women's Wear",
@@ -1065,7 +1064,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Oversized Shearling Coat",
+        productName: "Shearling Coat",
         productImage: "/product/womenwear6.png",
         productPrice: 1500000,
         category: "Women's Wear",
@@ -1075,7 +1074,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Beige Knitted V-Neck Sweater",
+        productName: "Beige V-Neck Sweater",
         productImage: "/product/womenwear7.png",
         productPrice: 650000,
         category: "Women's Wear",
@@ -1085,7 +1084,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Trendy Blue Wide-Leg Jeans",
+        productName: "Blue Wide-Leg Jeans",
         productImage: "/product/womenwear8.png",
         productPrice: 820000,
         category: "Women's Wear",
@@ -1095,7 +1094,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Casual Black Midi Dress",
+        productName: "Black Midi Dress",
         productImage: "/product/womenwear9.png",
         productPrice: 900000,
         category: "Women's Wear",
@@ -1105,7 +1104,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Elegant Cream Wrap Dress",
+        productName: "Cream Wrap Dress",
         productImage: "/product/womenwear10.png",
         productPrice: 1100000,
         category: "Women's Wear",
@@ -1115,7 +1114,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Brown Knit Button Cardigan",
+        productName: "Brown Knit Cardigan",
         productImage: "/product/womenwear11.png",
         productPrice: 750000,
         category: "Women's Wear",
@@ -1125,7 +1124,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Elegant Black Flared Midi Skirt",
+        productName: "Black Flared Skirt",
         productImage: "/product/womenwear12.png",
         productPrice: 680000,
         category: "Women's Wear",
@@ -1136,7 +1135,7 @@ await Product.deleteMany()
       // phone
       {
         postedBy: vendor._id,
-        productName: "iPhone 14 Pro Max - Deep Purple",
+        productName: "iPhone 14 Pro Max",
         productImage: "/product/phone1.png",
         productPrice: 30990000,
         category: "Phones & Accessories",
@@ -1146,7 +1145,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "iPhone 15 Pro Max - Titanium White",
+        productName: "iPhone 15 Pro Max",
         productImage: "/product/phone2.png",
         productPrice: 33990000,
         category: "Phones & Accessories",
@@ -1156,7 +1155,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Samsung Galaxy S24 Ultra",
+        productName: "Galaxy S24 Ultra",
         productImage: "/product/phone3.png",
         productPrice: 36990000,
         category: "Phones & Accessories",
@@ -1166,7 +1165,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Samsung Galaxy Z Flip6",
+        productName: "Galaxy Z Flip6",
         productImage: "/product/phone4.png",
         productPrice: 29990000,
         category: "Phones & Accessories",
@@ -1176,7 +1175,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Samsung Galaxy Z Fold6",
+        productName: "Galaxy Z Fold6",
         productImage: "/product/phone5.png",
         productPrice: 46990000,
         category: "Phones & Accessories",
@@ -1186,7 +1185,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "iPhone 16 Pro Max Silicone Case - Pink",
+        productName: "iPhone 16 Case Pink",
         productImage: "/product/phone6.png",
         productPrice: 550000,
         category: "Phones & Accessories",
@@ -1196,7 +1195,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Apple 20W USB-C Power Adapter with Cable",
+        productName: "Apple 20W Adapter",
         productImage: "/product/phone7.png",
         productPrice: 490000,
         category: "Phones & Accessories",
@@ -1206,7 +1205,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Apple MagSafe Battery Pack",
+        productName: "Apple MagSafe Pack",
         productImage: "/product/phone8.png",
         productPrice: 2690000,
         category: "Phones & Accessories",
@@ -1216,7 +1215,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "20,000mAh Portable Power Bank - Type-C",
+        productName: "20k Power Bank C",
         productImage: "/product/phone9.png",
         productPrice: 520000,
         category: "Phones & Accessories",
@@ -1226,7 +1225,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Clear MagSafe Case for iPhone 15",
+        productName: "Clear MagSafe Case",
         productImage: "/product/phone10.png",
         productPrice: 390000,
         category: "Phones & Accessories",
@@ -1236,7 +1235,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Xiaomi 14T 5G - Titanium Gray",
+        productName: "Xiaomi 14T 5G",
         productImage: "/product/phone11.png",
         productPrice: 18990000,
         category: "Phones & Accessories",
@@ -1246,7 +1245,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Xiaomi 12 Lite 5G - Pastel Rainbow",
+        productName: "Xiaomi 12 Lite 5G",
         productImage: "/product/phone12.png",
         productPrice: 10990000,
         category: "Phones & Accessories",
@@ -1255,10 +1254,9 @@ await Product.deleteMany()
         stockQuantity: 100,
       },
       // Books
-
       {
         postedBy: vendor._id,
-        productName: "The Body Keeps the Score",
+        productName: "Body Keeps Score",
         productImage: "/product/Book_1.JPG",
         productPrice: 133000,
         category: "Books",
@@ -1268,7 +1266,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Everything I Know About Love",
+        productName: "Everything I Know",
         productImage: "/product/Book_2.JPG",
         productPrice: 115000,
         category: "Books",
@@ -1278,7 +1276,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "The Let Them Theory",
+        productName: "Let Them Theory",
         productImage: "/product/Book_3.PNG",
         productPrice: 98000,
         category: "Books",
@@ -1288,7 +1286,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Call Me By Your Name",
+        productName: "Call Me By Name",
         productImage: "/product/Book_4.JPG",
         productPrice: 125000,
         category: "Books",
@@ -1308,7 +1306,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "You Are What You Love",
+        productName: "You Are What Love",
         productImage: "/product/Book_5.JPG",
         productPrice: 99000,
         category: "Books",
@@ -1318,7 +1316,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Love, Life & Work",
+        productName: "Love Life & Work",
         productImage: "/product/Book_7.JPG",
         productPrice: 87000,
         category: "Books",
@@ -1338,7 +1336,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Pride and Prejudice",
+        productName: "Pride Prejudice",
         productImage: "/product/Book_9.JPG",
         productPrice: 88000,
         category: "Books",
@@ -1348,7 +1346,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Build the Life You Want",
+        productName: "Build Life You Want",
         productImage: "/product/Book_10.JPG",
         productPrice: 112000,
         category: "Books",
@@ -1358,7 +1356,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Build the Life You Want",
+        productName: "Build Life Alt Cover",
         productImage: "/product/Book_11.WEBP",
         productPrice: 112000,
         category: "Books",
@@ -1379,7 +1377,7 @@ await Product.deleteMany()
       // Electronic
       {
         postedBy: vendor._id,
-        productName: "LumiGlow Pro Skin Enhancer",
+        productName: "LumiGlow Enhancer",
         productImage: "/product/Electronic_1.WEBP",
         productPrice: 300000,
         category: "Electronics",
@@ -1389,7 +1387,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Ionic Face Lifting Massager",
+        productName: "Ionic Face Massager",
         productImage: "/product/Electronic_2.JPG",
         productPrice: 489000,
         category: "Electronics",
@@ -1399,7 +1397,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Dyson V11 Cordless Vacuum Cleaner",
+        productName: "Dyson V11 Vacuum",
         productImage: "/product/Electronic_3.JPG",
         productPrice: 10900000,
         category: "Electronics",
@@ -1409,7 +1407,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Dyson Airwrap Multi-Styler Complete",
+        productName: "Dyson Airwrap Set",
         productImage: "/product/Electronic_4.WEBP",
         productPrice: 14300000,
         category: "Electronics",
@@ -1419,7 +1417,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Ceramic Hair Straightener with Digital Display",
+        productName: "Ceramic Straightener",
         productImage: "/product/Electronic_5.JPG",
         productPrice: 789000,
         category: "Electronics",
@@ -1429,7 +1427,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "High-Speed Ionic Hair Dryer",
+        productName: "Ionic Hair Dryer",
         productImage: "/product/Electronic_6.JPG",
         productPrice: 1150000,
         category: "Electronics",
@@ -1439,7 +1437,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "LG PuriCare Air Purifier",
+        productName: "LG PuriCare Purifier",
         productImage: "/product/Electronic_7.JPG",
         productPrice: 4890000,
         category: "Electronics",
@@ -1449,7 +1447,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "PlayStation VR2 Headset",
+        productName: "PlayStation VR2",
         productImage: "/product/Electronic_8.JPG",
         productPrice: 15990000,
         category: "Electronics",
@@ -1459,7 +1457,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "PlayStation VR2 Full Set",
+        productName: "PlayStation VR2 Set",
         productImage: "/product/Electronic_9.WEBP",
         productPrice: 17990000,
         category: "Electronics",
@@ -1469,7 +1467,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "PlayStation VR2 Headset and Controllers",
+        productName: "PS VR2 Headset Ctrl",
         productImage: "/product/Electronic_10.WEBP",
         productPrice: 16990000,
         category: "Electronics",
@@ -1479,7 +1477,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Kindle Paperwhite 6.8'' (2023)",
+        productName: "Kindle Paperwhite",
         productImage: "/product/Electronic_11.WEBP",
         productPrice: 3290000,
         category: "Electronics",
@@ -1489,7 +1487,7 @@ await Product.deleteMany()
       },
       {
         postedBy: vendor._id,
-        productName: "Fujifilm X100V Compact Camera",
+        productName: "Fujifilm X100V Cam",
         productImage: "/product/Electronic_12.JPG",
         productPrice: 31490000,
         category: "Electronics",

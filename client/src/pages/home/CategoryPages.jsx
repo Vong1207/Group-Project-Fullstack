@@ -9,7 +9,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './CategoryPages.css';
 import Navbar from '../partials/Navbar.jsx';
-
+import Footer from '../partials/Footer.jsx';
 
 export default function CategoryPage() {
   const { categoryName } = useParams();
@@ -206,12 +206,12 @@ export default function CategoryPage() {
               </div>
               <div className="filters-content">
                 {renderFilters()}
-              </div>
-              <div className="back-home-container">
-                <a href="/" className="back-home-btn">
-                  <i className="bi bi-house me-2"></i>
-                  Back to Home
-                </a>
+                <div className="back-home-container mt-5">
+                  <a href="/" className="back-home-btn">
+                    <i className="bi bi-house me-2"></i>
+                    Back to Home
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -326,6 +326,8 @@ export default function CategoryPage() {
           </div>
         </div>
       )}
+
+      <Footer />
     </div>
   );
 }

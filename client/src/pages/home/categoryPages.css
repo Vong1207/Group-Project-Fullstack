@@ -83,13 +83,9 @@
 }
 
 .back-home-container {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 1000;
   padding: 0;
   margin: 0;
-  width: auto;
+  width: 100%;
 }
 
 .back-home-btn {

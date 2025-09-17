@@ -18,10 +18,8 @@ export default function ProductDetails() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const [quantity, setQuantity] = useState(1);
-  function handleQuantityChange(val) {
-    setQuantity(Math.max(1, Math.min(99, val)));
-  }
+  const [quantity, setQuantity] = useState(0);
+  
   const dispatch = useDispatch();
   const userId = useSelector(state => state.user.user?._id);
   const currentCart = useSelector(state => state.user.user?.cart || []);
@@ -44,6 +42,11 @@ export default function ProductDetails() {
       .catch(console.error);
   }, [productId]);
 
+  function handleQuantityChange(val) {
+    const maxStock = product.stockQuantity;
+    setQuantity(Math.max(0, Math.min(maxStock, val)));
+  }
+
   async function handleAddToCart() {
   if (!userId) {
     navigate('/signin');
@@ -51,42 +54,54 @@ export default function ProductDetails() {
   }
   if (!product) return;
 
+    // check quantity
+    if (quantity === 0) {
+      alert("Invalid quantity");
+      return;
+    }
+
   // check stock quantity
   if (product.stockQuantity < quantity) {
     alert("There are not enough products to order");
     return;
   }
 
-  try {
-    let updatedCart = [...currentCart];
-    const existingIndex = updatedCart.findIndex(p => p.product._id === product._id);
+    try {
+      let updatedCart = [...currentCart];
+      const existingIndex = updatedCart.findIndex(p => p.product._id === product._id);
 
-    if (existingIndex !== -1) {
-      updatedCart[existingIndex].quantity = quantity;
-    } else {
-      updatedCart.push({ product, quantity });
+      if (existingIndex !== -1) {
+        updatedCart[existingIndex].quantity = quantity;
+      } else {
+        updatedCart.push({ product, quantity });
+      }
+
+      dispatch(setCart(updatedCart)); 
+
+      await axios.post('http://localhost:3000/api/cart/update', {
+        userId,
+        cart: updatedCart
+      }, { withCredentials: true });
+
+      alert('Product has been added to your cart!');
+    } catch (err) {
+      console.error('Error adding to cart:', err);
     }
-
-     dispatch(setCart(updatedCart)); 
-
-    await axios.post('http://localhost:3000/api/cart/update', {
-      userId,
-      cart: updatedCart
-    }, { withCredentials: true });
-
-    alert('Product has been added to your cart!');
-  } catch (err) {
-    console.error('Error adding to cart:', err);
   }
-}
 
   // when you click on buy now
   async function hanldeAddToOrder() {
   if (!userId) {
-    navigate('/signin');
+    navigate('/login');
     return;
   }
   if (!product) return;
+
+   // check quantity
+    if (quantity === 0) {
+      alert("Invalid quantity");
+      return;
+    }
   
   // check stock quantity
   if (product.stockQuantity < quantity) {
@@ -94,41 +109,41 @@ export default function ProductDetails() {
     return;
   }
 
-  // Check wallet balance
+    // Check wallet balance
     if (walletBalance < product.productPrice) {
-    alert("You don't have enough money in your wallet.");
-    return;
+      alert("You don't have enough money in your wallet.");
+      return;
+    }
+
+    try {
+      const orderItem = {
+        product: product._id,
+        quantity
+      };
+
+      const res = await axios.post(
+        'http://localhost:3000/api/cart/order',
+        {
+          userId,
+          cart: [orderItem],
+          totalPrice: product.productPrice * quantity
+        },
+        { withCredentials: true }
+      );
+
+      
+      alert('Order placed successfully!');
+      dispatch(updateWalletBalance(walletBalance - (product.productPrice * quantity)));
+      
+      // Re-fetch product after successful order
+      const resProduct = await axios.get(`http://localhost:3000/products/${product._id}`);
+      setProduct(resProduct.data);
+
+    } catch (error) {
+      console.error('Error placing order:', error);
+      alert('Error placing order.');
+    }
   }
-
-  try {
-    const orderItem = {
-      product: product._id,
-      quantity
-    };
-
-    const res = await axios.post(
-      'http://localhost:3000/api/cart/order',
-      {
-        userId,
-        cart: [orderItem],
-        totalPrice: product.productPrice * quantity
-      },
-      { withCredentials: true }
-    );
-
-    
-    alert('Order placed successfully!');
-    dispatch(updateWalletBalance(walletBalance - (product.productPrice * quantity)));
-    
-    // Re-fetch product after successful order
-    const resProduct = await axios.get(`http://localhost:3000/products/${product._id}`);
-    setProduct(resProduct.data);
-
-  } catch (error) {
-    console.error('Error placing order:', error);
-    alert('Error placing order.');
-  }
-}
 
   if (!product) return <div className="text-center my-5">Loading product...</div>;
 
