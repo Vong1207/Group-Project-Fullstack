@@ -2,8 +2,8 @@
 // # Course: COSC2769 - Full Stack Development
 // # Semester: 2025B
 // # Assessment: Assignment 02
-// # Author: Your Names (e.g. Nguyen Van Minh)
-// # ID: Your Student ID (e.g. 1234567) */
+// # Author: All Group Members
+// # ID: */
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
@@ -31,7 +31,7 @@ import MyProducts from './pages/myAccount/MyProducts.jsx';
 import AddNewProduct from './pages/myAccount/AddNewProduct.jsx';
 import CategoryPage  from './pages/home/CategoryPages.jsx';
 import SearchResult from './pages/search/SearchResult.jsx';
-import ProductDetails from './pages/productDetails/ProductDetails.jsx';
+import ProductDetails from './pages/productDetails/productDetails.jsx';
 import Orders from './pages/myAccount/Orders.jsx';
 import { About, Privacy, Help } from './pages/footerPartial';
 

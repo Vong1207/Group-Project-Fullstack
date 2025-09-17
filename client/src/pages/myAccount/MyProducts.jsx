@@ -2,8 +2,8 @@
 // # Course: COSC2769 - Full Stack Development
 // # Semester: 2025B
 // # Assessment: Assignment 02
-// # Author: Nguyen Minh Nguyen Khoa,
-// # ID: 4033604, */
+// # Author: Nguyen Minh Nguyen Khoa,  Tran Gia Vong
+// # ID: 4033604, s4012094 */
 import "./MyProducts.css";
 import { useSelector } from "react-redux";
 import axios from "axios";

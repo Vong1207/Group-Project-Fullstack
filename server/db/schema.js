@@ -2,8 +2,8 @@
 // # Course: COSC2769 - Full Stack Development
 // # Semester: 2025B
 // # Assessment: Assignment 02
-// # Author: Nguyen Vu Linh
-// # ID: 3999487 */
+// # Author: Nguyen Vu Linh, Tran Gia Vong
+// # ID: s3999487, s4012094 */
 import { mongoose } from "./mongoose.js";
 
 // user schema

@@ -61,7 +61,7 @@ export default function CategoryPage() {
     const searchedName = query.get("searchedName") || "";
 
     if (searchedName.trim()) {
-      // Gọi API searchByName, sau đó filter theo category ở FE
+      // If there's a global search term, use searchByName API and filter by category
       fetch("/api/product/searchByName", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -127,7 +127,7 @@ export default function CategoryPage() {
   const resetFilters = () => {
     setFilters({ searchName: "", minPrice: "", maxPrice: "" });
     setGlobalSearchTerm(""); // Reset global search
-    fetchCategoryProducts(); // Về lại products theo category
+    fetchCategoryProducts(); // Reset to original category products
     if (screenSize === "smartphone") setShowMobileFilters(false);
   };
 
